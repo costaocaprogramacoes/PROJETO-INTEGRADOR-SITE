@@ -1,0 +1,250 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+.bimg{
+    background-image: url(/img/setup.png);
+    background-size: cover;
+    position: fixed;
+    background-position: center;
+    opacity: 1;
+
+    width: 101%;
+    height: 90%;
+
+    z-index: -1;
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 30%,
+        black 100%
+    );
+}
+
+.navg{
+    height: 70px;
+    width: 100%;
+    background: black;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    justify-content: space-between;
+}
+
+.navg ul{
+    padding: 25px;
+    color: white;
+    gap: 30px;
+    display: flex;
+    list-style: none;
+}
+
+.nexus{
+    font-size: 20px;
+    margin-left: 190px;
+    padding: 25px;
+    color: white;
+}
+
+.intro{
+    padding: 200px;
+}
+.texto{
+    color: white;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.intro p{
+    color: gray;
+    margin-top: 20px;
+    margin-bottom: 10px ;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.intro button{
+    letter-spacing: 1px;
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.dados{
+    background: rgb(10, 10, 10);
+    justify-content: center;
+    align-items: center;
+    height: 12%;
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+
+    z-index: -1;
+}
+
+
+.dados ul{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    list-style: none;
+}
+
+.dados li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "Nasalization";
+}
+
+.novidade{
+    display: flex;
+    position: relative;
+    top: 150px;
+    margin-left: 200px;
+    font-size: smaller;
+    padding: 5px 5px;
+    border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Aparencia*/
+
+@font-face {
+    font-family: "Nasalization";
+    src: url(/fontes/Nasalization\ Rg.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Micro";
+    src: url(/fontes/microgrammanormal.ttf) format("opentype");
+}
+
+.navg li:hover{
+    color: aqua;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.intro button:hover{
+    transform: translateY(-10px);
+    transition: 0.5s;
+}
+
+.nexus{
+    font-family: "Nasalization";
+    cursor: pointer;
+}
+
+.gg{
+    color: aqua;
+}
+
+.qualquer{
+    font-family: "Micro";
+    color: aqua;
+    text-shadow: 0px 0px 15px rgb(0, 210, 253);
+}
+.texto{
+    font-family: "Micro";
+}
+
+.setup{
+    color: black;
+    background: aqua;
+    box-shadow: 0px 0px 15px rgb(0, 210, 253);
+    border-style: none;
+}
+
+.setup:hover{
+    background: white;
+    transition: 0.5s;
+}
+
+.jogos{
+    margin-left: 10px;
+    background: none;
+    border: 1px solid rgba(0, 255, 255, 0.493);
+    color: aqua;
+}
+
+.jogos:hover{
+    background: rgb(37, 37, 37);
+    transition: 0.5s;
+}
+
+.novidade{
+    border-style: inherit;
+    color: aqua;
+    background: none;
+}
+.valor{
+    color: aqua;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.legenda{
+    color: gray;
+    letter-spacing: 1px;
+}
+
+
+
+
+
+
+/* Responsividade */
+
