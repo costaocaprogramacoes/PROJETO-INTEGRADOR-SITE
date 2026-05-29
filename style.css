@@ -119,6 +119,305 @@ body{
     border-radius: 15px;
 }
 
+/* NAVBAR */
+
+.navbar{
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 22px 40px;
+
+    border-bottom: 1px solid #11182f;
+}
+
+/* LOGO */
+
+.logo{
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.logo-icon{
+    width: 38px;
+    height: 38px;
+
+    background: linear-gradient(135deg, #00d9ff, #008cff);
+
+    border-radius: 8px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.logo-icon i{
+    color: black;
+}
+
+.logo h1{
+    font-size: 33px;
+}
+
+.logo span{
+    color: #00d9ff;
+}
+
+/* MENU */
+
+nav{
+    display: flex;
+
+    gap: 35px;
+}
+
+nav a{
+    text-decoration: none;
+
+    color: #6c7192;
+
+    transition: 0.3s;
+}
+
+nav a:hover{
+    color: #00d9ff;
+}
+
+.active{
+    color: #00d9ff;
+    border-bottom: 2px solid #00d9ff;
+    padding-bottom: 6px;
+}
+
+/* ICONS */
+
+.icons{
+    display: flex;
+
+    gap: 22px;
+
+    color: #7a80a3;
+
+    font-size: 18px;
+}
+
+.icons i{
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.icons i:hover{
+    color: #00d9ff;
+}
+
+/* TITULOS */
+
+.titulo{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.titulo a{
+    color: #00d9ff;
+
+    text-decoration: none;
+}
+
+/* CATEGORIAS */
+
+.categorias{
+    padding: 40px;
+}
+
+/* GRID */
+
+.cards-categorias{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+/* CARD */
+
+.card{
+    background-color: #0b1023;
+
+    border: 1px solid #161f3b;
+
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+
+    border-color: #00d9ff;
+}
+
+/* ICONE */
+
+.card i{
+    font-size: 28px;
+}
+
+/* PRIMEIRO ICONE */
+
+.card i:first-child{
+    color: #00d9ff;
+}
+
+/* SETA */
+
+.seta{
+    color: #646b8c;
+
+    font-size: 15px !important;
+}
+
+/* TEXTO */
+
+.card h3{
+    font-size: 15px;
+
+    margin-bottom: 8px;
+}
+
+.card p{
+    color: #73789c;
+}
+
+/* JOGOS */
+
+.jogos{
+    padding: 10px 40px 40px 40px;
+}
+
+/* GRID JOGOS */
+
+.cards-jogos{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+/* CARD GAME */
+
+.game-card{
+    background-color: #0b1023;
+
+
+    overflow: hidden;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.game-card:hover{
+    transform: scale(1.03);
+}
+
+/* IMAGEM */
+
+.game-card img{
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+}
+
+/* INFO */
+
+.game-info{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px;
+}
+
+/* ESTRELAS */
+
+.stars{
+    color: gold;
+
+    letter-spacing: 2px;
+}
+
+.game-info span{
+    color: #8d92b1;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 1100px){
+
+    .cards-categorias{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards-jogos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 700px){
+
+    .navbar{
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    nav{
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .cards-categorias{
+        grid-template-columns: 1fr;
+    }
+
+    .cards-jogos{
+        grid-template-columns: 1fr;
+    }
+
+}
+
 
 
 
