@@ -10,7 +10,7 @@ body{
 }
 
 .bimg{
-    background-image: url(/img/setup.png);
+    background-image: url(/PROJETO-INTEGRADOR-SITE/img/setup.png);
     background-size: cover;
     position: fixed;
     background-position: center;
@@ -241,6 +241,7 @@ nav a:hover{
 /* CATEGORIAS */
 
 .categorias{
+    color:white;
     padding: 40px;
 }
 
@@ -257,6 +258,8 @@ nav a:hover{
 /* CARD */
 
 .card{
+    color: white;
+
     background-color: #0b1023;
 
     border: 1px solid #161f3b;
@@ -461,12 +464,12 @@ nav a:hover{
 
 @font-face {
     font-family: "Nasalization";
-    src: url(/fontes/Nasalization\ Rg.otf) format("opentype");
+    src: url(/PROJETO-INTEGRADOR-SITE/fonts/Nasalization\ Rg.otf) format("opentype");
 }
 
 @font-face {
     font-family: "Micro";
-    src: url(/fontes/microgrammanormal.ttf) format("opentype");
+    src: url(/PROJETO-INTEGRADOR-SITE/fonts/microgrammanormal.ttf) format("opentype");
 }
 
 .navg li:hover{
