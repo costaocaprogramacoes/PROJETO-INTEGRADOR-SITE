@@ -1,0 +1,552 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+.bimg{
+    background-image: url(/PROJETO-INTEGRADOR-SITE/img/setup.png);
+    background-size: cover;
+    position: fixed;
+    background-position: center;
+    opacity: 1;
+
+    width: 101%;
+    height: 90%;
+
+    z-index: -1;
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 30%,
+        black 100%
+    );
+}
+
+.navg{
+    height: 70px;
+    width: 100%;
+    background: black;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    justify-content: space-between;
+}
+
+.navg ul{
+    padding: 25px;
+    color: white;
+    gap: 30px;
+    display: flex;
+    list-style: none;
+}
+
+.nexus{
+    font-size: 20px;
+    margin-left: 190px;
+    padding: 25px;
+    color: white;
+}
+
+.intro{
+    padding: 200px;
+}
+.texto{
+    color: white;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.intro p{
+    color: gray;
+    margin-top: 20px;
+    margin-bottom: 10px ;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.intro button{
+    letter-spacing: 1px;
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.dados{
+    background: rgb(10, 10, 10);
+    justify-content: center;
+    align-items: center;
+    height: 12%;
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+
+    z-index: -1;
+}
+
+
+.dados ul{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    list-style: none;
+}
+
+.dados li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "Nasalization";
+}
+
+.novidade{
+    display: flex;
+    position: relative;
+    top: 150px;
+    margin-left: 200px;
+    font-size: smaller;
+    padding: 5px 5px;
+    border-radius: 15px;
+}
+
+/* NAVBAR */
+
+.navbar{
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 22px 40px;
+
+    border-bottom: 1px solid #11182f;
+}
+
+/* LOGO */
+
+.logo{
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.logo-icon{
+    width: 38px;
+    height: 38px;
+
+    background: linear-gradient(135deg, #00d9ff, #008cff);
+
+    border-radius: 8px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.logo-icon i{
+    color: black;
+}
+
+.logo h1{
+    font-size: 33px;
+}
+
+.logo span{
+    color: #00d9ff;
+}
+
+/* MENU */
+
+nav{
+    display: flex;
+
+    gap: 35px;
+}
+
+nav a{
+    text-decoration: none;
+
+    color: #6c7192;
+
+    transition: 0.3s;
+}
+
+nav a:hover{
+    color: #00d9ff;
+}
+
+.active{
+    color: #00d9ff;
+    border-bottom: 2px solid #00d9ff;
+    padding-bottom: 6px;
+}
+
+/* ICONS */
+
+.icons{
+    display: flex;
+
+    gap: 22px;
+
+    color: #7a80a3;
+
+    font-size: 18px;
+}
+
+.icons i{
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.icons i:hover{
+    color: #00d9ff;
+}
+
+/* TITULOS */
+
+.titulo{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.titulo a{
+    color: #00d9ff;
+
+    text-decoration: none;
+}
+
+/* CATEGORIAS */
+
+.categorias{
+    color:white;
+    padding: 40px;
+}
+
+/* GRID */
+
+.cards-categorias{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+/* CARD */
+
+.card{
+    color: white;
+
+    background-color: #0b1023;
+
+    border: 1px solid #161f3b;
+
+
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+
+    border-color: #00d9ff;
+}
+
+/* ICONE */
+
+.card i{
+    font-size: 28px;
+}
+
+/* PRIMEIRO ICONE */
+
+.card i:first-child{
+    color: #00d9ff;
+}
+
+/* SETA */
+
+.seta{
+    color: #646b8c;
+
+    font-size: 15px !important;
+}
+
+/* TEXTO */
+
+.card h3{
+    font-size: 15px;
+
+    margin-bottom: 8px;
+}
+
+.card p{
+    color: #73789c;
+}
+
+/* JOGOS */
+
+.jogos{
+    padding: 10px 40px 40px 40px;
+}
+
+/* GRID JOGOS */
+
+.cards-jogos{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+/* CARD GAME */
+
+.game-card{
+    background-color: #0b1023;
+
+
+    overflow: hidden;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.game-card:hover{
+    transform: scale(1.03);
+}
+
+/* IMAGEM */
+
+.game-card img{
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+}
+
+/* INFO */
+
+.game-info{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px;
+}
+
+/* ESTRELAS */
+
+.stars{
+    color: gold;
+
+    letter-spacing: 2px;
+}
+
+.game-info span{
+    color: #8d92b1;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 1100px){
+
+    .cards-categorias{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards-jogos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 700px){
+
+    .navbar{
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    nav{
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .cards-categorias{
+        grid-template-columns: 1fr;
+    }
+
+    .cards-jogos{
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Aparencia*/
+
+@font-face {
+    font-family: "Nasalization";
+    src: url(/PROJETO-INTEGRADOR-SITE/fonts/Nasalization\ Rg.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Micro";
+    src: url(/PROJETO-INTEGRADOR-SITE/fonts/microgrammanormal.ttf) format("opentype");
+}
+
+.navg li:hover{
+    color: aqua;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.intro button:hover{
+    transform: translateY(-10px);
+    transition: 0.5s;
+}
+
+.nexus{
+    font-family: "Nasalization";
+    cursor: pointer;
+}
+
+.gg{
+    color: aqua;
+}
+
+.qualquer{
+    font-family: "Micro";
+    color: aqua;
+    text-shadow: 0px 0px 15px rgb(0, 210, 253);
+}
+.texto{
+    font-family: "Micro";
+}
+
+.setup{
+    color: black;
+    background: aqua;
+    box-shadow: 0px 0px 15px rgb(0, 210, 253);
+    border-style: none;
+}
+
+.setup:hover{
+    background: white;
+    transition: 0.5s;
+}
+
+.jogos{
+    margin-left: 10px;
+    background: none;
+    border: 1px solid rgba(0, 255, 255, 0.493);
+    color: aqua;
+}
+
+.jogos:hover{
+    background: rgb(37, 37, 37);
+    transition: 0.5s;
+}
+
+.novidade{
+    border-style: inherit;
+    color: aqua;
+    background: none;
+}
+.valor{
+    color: aqua;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.legenda{
+    color: gray;
+    letter-spacing: 1px;
+}
+
+
+
+
+
+
+/* Responsividade */
+
