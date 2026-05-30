@@ -417,23 +417,25 @@ body{
     padding: 0.5vw;
 }
 
-.footer-col h2,
+.footer-logo{
+    margin-left: 9vw;
+    margin-right: 9vw;
+}
+
+.footer-col{
+    padding: 0 7vw;
+}
 .footer-col h3 {
     color: #00e5ff;
     margin-bottom: 1vw;
     font-size: 0.7vw;
     letter-spacing: 0.1vw;
-    padding-left: 0;
-    list-style: none;
 }
 
-.footer-col p {
-    line-height: 1.6;
-    font-size: 11px;
-    gap: 15px;
+
+.footer-col ul{
     padding-left: 0;
-    list-style: none;
-    
+    margin:0;
 }
 
 .footer-col ul li {
@@ -447,7 +449,6 @@ body{
     text-decoration: none;
     transition: 0.3s;
     font-size: 0.7vw;
-    list-style: none;
 }
 
 .footer-col ul li a:hover {
@@ -455,6 +456,8 @@ body{
 }
 
 .footer-bottom {
+    margin-left: 9vw;
+    margin-right: 9vw;
     border-top: 0.1vw solid #16204a;
     padding-top: 1vw;
     display: flex;
