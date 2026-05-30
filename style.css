@@ -10,7 +10,7 @@ body{
 }
 
 .bimg{
-    background-image: url(/PROJETO-INTEGRADOR-SITE/img/setup.png);
+    background-image: url(/img/setup.png);
     background-size: cover;
     position: absolute;
     background-position: center;
