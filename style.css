@@ -409,43 +409,6 @@ nav a:hover{
 
 
 
-/* RESPONSIVO */
-
-@media(max-width: 1100px){
-
-    .cards-categorias{
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .cards-jogos{
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media(max-width: 700px){
-
-    .navbar{
-        flex-direction: column;
-
-        gap: 20px;
-    }
-
-    nav{
-        flex-wrap: wrap;
-
-        justify-content: center;
-    }
-
-    .cards-categorias{
-        grid-template-columns: 1fr;
-    }
-
-    .cards-jogos{
-        grid-template-columns: 1fr;
-    }
-
-}
 
 
 
@@ -654,10 +617,3 @@ nav a:hover{
     padding-left: 0;
     list-style: none;
 }
-
-
-
-
-
-/* Responsividade */
-
