@@ -1,0 +1,421 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(2, 1, 14);
+}
+
+nav{
+    display:flex;
+    gap:40px;
+}
+
+.navg{
+    height: 70px;
+    width: 100%;
+    background: rgb(2, 1, 14);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    justify-content: space-between;
+    border-bottom:1px solid #0d203f;
+}
+
+.nexus{
+    font-family: "Nasalization";
+    font-size: 1.2vw;
+    margin-left: 15vw;
+    padding: 1.3vw;
+    color: white;
+}
+
+.gg{
+    color: aqua;
+}
+.navg ul{
+    padding: 25px;
+    color: #7070A0;
+    gap: 30px;
+    display: flex;
+    list-style: none;
+}
+
+.navg li:hover{
+    cursor: pointer;
+    color: aqua;
+    transition: 0.3s;
+
+
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.montar-setup {
+    color: #7070A0;
+    font-size: 12px;
+    padding: 20px;
+    margin-left: 0;
+    text-align: left;
+    display: flex;
+    text-align: right;
+    margin-left: 15vw;
+    margin-top: 2vw;
+    
+}
+
+.setup-jogo {
+    font-family: "Micro";
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0;
+    padding-left: 20px;
+    margin-left: 15vw;
+
+}
+
+.texto {
+    display: flex;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+.texto {
+    color: #7070A0;
+    font-size: 14px;
+    padding: 20px;
+    margin-left: 0;
+    text-align: left;
+    display: flex;
+    text-align: right;
+    margin-left: 15vw;
+}
+
+.texto p {
+    max-width: 500px;
+    text-align: left;
+    line-height: 1.2vw;
+}
+
+
+.botao{
+    display: flex;
+    margin-left: 16vw;
+    gap: 0.5vw;
+    height: 2vw;
+}
+
+.botao button{
+    padding: 0.5vw;
+    background: none;
+    color: #7070A0;
+    border-radius: 0.2vw;
+    border-color: rgb(10, 37, 37);
+    border-style: solid;
+    border-width: 0.1vw;
+}
+
+.botao button:hover{
+    color: white;
+    border-color: rgb(26, 88, 88);
+}
+
+.botao button.ativo {
+    background-color: #00d9ff;
+    color: black;
+    border: none;
+    box-shadow: 0 0 15px #00d9ff;
+}
+.area-principal{
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 20px;
+}
+
+.card-jogo {
+    width: 480px;
+    background: #10101c;
+    border: 1px solid #1a2340;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-left: 15vw;
+}
+
+.card-jogo img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 20px;
+    color: white;
+    font-size: 13px;
+}
+
+.info h3 {
+    font-size: 12px;
+    color: #7070A0;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 11px;
+    padding: 6px 8px;
+}
+
+.tags span {
+    background: #11183a;
+    color: #00d9ff;
+    padding: 8px 12px;
+    font-size: 11px;
+}
+.spec {
+    font-size: 14px;
+    padding: 8px 0px;
+    margin: 0px 0px 8px;
+}
+
+
+.niveis {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    
+}
+
+.niveis button {
+    flex: 1;
+    padding: 6px 0px;
+    border: none;
+    background: #141733;
+    color: #7070A0;
+    border-radius: .25rem;
+    font-size: 12px;
+
+   
+}
+
+.niveis .ativo {
+    background: #a855f7;
+}
+
+.linha {
+    display: flex;
+    gap: 80px;
+    padding: 10px;
+    border-bottom: 1px solid #00d4ff
+}
+
+.container{
+    width: 800px;
+    margin-left: auto;
+    margin-right: 20vw;
+    margin-bottom: 0px 0px 16px;
+    color: #d4b000;
+    font-size: 10px;
+}
+
+.container h2{
+    font-size: 12px;
+}
+
+
+.card{
+    background:#090f22;
+    border:1px solid #152347;
+    border-radius:6px;
+    padding:18px;
+    margin-bottom:14px;
+}
+
+.topo-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.info-componente{
+    flex:1;
+}
+
+.categoria{
+    color:#6676a8;
+    font-size:11px;
+    letter-spacing:2px;
+    display:block;
+    margin-bottom:12px;
+}
+
+.info-componente h3{
+    color:white;
+    font-size:16px;
+    font-weight:600;
+}
+
+.info-direita{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nota{
+    color:#00d9ff;
+    font-weight:bold;
+}
+
+.preco{
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    min-width:90px;
+    text-align:right;
+}
+
+.info-direita button{
+    background:transparent;
+    border:1px solid #00d9ff;
+    color:#00d9ff;
+    padding:12px 20px;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.barra{
+    width:100%;
+    height:4px;
+    background:#1a2340;
+    border-radius:50px;
+    margin-top:16px;
+}
+
+.progresso{
+    height:100%;
+    background:#00d9ff;
+    border-radius:50px;
+}
+
+.btn-setup-completo{
+    width:100%;
+    border:none;
+    padding:18px;
+    border-radius:6px;
+    margin-top:20px;
+    color:white;
+    font-weight:bold;
+    letter-spacing:2px;
+    cursor:pointer;
+    background:linear-gradient(90deg,#9c4de2,#b15bf0);
+}
+
+
+.footer {
+    border-top: 1px solid rgb(10, 37, 37);
+    margin-top: 3vw;
+    background:rgb(6, 3, 22);
+    color: #7070A0;
+    padding: 1vw 1vw 1vw;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1vw;
+    margin-bottom: 1vw;
+    font-size:0.7vw;
+    padding: 0.5vw;
+}
+
+.footer-logo{
+    margin-left: 9vw;
+    margin-right: 9vw;
+}
+
+.footer-logo h2{
+    font-family: "Nasalization";
+    color: white;
+}
+
+.footer-logo p{
+    margin-top: 0.5vw;
+    line-height: 1.2vw;
+}
+.footer-col{
+    color: #7070A0;
+    padding: 0 7vw;
+}
+.footer-col h3 {
+    color: #00e5ff;
+    margin-bottom: 1vw;
+    font-size: 0.7vw;
+    letter-spacing: 0.1vw;
+}
+
+
+.footer-col ul{
+    padding-left: 0;
+    margin:0;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.5vw;
+    font-size: 0.5vw;
+    list-style: none;
+}
+
+.footer-col ul li a {
+    color: #8a8fb8;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.7vw;
+}
+
+.footer-col ul li a:hover {
+    color: #00e5ff;
+}
+
+.footer-bottom {
+    margin-left: 9vw;
+    margin-right: 9vw;
+    border-top: 0.1vw solid #16204a;
+    padding-top: 1vw;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 0.7vw;
+
+}
+
+.footer-info {
+    display: flex;
+    gap: 1vw;
+    color: #00ff88;
+    font-size: 0.7vw;
+    color: #8a8fb8;
+    list-style: none;
+}
+
+@font-face{
+    font-family: "Micro";
+    src: url(/fonts/microgrammanormal.ttf);
+}
+
+@font-face{
+    font-family: "Nasalization";
+    src: url(/fonts/Nasalization\ Rg.otf);
+}
