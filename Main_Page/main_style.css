@@ -6,11 +6,11 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(6, 3, 22);
+    background-color: rgb(2, 1, 14);
 }
 
 .bimg{
-    background-image: url(/img/setup.png);
+    background-image: url(./img_main/setup.png);
     background-size: cover;
     position: absolute;
     background-position: center;
@@ -29,6 +29,11 @@ body{
     );
 }
 
+nav{
+    display:flex;
+    gap:40px;
+}
+
 .navg{
     height: 70px;
     width: 100%;
@@ -39,19 +44,31 @@ body{
     border-bottom:1px solid #0d203f;
 }
 
+.nexus{
+    font-family: "Nasalization";
+    font-size: 1.2vw;
+    margin-left: 15vw;
+    padding: 1.3vw;
+    color: white;
+}
+
+.gg{
+    color: aqua;
+}
 .navg ul{
-    padding: 1.5vw;
+    padding: 25px;
     color: #7070A0;
-    gap: 2vw;
+    gap: 30px;
     display: flex;
     list-style: none;
 }
 
-.nexus{
-    font-size: 1.2vw;
-    margin-left: 9vw;
-    padding: 1.3vw;
-    color: white;
+.navg li:hover{
+    cursor: pointer;
+    color: aqua;
+    transition: 0.3s;
+
+
 }
 
 .intro{
