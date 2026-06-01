@@ -16,6 +16,7 @@ nav{
 }
 
 .navg{
+    position: fixed;
     height: 70px;
     width: 100%;
     background: rgb(2, 1, 14);
@@ -65,7 +66,7 @@ a{
     display: flex;
     text-align: right;
     margin-left: 15vw;
-    margin-top: 2vw;
+    margin-top: 6vw;
     
 }
 
