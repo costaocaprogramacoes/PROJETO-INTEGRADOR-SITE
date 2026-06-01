@@ -35,6 +35,7 @@ nav{
 }
 
 .navg{
+    position: fixed;
     height: 70px;
     width: 100%;
     background: rgb(2, 1, 14);
@@ -72,7 +73,7 @@ nav{
 }
 
 .intro{
-    padding: 10vw;
+    padding: 10vw 16vw;
 }
 .texto{
     color: white;
@@ -133,9 +134,12 @@ a{
 .novidade{
     display: flex;
     position: relative;
-    top: 7vw;
-    margin-left: 10.5vw;
+    top: 8vw;
+    margin-left: 16vw;
     font-size: smaller;
+    border-style: solid;
+    background-color: #00d9ff;
+
 }
 
 /* TITULOS */
