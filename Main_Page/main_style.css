@@ -9,24 +9,35 @@ body{
     background-color: rgb(2, 1, 14);
 }
 
-.bimg{
-    background-image: url(./img_main/setup.png);
-    background-size: cover;
+.bimg {
     position: absolute;
-    background-position: center;
-    opacity: 1;
-
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 90%;
-
+    height: 90%; /* Mantendo a altura que você definiu */
     z-index: -1;
+    overflow: hidden;
 
+    /* Mantendo o seu efeito de máscara linear que ficou excelente */
     mask-image: linear-gradient(
         to right,
         transparent 0%,
         transparent 30%,
         black 100%
     );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 30%,
+        black 100%
+    );
+}
+
+/* O segredo para o vídeo cobrir a tela sem distorcer */
+.bimg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo se comportar como um 'background-size: cover' */
 }
 
 nav{
