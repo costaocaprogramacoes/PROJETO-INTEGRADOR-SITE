@@ -14,7 +14,7 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    height: 90%; /* Mantendo a altura que você definiu */
+    height: 100%; /* Mantendo a altura que você definiu */
     z-index: -1;
     overflow: hidden;
 
@@ -110,13 +110,14 @@ nav{
 }
 
 .dados{
+    transform: translateY(4.6vw);
+    padding: 1vw 1vw 1vw 1vw;
     background: #0b1023;
     justify-content: center;
     align-items: center;
     height: 6vw;
     width: 100vw;
-    position: absolute;
-    bottom: 0.1vw;
+    position: flex;
 
     z-index: -1;
 }
@@ -126,7 +127,7 @@ a{
     color: inherit;
 }
 .dados ul{
-    padding: 1vw;
+    padding: 0.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
