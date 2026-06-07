@@ -9,52 +9,130 @@ body{
     background-color: #08080F
 }
 
-nav{
-    display:flex;
-    gap:40px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.navg{
+/* --- INÍCIO DA NAVEGAÇÃO --- */
+nav {
+    display: flex;
+}
+
+.navg {
     position: fixed;
     height: 70px;
     width: 100%;
     background: rgb(2, 1, 14);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    justify-content: space-between;
-    border-bottom:1px solid #0d203f;
+    align-items: center;
+    border-bottom: 1px solid #0d203f;
+    z-index: 1000;
 }
 
-.nexus{
+.nexus {
     font-family: "Nasalization";
     font-size: 1.2vw;
     margin-left: 15vw;
-    padding: 1.3vw;
     color: white;
-}
-
-.gg{
-    color: aqua;
-}
-.navg ul{
-    padding: 25px;
-    color: #7070A0;
-    gap: 30px;
-    display: flex;
-    list-style: none;
-}
-
-.navg li:hover{
     cursor: pointer;
-    color: aqua;
-    transition: 0.3s;
-
-
 }
 
-a{
+.gg {
+    color: aqua;
+}
+
+.navg ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.navg li {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.navg li a {
+    color: #7070A0;
     text-decoration: none;
-    color: inherit;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+.navg li:hover a {
+    color: aqua;
+}
+
+.navg li.ativo-nav {
+    border-bottom: 2px solid #00d9ff;
+}
+
+.navg li.ativo-nav a {
+    color: #00d9ff;
+}
+
+.icones-nav {
+    display: flex;
+    gap: 25px;
+    margin-right: 15vw;
+    justify-content: flex-end;
+    color: #7070A0;
+}
+
+.icones-nav .icone {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icones-nav .icone:hover {
+    color: #00d9ff;
+}
+/* --- FIM DA NAVEGAÇÃO --- */
+
+/* --- ESTILOS DA CAIXA DE PESQUISA --- */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-box {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0;
+    border: none;
+    background: #090f22; /* Mesma cor dos cards */
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.4s ease;
+    position: absolute;
+    right: 35px; /* Empurra a caixa para a esquerda da lupa */
+    height: 32px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+/* O que acontece quando a pesquisa está ativada */
+.search-box.ativo {
+    width: 200px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 15px;
+    border: 1px solid #00d9ff;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+}
+
+.search-box::placeholder {
+    color: #64688a;
 }
 
 .desc_pag {
@@ -99,6 +177,7 @@ a{
     border: 1px solid #134646;
     transition: 0.3s;
 }
+
 .img_card {
     width: 220px;
     min-width: 220px;
@@ -109,7 +188,6 @@ a{
     height: 100%;
     object-fit: cover;
 }
-
 
 .card-content {
     flex: 1;
@@ -152,7 +230,6 @@ a{
     margin-left: 5px;
 }
 
-
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -166,7 +243,6 @@ a{
     background-color: #121824;
     color: #00d2ff; 
 }
-
 
 .spec-card {
     display: grid;
@@ -204,7 +280,6 @@ a{
     margin-right: 8px;
 }
 
-
 .buttons {
     display: flex;
     flex-wrap: wrap;
@@ -241,7 +316,6 @@ button {
     border-color: #3b4a70;
     color: #fff;
 }
-
 
 .footer {
     border-top: 1px solid rgb(10, 37, 37);
@@ -328,7 +402,6 @@ button {
     list-style: none;
 }
 
-
 @font-face {
     font-family: "Micro";
     src: url(/fonts/microgrammanormal.ttf);
@@ -338,7 +411,6 @@ button {
     font-family: "Nasalization";
     src: url(/fonts/Nasalization\ Rg.otf);
 }
-
 
 @media (max-width: 768px) {
     .img_card {
