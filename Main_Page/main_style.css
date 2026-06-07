@@ -20,84 +20,154 @@ body.fade-out {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Mantendo a altura que você definiu */
+    height: 100%; 
     z-index: -1;
     overflow: hidden;
-
-    /* Mantendo o seu efeito de máscara linear que ficou excelente */
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        transparent 30%,
-        black 100%
-    );
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        transparent 30%,
-        black 100%
-    );
+    mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 30%, black 100%);
 }
 
-/* O segredo para o vídeo cobrir a tela sem distorcer */
 .bimg video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz o vídeo se comportar como um 'background-size: cover' */
+    object-fit: cover; 
 }
 
-nav{
-    display:flex;
-    gap:40px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.navg{
+/* --- INÍCIO DA NAVEGAÇÃO --- */
+nav {
+    display: flex;
+}
+
+.navg {
     position: fixed;
     height: 70px;
     width: 100%;
     background: rgb(2, 1, 14);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    justify-content: space-between;
-    border-bottom:1px solid #0d203f;
-
-    z-index: 1;
+    align-items: center;
+    border-bottom: 1px solid #0d203f;
+    z-index: 1000;
 }
 
-.nexus{
+.nexus {
     font-family: "Nasalization";
     font-size: 1.2vw;
     margin-left: 15vw;
-    padding: 1.3vw;
     color: white;
-}
-
-.gg{
-    color: aqua;
-}
-.navg ul{
-    padding: 25px;
-    color: #7070A0;
-    gap: 30px;
-    display: flex;
-    list-style: none;
-}
-
-.navg li:hover{
     cursor: pointer;
+}
+
+.gg {
     color: aqua;
-    transition: 0.3s;
+}
 
+.navg ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+.navg li {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.navg li a {
+    color: #7070A0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+.navg li:hover a {
+    color: aqua;
+}
+
+.navg li.ativo-nav {
+    border-bottom: 2px solid #00d9ff;
+}
+
+.navg li.ativo-nav a {
+    color: #00d9ff;
+}
+
+.icones-nav {
+    display: flex;
+    gap: 25px;
+    margin-right: 15vw;
+    justify-content: flex-end;
+    color: #7070A0;
+}
+
+.icones-nav .icone {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icones-nav .icone:hover {
+    color: #00d9ff;
+}
+/* --- FIM DA NAVEGAÇÃO --- */
+
+/* --- ESTILOS DA CAIXA DE PESQUISA --- */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-box {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0;
+    border: none;
+    background: #090f22; /* Mesma cor dos cards */
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.4s ease;
+    position: absolute;
+    right: 35px; /* Empurra a caixa para a esquerda da lupa */
+    height: 32px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+/* O que acontece quando a pesquisa está ativada */
+.search-box.ativo {
+    width: 200px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 15px;
+    border: 1px solid #00d9ff;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+}
+
+.search-box::placeholder {
+    color: #64688a;
 }
 
 .intro{
     padding: 10vw 16vw;
 }
+
 .texto{
     color: white;
     font-weight: bold;
     font-size: 4vw;
+    font-family: "Micro";
 }
 
 .intro p{
@@ -117,21 +187,22 @@ nav{
     font-size: 0.8vw;
 }
 
+.intro button:hover{
+    transform: translateY(-1vw);
+    transition: 0.5s;
+}
+
 .dados{
     transform: translateY(4.6vw);
-    padding: 1vw 1vw 1vw 1vw;
+    padding: 1vw;
     background: #0b1023;
     justify-content: center;
     align-items: center;
     height: 6vw;
     width: 100vw;
-    position: flex;
+    display: flex;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
-}
 .dados ul{
     padding: 0.5vw;
     display: flex;
@@ -155,117 +226,77 @@ a{
     top: 8vw;
     margin-left: 16vw;
     font-size: smaller;
-    border-style: solid;
-    background-color: #00d9ff;
-
+    border-style: inherit;
+    color: aqua;
+    background: none;
 }
 
 /* TITULOS */
-
-.titulo-categoria{
+.titulo-categoria, .titulo-jogos{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2vw;
+    color: white;
 }
 
-.titulo-jogos{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2vw;
-}
-
-.titulo-categoria{
-    color: #00d9ff;
-    text-decoration: none;
-}
-
-.titulo-jogos{
+.titulo-categoria a, .titulo-jogos a{
     color: #00d9ff;
     text-decoration: none;
 }
 
 .titulo-categoria{
     margin-top: 4vw;
-    color: white;
 }
 
 .titulo-jogos{
     margin-top: 1vw;
-    color: white;
 }
-/* CATEGORIAS */
 
+/* CATEGORIAS */
 .categorias{
     color:white;
     padding: 3vw;
 }
 
-/* GRID */
-
 .cards-categorias{
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 1vw;
 }
 
-/* CARD */
-
 .card{
     color: white;
-
     background-color: #0b1023;
-
     border: 0.1vw solid #161f3b;
-
-
     padding: 1.3vw;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     transition: 0.3s;
-
     cursor: pointer;
 }
 
 .card:hover{
     transform: translateY(-1vw);
-
     border-color: #00d9ff;
 }
-
-/* ICONE */
 
 .card i{
     font-size: 1.5vw;
 }
 
-/* PRIMEIRO ICONE */
-
 .card i:first-child{
     color: #00d9ff;
 }
 
-/* SETA */
-
 .seta{
     color: #646b8c;
-
     font-size: 1vw !important;
 }
 
-/* TEXTO */
-
 .card h3{
     font-size: 0.8vw;
-
     margin-bottom: 1vw;
 }
 
@@ -274,34 +305,21 @@ a{
 }
 
 /* JOGOS */
-
 .jogos{
     padding: 1vw 4vw 4vw 3vw;
 }
 
-/* GRID JOGOS */
-
 .cards-jogos{
-
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 1vw;
 }
 
-/* CARD GAME */
-
 .game-card{
     padding-bottom: 1vw;
-
     background-color: #0b1023;
-
-
     overflow: hidden;
-
     transition: 0.3s;
-
     cursor: pointer;
 }
 
@@ -309,34 +327,25 @@ a{
     transform: scale(1.03);
 }
 
-/* IMAGEM */
-
 .game-card img{
     width: 100%;
     height: 12vw;
     object-fit: cover;
-
     -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
 }
-
-/* INFO */
 
 .game-info{
     display: flex;
     gap: 0.5vw;
     justify-content: flex-start;
     align-items: center;
-
     margin-top: -2vw;
     padding: 0 1vw;
     margin-bottom: 0.5vw;
-
     position: relative;
     z-index: 2;
 }
-
-/* ESTRELAS */
 
 .stars{
     color: gold;
@@ -355,7 +364,6 @@ a{
     margin-left: 1vw;
     display: grid; 
     gap: 0.3vw;
-
     margin-top: 1.2vw;
 }
 
@@ -369,6 +377,7 @@ a{
     margin-left: 1vw;
     gap: 0.5vw;
 }
+
 .button-jogos{
     padding: 0.2vw 0.5vw;
     border: inherit;
@@ -376,22 +385,7 @@ a{
     background:  #10131d;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Aparencia*/
-
+/* Aparencia */
 @font-face {
     font-family: "Nasalization";
     src: url(/fonts/Nasalization\ Rg.otf) format("opentype");
@@ -402,34 +396,10 @@ a{
     src: url(/fonts/microgrammanormal.ttf) format("opentype");
 }
 
-.navg li:hover{
-    color: aqua;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-
-.intro button:hover{
-    transform: translateY(-1vw);
-    transition: 0.5s;
-}
-
-.nexus{
-    font-family: "Nasalization";
-    cursor: pointer;
-}
-
-.gg{
-    color: aqua;
-}
-
 .qualquer{
     font-family: "Micro";
     color: aqua;
     text-shadow: 0vw 0vw 1vw rgb(0, 210, 253);
-}
-.texto{
-    font-family: "Micro";
 }
 
 .setup-button{
@@ -456,11 +426,6 @@ a{
     transition: 0.5s;
 }
 
-.novidade{
-    border-style: inherit;
-    color: aqua;
-    background: none;
-}
 .valor{
     color: aqua;
     font-weight: bold;
@@ -476,7 +441,7 @@ a{
 .footer {
     background:rgb(6, 3, 22);
     color: #8a8fb8;
-    padding: 1vw 1vw 1vw;
+    padding: 1vw;
     font-family: Arial, sans-serif;
     border-top: 1px solid rgb(10, 37, 37);
 }
@@ -506,17 +471,16 @@ a{
     line-height: 1.2vw;
 }
 
-
 .footer-col{
     padding: 0 7vw;
 }
+
 .footer-col h3 {
     color: #00e5ff;
     margin-bottom: 1vw;
     font-size: 0.7vw;
     letter-spacing: 0.1vw;
 }
-
 
 .footer-col ul{
     padding-left: 0;
@@ -549,14 +513,12 @@ a{
     justify-content: space-between;
     flex-wrap: wrap;
     font-size: 0.7vw;
-
 }
 
 .footer-info {
     display: flex;
     gap: 1vw;
-    color: #00ff88;
-    font-size: 0.7vw;
     color: #8a8fb8;
+    font-size: 0.7vw;
     list-style: none;
 }
