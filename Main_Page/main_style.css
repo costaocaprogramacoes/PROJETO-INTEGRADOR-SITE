@@ -388,12 +388,12 @@ nav {
 /* Aparencia */
 @font-face {
     font-family: "Nasalization";
-    src: url(/fonts/Nasalization\ Rg.otf) format("opentype");
+    src: url(../fonts/Nasalization\ Rg.otf) format("opentype");
 }
 
 @font-face {
     font-family: "Micro";
-    src: url(/fonts/microgrammanormal.ttf) format("opentype");
+    src: url(../fonts/microgrammanormal.ttf) format("opentype");
 }
 
 .qualquer{

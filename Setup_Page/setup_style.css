@@ -480,10 +480,10 @@ nav {
 
 @font-face{
     font-family: "Micro";
-    src: url(/fonts/microgrammanormal.ttf);
+    src: url(../fonts/microgrammanormal.ttf);
 }
 
 @font-face{
     font-family: "Nasalization";
-    src: url(/fonts/Nasalization\ Rg.otf);
+    src: url(../fonts/Nasalization\ Rg.otf);
 }
