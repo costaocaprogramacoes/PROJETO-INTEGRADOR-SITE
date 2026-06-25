@@ -562,3 +562,8 @@ linha-cards {
     font-size: 0.7vw;
     list-style: none;
 }
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
