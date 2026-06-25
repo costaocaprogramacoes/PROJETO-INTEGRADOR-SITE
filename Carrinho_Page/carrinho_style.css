@@ -91,6 +91,11 @@ nav {
     transition: color 0.3s ease;
 }
 
+/* --- Fica junto das outras regras de .icones-nav --- */
+.icones-nav .icone-ativo {
+    color: #00d9ff; /* A cor aqua que você já usa no site */
+}
+
 .icones-nav .icone:hover {
     color: #00d9ff;
 }
@@ -114,6 +119,7 @@ nav {
     font-weight: bold;
     background-color: aqua;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .container button:hover{
