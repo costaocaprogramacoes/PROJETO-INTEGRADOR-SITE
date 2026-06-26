@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     configurarLupaPesquisa();
 });
 
-// Animação da Lupa que estava faltando
 function configurarLupaPesquisa() {
     const btnLupa = document.querySelector('.btn-lupa');
     const searchBox = document.querySelector('.search-box');
@@ -19,7 +18,6 @@ function configurarLupaPesquisa() {
     }
 }
 
-// Conversores de Moeda
 function converterPrecoParaNumero(precoString) {
     if (!precoString) return 0;
     let semPonto = precoString.replace(/\./g, '');
@@ -35,15 +33,12 @@ function renderizarCarrinho() {
     const container = document.getElementById('carrinho-conteudo');
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
 
-    // TELA DE CARRINHO VAZIO (Baseada na sua imagem de referência)
     if (carrinho.length === 0) {
         container.innerHTML = `
             <div class="carrinho-vazio-container">
                 <div class="cont-icone-carrinho">
                     <svg class="icone-carrinho" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
                 </div>
                 <div class="carrinho-vazio-texto">
@@ -56,7 +51,6 @@ function renderizarCarrinho() {
         return;
     }
 
-    // Variáveis para os cálculos
     let htmlItens = '<div class="lista-itens">';
     let subtotal = 0;
     let totalItens = 0;
@@ -87,12 +81,10 @@ function renderizarCarrinho() {
     });
     htmlItens += '</div>';
 
-    // Calcula o Frete (Grátis acima de 5000)
     let valorFrete = subtotal >= 5000 ? 0 : 49.90;
     let textoFrete = valorFrete === 0 ? "Grátis" : `R$ 49,90`;
     let totalFinal = subtotal + valorFrete;
 
-    // Desenha o Resumo do Pedido (Caixa da direita)
     const htmlResumo = `
         <aside class="resumo-pedido">
             <h3>RESUMO DO PEDIDO</h3>
@@ -104,22 +96,15 @@ function renderizarCarrinho() {
                 <span>Frete</span>
                 <span>${textoFrete}</span>
             </div>
-            
-            <div class="aviso-frete">
-                Frete grátis acima de R$ 5.000,00
-            </div>
-
+            <div class="aviso-frete">Frete grátis acima de R$ 5.000,00</div>
             <div class="linha-divisoria"></div>
-
             <div class="resumo-total">
                 <span>TOTAL</span>
                 <span>R$ ${formatarMoeda(totalFinal)}</span>
             </div>
-            <div class="parcelamento">
-                ou 12x de R$ ${formatarMoeda(totalFinal / 12)} sem juros
-            </div>
-
-            <button class="btn-finalizar" onclick="alert('Pedido finalizado com sucesso!')">FINALIZAR COMPRA</button>
+            <div class="parcelamento">ou 12x de R$ ${formatarMoeda(totalFinal / 12)} sem juros</div>
+            
+            <button class="btn-finalizar" onclick="window.location.href='../Checkout_Page/checkout.html'">FINALIZAR COMPRA</button>
 
             <ul class="trust-badges">
                 <li><i class="fa-solid fa-shield-halved"></i> Compra 100% segura</li>
@@ -132,11 +117,9 @@ function renderizarCarrinho() {
     container.innerHTML = htmlItens + htmlResumo;
 }
 
-// Função dos botões de + e -
 window.alterarQuantidade = function(id, delta) {
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
     let item = carrinho.find(i => i.id === id);
-    
     if (item) {
         item.quantidade += delta;
         if (item.quantidade <= 0) {
@@ -148,7 +131,6 @@ window.alterarQuantidade = function(id, delta) {
     }
 }
 
-// Função da Lixeira
 window.removerItem = function(id) {
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
     carrinho = carrinho.filter(i => i.id !== id);
@@ -157,13 +139,11 @@ window.removerItem = function(id) {
     atualizarBadgeCarrinho();
 }
 
-// Atualiza a bolinha no header da aba Carrinho
 function atualizarBadgeCarrinho() {
     const badge = document.getElementById('badge-carrinho');
     if(!badge) return;
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
     let totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
-
     if (totalItens > 0) {
         badge.innerText = totalItens;
         badge.style.display = 'flex';
