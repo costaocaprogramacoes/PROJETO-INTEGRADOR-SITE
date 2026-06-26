@@ -127,9 +127,69 @@ function configurarEventos() {
     }
 }
 
+// ... Mantenha todo o seu código de produtos e filtros lá em cima ...
+
+// Substitua a função comprarItem antiga por esta:
 function comprarItem(id) {
     const produto = produtos.find(p => p.id === id);
-    if (produto) {
-        alert(`✔ ${produto.nome} adicionado ao carrinho com sucesso!`);
+    if (!produto) return;
+
+    // Busca o carrinho salvo no navegador (ou cria um novo vazio)
+    let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
+    
+    // Verifica se o item já está no carrinho
+    let itemExistente = carrinho.find(item => item.id === id);
+
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        // Clona o produto e adiciona a quantidade = 1
+        const produtoParaCarrinho = { ...produto, quantidade: 1 };
+        carrinho.push(produtoParaCarrinho);
+    }
+
+    // Salva de volta no navegador
+    localStorage.setItem('nexus_cart', JSON.stringify(carrinho));
+
+    // Mostra a notificação e atualiza a bolinha
+    mostrarToast(`<b>${produto.nome}</b> adicionado ao carrinho!`);
+    atualizarBadgeCarrinho();
+}
+
+// Funcionalidade da notificação (Toast)
+let toastTimeout;
+function mostrarToast(mensagem) {
+    const toast = document.getElementById('toast-notificacao');
+    const toastMsg = document.getElementById('toast-mensagem');
+    
+    toastMsg.innerHTML = mensagem;
+    toast.classList.add('mostrar');
+
+    clearTimeout(toastTimeout);
+    // Esconde automaticamente após 5 segundos
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove('mostrar');
+    }, 5000);
+}
+
+// Atualiza o numero na bolinha do carrinho
+function atualizarBadgeCarrinho() {
+    const badge = document.getElementById('badge-carrinho');
+    if(!badge) return;
+
+    let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
+    
+    // Soma a quantidade de todos os itens
+    let totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+
+    if (totalItens > 0) {
+        badge.innerText = totalItens;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
     }
 }
+
+// Adicione atualizarBadgeCarrinho() dentro do seu DOMContentLoaded lá em cima, 
+// ou simplesmente coloque essa linha no final do arquivo para rodar ao carregar a página:
+atualizarBadgeCarrinho();
