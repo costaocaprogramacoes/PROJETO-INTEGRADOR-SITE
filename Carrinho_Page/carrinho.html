@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="carrinho_style.css">
-    <title>NEXUSGG</title>
+    <title>NEXUSGG - Carrinho</title>
 </head>
 <body>
-
     <div class="bimg"></div>
-
     <header>
         <nav class="navegacao">
             <div class="navg">
@@ -23,7 +21,6 @@
                 <div class="icones-nav">
                     <div class="search-container">
                         <input type="text" class="search-box" placeholder="Pesquisar...">
-
                         <svg class="icone btn-lupa" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -50,11 +47,10 @@
 
         <span class="carrinho">CARRINHO <span class="vazio">VAZIO</span></span>
         <p>Adicione produtos para começar.</p>
-        <a href="../Loja_Page/loja.html"><button>VER PRODUTOS</button></a>
+        <button onclick="window.location.href='../Loja_Page/loja.html'">VER PRODUTOS</button>
     </main>
 
-
-   <footer class="footer">
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
                 <h2>NEXUS<span style="color: aqua;">GG</span></h2>
@@ -102,18 +98,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        const btnLupa = document.querySelector('.btn-lupa');
-        const searchBox = document.querySelector('.search-box');
-
-        if (btnLupa && searchBox) {
-            btnLupa.addEventListener('click', () => {
-                searchBox.classList.toggle('ativo');
-                if (searchBox.classList.contains('ativo')) {
-                    searchBox.focus();
-                }
-            });
-        }
-    </script>
+    
+    <script src="carrinho_app.js"></script>
 </body>
 </html>

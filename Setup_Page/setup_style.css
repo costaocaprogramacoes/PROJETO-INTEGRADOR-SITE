@@ -80,12 +80,12 @@ nav {
 
 .icones-nav {
     display: flex;
+    align-items: center; /* ✨ É essa linha que resolve o desalinhamento! */
     gap: 25px;
     margin-right: 15vw;
     justify-content: flex-end;
     color: #7070A0;
 }
-
 .icones-nav .icone {
     cursor: pointer;
     transition: color 0.3s ease;
@@ -391,13 +391,13 @@ nav {
     background:linear-gradient(90deg,#9c4de2,#b15bf0);
 }
 
+/* --- FOOTER PADRÃO --- */
 .footer {
-    border-top: 1px solid rgb(10, 37, 37);
-    margin-top: 3vw;
     background:rgb(6, 3, 22);
-    color: #7070A0;
-    padding: 1vw 1vw 1vw;
+    color: #8a8fb8;
+    padding: 1vw;
     font-family: Arial, sans-serif;
+    border-top: 1px solid rgb(10, 37, 37);
 }
 
 .footer-container {
@@ -426,7 +426,6 @@ nav {
 }
 
 .footer-col{
-    color: #7070A0;
     padding: 0 7vw;
 }
 
@@ -486,4 +485,29 @@ nav {
 @font-face{
     font-family: "Nasalization";
     src: url(../fonts/Nasalization\ Rg.otf);
+}
+
+/* --- ALINHAMENTO FIXO DOS ÍCONES NO HEADER --- */
+.icones-nav {
+    display: flex;
+    align-items: center; /* Garante alinhamento vertical perfeito */
+    justify-content: flex-end;
+    gap: 25px;
+    margin-right: 15vw;
+    height: 70px; /* Garante que a altura do container seja a mesma da nav */
+}
+
+/* Força os ícones a terem um tamanho consistente */
+.icones-nav svg {
+    display: block; 
+    vertical-align: middle;
+}
+
+/* Isso evita que a classe .icone-ativo cause o pulo de posição */
+.icones-nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    height: 100%; /* Mantém a altura igual para não "pular" */
 }

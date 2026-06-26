@@ -80,6 +80,7 @@ nav {
 
 .icones-nav {
     display: flex;
+    align-items: center; /* ✨ É essa linha que resolve o desalinhamento! */
     gap: 25px;
     margin-right: 15vw;
     justify-content: flex-end;
@@ -317,66 +318,67 @@ button {
     color: #fff;
 }
 
+/* --- FOOTER PADRÃO --- */
 .footer {
+    background:rgb(6, 3, 22);
+    color: #8a8fb8;
+    padding: 1vw;
+    font-family: Arial, sans-serif;
     border-top: 1px solid rgb(10, 37, 37);
-    margin-top: 50px;
-    background: rgb(6, 3, 22);
-    color: #7070A0;
-    padding: 30px 20px;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1300px;
-    margin: 0 auto 30px auto;
+    gap: 1vw;
+    margin-bottom: 1vw;
+    font-size:0.7vw;
+    padding: 0.5vw;
 }
 
-.footer-logo {
-    flex: 1;
-    min-width: 200px;
+.footer-logo{
+    margin-left: 9vw;
+    margin-right: 9vw;
 }
 
-.footer-logo h2 {
-    font-family: "Nasalization", sans-serif;
+.footer-logo h2{
+    font-family: "Nasalization";
     color: white;
-    margin-bottom: 10px;
 }
 
-.footer-logo p {
-    line-height: 1.5;
-    font-size: 14px;
+.footer-logo p{
+    margin-top: 0.5vw;
+    line-height: 1.2vw;
 }
 
-.footer-col {
-    flex: 1;
-    min-width: 150px;
+.footer-col{
+    padding: 0 7vw;
 }
 
 .footer-col h3 {
     color: #00e5ff;
-    margin-bottom: 15px;
-    font-size: 14px;
-    letter-spacing: 1px;
+    margin-bottom: 1vw;
+    font-size: 0.7vw;
+    letter-spacing: 0.1vw;
 }
 
-.footer-col ul {
+.footer-col ul{
     padding-left: 0;
-    margin: 0;
-    list-style: none;
+    margin:0;
 }
 
 .footer-col ul li {
-    margin-bottom: 8px;
+    margin-bottom: 0.5vw;
+    font-size: 0.5vw;
+    list-style: none;
 }
 
 .footer-col ul li a {
     color: #8a8fb8;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 0.7vw;
 }
 
 .footer-col ul li a:hover {
@@ -384,21 +386,21 @@ button {
 }
 
 .footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    border-top: 1px solid #16204a;
-    padding-top: 20px;
+    margin-left: 9vw;
+    margin-right: 9vw;
+    border-top: 0.1vw solid #16204a;
+    padding-top: 1vw;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 15px;
-    font-size: 13px;
+    font-size: 0.7vw;
 }
 
 .footer-info {
     display: flex;
-    gap: 15px;
+    gap: 1vw;
     color: #8a8fb8;
+    font-size: 0.7vw;
     list-style: none;
 }
 
@@ -423,4 +425,30 @@ button {
     .navg ul {
         font-size: 14px;
     }
+}
+
+
+/* --- ALINHAMENTO FIXO DOS ÍCONES NO HEADER --- */
+.icones-nav {
+    display: flex;
+    align-items: center; /* Garante alinhamento vertical perfeito */
+    justify-content: flex-end;
+    gap: 25px;
+    margin-right: 15vw;
+    height: 70px; /* Garante que a altura do container seja a mesma da nav */
+}
+
+/* Força os ícones a terem um tamanho consistente */
+.icones-nav svg {
+    display: block; 
+    vertical-align: middle;
+}
+
+/* Isso evita que a classe .icone-ativo cause o pulo de posição */
+.icones-nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    height: 100%; /* Mantém a altura igual para não "pular" */
 }

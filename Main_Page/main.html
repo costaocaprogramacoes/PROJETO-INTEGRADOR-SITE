@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="main_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-
 <body>
     <div class="bimg">
         <video autoplay loop muted playsinline>
@@ -30,17 +28,18 @@
                 <div class="icones-nav">
                     <div class="search-container">
                         <input type="text" class="search-box" placeholder="Pesquisar...">
-
                         <svg class="icone btn-lupa" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </div>
-                    <a href="../Carrinho_Page/carrinho.html"><svg class="icone" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg></a>
+                    <a href="../Carrinho_Page/carrinho.html">
+                        <svg class="icone" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -50,30 +49,17 @@
         <button class="novidade">NOVIDADES DISPONÍVEIS</button>
         <section class="intro">
             <span class="texto">DOMINE<br><span class="qualquer">QUALQUER</span><br>JOGO</span>
-            <p>Monte o setup perfeito para o seu jogo favorito. Hardware<br>selecionado por especialistas, entrega
-                rápida e melhor<br>preço garantido.</p>
+            <p>Monte o setup perfeito para o seu jogo favorito. Hardware<br>selecionado por especialistas, entrega rápida e melhor<br>preço garantido.</p>
             <a href="../Setup_Page/setup.html"><button class="setup-button">MONTAR SETUP</button></a>
             <a href="../Jogos_Page/jogos.html"><button class="jogos-button">VER JOGOS</button></a>
         </section>
 
         <div class="dados">
             <ul>
-                <li>
-                    <span class="valor">58</span>
-                    <span class="legenda">PRODUTOS</span>
-                </li>
-                <li>
-                    <span class="valor">20</span>
-                    <span class="legenda">CLIENTES ATIVOS</span>
-                </li>
-                <li>
-                    <span class="valor">25</span>
-                    <span class="legenda">JOGOS CATALOGADOS</span>
-                </li>
-                <li>
-                    <span class="valor">30</span>
-                    <span class="legenda">SETUPS MONTADOS</span>
-                </li>
+                <li><span class="valor">58</span><span class="legenda">PRODUTOS</span></li>
+                <li><span class="valor">20</span><span class="legenda">CLIENTES ATIVOS</span></li>
+                <li><span class="valor">25</span><span class="legenda">JOGOS CATALOGADOS</span></li>
+                <li><span class="valor">30</span><span class="legenda">SETUPS MONTADOS</span></li>
             </ul>
         </div>
     </main>
@@ -81,178 +67,17 @@
     <section class="categorias">
         <div class="titulo-categoria">
             <h2>CATEGORIAS</h2>
-            <a href="#">Ver todas</a>
+            <a href="../Loja_Page/loja.html">Ver todas</a>
         </div>
-        <div class="cards-categorias">
-            <div class="card">
-                <i class="fa-solid fa-microchip"></i>
-                <div>
-                    <h3>PROCESSADORES</h3>
-                    <p>15 itens</p>
-                </div>
-                <i class="fa-solid fa-chevron-right seta"></i>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-desktop"></i>
-                <div>
-                    <h3>MONITORES</h3>
-                    <p>10 itens</p>
-                </div>
-                <i class="fa-solid fa-chevron-right seta"></i>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-headphones"></i>
-                <div>
-                    <h3>HEADSETS</h3>
-                    <p>13 itens</p>
-                </div>
-                <i class="fa-solid fa-chevron-right seta"></i>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-computer-mouse"></i>
-                <div>
-                    <h3>MOUSES</h3>
-                    <p>20 itens</p>
-                </div>
-                <i class="fa-solid fa-chevron-right seta"></i>
-            </div>
-        </div>
+        <div class="cards-categorias" id="categorias-container"></div>
     </section>
 
     <section class="jogos">
         <div class="titulo-jogos">
             <h2>JOGOS EM DESTAQUE</h2>
-            <a href="#">Ver todos</a>
+            <a href="../Jogos_Page/jogos.html">Ver todos</a>
         </div>
-        <div class="cards-jogos">
-            <div class="game-card">
-                <img src="./img_main/subnautica.jpg" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★⯨</div>
-                    <span>4.5</span>
-                </div>
-                <div class="dados-jogos">
-                    <span class="nome">Subnautica 2</span>
-                    <span>Survival / Open World</span>
-                </div>
-                <div class="buttons-jogos">
-                    <button class="button-jogos">Co-op</button>
-                    <button class="button-jogos">Sci-Fi</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <img src="./img_main/clair_obscur.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★☆</div>
-                    <span>4.4</span>
-                </div>
-                <div class="dados-jogos">
-                    <span class="nome">Clair Obscur: Expedition 33</span>
-                    <span>Turn-Based RPG</span>
-                </div>
-                <div class="buttons-jogos">
-                    <button class="button-jogos">Story Driven</button>
-                    <button class="button-jogos">Dark Fantasy</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <img src="./img_main/pragmata.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★☆</div>
-                    <span>4.3</span>
-                </div>
-                <div class="dados-jogos">
-                    <span class="nome">Pragmata</span>
-                    <span>Action / Sci-Fi</span>
-                </div>
-                <div class="buttons-jogos">
-                    <button class="button-jogos">Dystopian</button>
-                    <button class="button-jogos">Adventure</button>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <img src="./img_main/wukong.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★★</div>
-                    <span>4.7</span>
-                </div>
-                   <div class="dados-jogos">
-                <span class="nome">Black Myth: Wukong</span>
-                <span>Action RPG / Souls-like</span>
-                   </div>
-            <div class="buttons-jogos">
-                <button class="button-jogos">Action Game</button>
-                <button class="button-jogos">Mythological</button>
-            </div>
-            </div>
-
-             <div class="game-card">
-                <img src="./img_main/ragnarok.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★★</div>
-                    <span>4.9</span>
-                </div>
-                   <div class="dados-jogos">
-                <span class="nome">God of War Ragnarök</span>
-                <span>Action / Adventure</span>
-                   </div>
-            <div class="buttons-jogos">
-                <button class="button-jogos">Over-the-Shoulder</button>
-                <button class="button-jogos">Cinematic</button>
-            </div>
-            </div>
-
-             <div class="game-card">
-                <img src="./img_main/requiem.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★⯨</div>
-                    <span>4.5</span>
-                </div>
-                   <div class="dados-jogos">
-                <span class="nome">Resident Evil Requiem</span>
-                <span>Survival Horror</span>
-                   </div>
-            <div class="buttons-jogos">
-                <button class="button-jogos">Third-Person</button>
-                <button class="button-jogos">Atmospheric</button>
-            </div>
-            </div>
-
-             <div class="game-card">
-                <img src="./img_main/blackflag.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★★⯨</div>
-                    <span>4.6</span>
-                </div>
-                   <div class="dados-jogos">
-                <span class="nome">Assassin's Creed Black Flag Resynced</span>
-                <span>Action / Open World</span>
-                   </div>
-            <div class="buttons-jogos">
-                <button class="button-jogos">Naval Combat</button>
-                <button class="button-jogos">Stealth</button>
-            </div>
-            </div>
-
-             <div class="game-card">
-                <img src="./img_main/warzone.png" alt="">
-                <div class="game-info">
-                    <div class="stars">★★★☆☆</div>
-                    <span>3.9</span>
-                </div>
-                   <div class="dados-jogos">
-                <span class="nome">Call of Duty: Warzone</span>
-                <span>Battle Royale / FPS</span>
-                   </div>
-            <div class="buttons-jogos">
-                <button class="button-jogos">Free to Play</button>
-                <button class="button-jogos">Cross-platform</button>
-            </div>
-            </div>
-        </div>
+        <div class="cards-jogos" id="destaques-container"></div>
     </section>
 
     <footer class="footer">
@@ -299,18 +124,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        const btnLupa = document.querySelector('.btn-lupa');
-        const searchBox = document.querySelector('.search-box');
 
-        if (btnLupa && searchBox) {
-            btnLupa.addEventListener('click', () => {
-                searchBox.classList.toggle('ativo');
-                if (searchBox.classList.contains('ativo')) {
-                    searchBox.focus();
-                }
-            });
-        }
-    </script>
+    <script src="main_app.js"></script>
 </body>
 </html>

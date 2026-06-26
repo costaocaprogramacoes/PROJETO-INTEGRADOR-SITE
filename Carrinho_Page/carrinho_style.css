@@ -80,6 +80,7 @@ nav {
 
 .icones-nav {
     display: flex;
+    align-items: center; /* ✨ É essa linha que resolve o desalinhamento! */
     gap: 25px;
     margin-right: 15vw;
     justify-content: flex-end;
@@ -101,6 +102,43 @@ nav {
 }
 /* --- FIM DA NAVEGAÇÃO --- */
 
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Cole isso logo abaixo do search-container no loja_style.css */
+.search-box {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0;
+    border: none;
+    background: #090f22; 
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.4s ease;
+    position: absolute;
+    right: 35px; 
+    height: 32px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.search-box.ativo {
+    width: 200px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 15px;
+    border: 1px solid #00d9ff;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+}
+
+.search-box::placeholder {
+    color: #64688a;
+}
 
 .container{
     padding: 10vw;
@@ -163,66 +201,67 @@ nav {
     transform: translateX(-3px); 
 }
 
+/* --- FOOTER PADRÃO --- */
 .footer {
+    background:rgb(6, 3, 22);
+    color: #8a8fb8;
+    padding: 1vw;
+    font-family: Arial, sans-serif;
     border-top: 1px solid rgb(10, 37, 37);
-    margin-top: 50px;
-    background: rgb(6, 3, 22);
-    color: #7070A0;
-    padding: 30px 20px;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1300px;
-    margin: 0 auto 30px auto;
+    gap: 1vw;
+    margin-bottom: 1vw;
+    font-size:0.7vw;
+    padding: 0.5vw;
 }
 
-.footer-logo {
-    flex: 1;
-    min-width: 200px;
+.footer-logo{
+    margin-left: 9vw;
+    margin-right: 9vw;
 }
 
-.footer-logo h2 {
-    font-family: "Nasalization", sans-serif;
+.footer-logo h2{
+    font-family: "Nasalization";
     color: white;
-    margin-bottom: 10px;
 }
 
-.footer-logo p {
-    line-height: 1.5;
-    font-size: 14px;
+.footer-logo p{
+    margin-top: 0.5vw;
+    line-height: 1.2vw;
 }
 
-.footer-col {
-    flex: 1;
-    min-width: 150px;
+.footer-col{
+    padding: 0 7vw;
 }
 
 .footer-col h3 {
     color: #00e5ff;
-    margin-bottom: 15px;
-    font-size: 14px;
-    letter-spacing: 1px;
+    margin-bottom: 1vw;
+    font-size: 0.7vw;
+    letter-spacing: 0.1vw;
 }
 
-.footer-col ul {
+.footer-col ul{
     padding-left: 0;
-    margin: 0;
-    list-style: none;
+    margin:0;
 }
 
 .footer-col ul li {
-    margin-bottom: 8px;
+    margin-bottom: 0.5vw;
+    font-size: 0.5vw;
+    list-style: none;
 }
 
 .footer-col ul li a {
     color: #8a8fb8;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 0.7vw;
 }
 
 .footer-col ul li a:hover {
@@ -230,21 +269,21 @@ nav {
 }
 
 .footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    border-top: 1px solid #16204a;
-    padding-top: 20px;
+    margin-left: 9vw;
+    margin-right: 9vw;
+    border-top: 0.1vw solid #16204a;
+    padding-top: 1vw;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 15px;
-    font-size: 13px;
+    font-size: 0.7vw;
 }
 
 .footer-info {
     display: flex;
-    gap: 15px;
+    gap: 1vw;
     color: #8a8fb8;
+    font-size: 0.7vw;
     list-style: none;
 }
 
@@ -256,4 +295,29 @@ nav {
 @font-face {
     font-family: "Nasalization";
     src: url(../fonts/Nasalization\ Rg.otf);
+}
+
+/* --- ALINHAMENTO FIXO DOS ÍCONES NO HEADER --- */
+.icones-nav {
+    display: flex;
+    align-items: center; /* Garante alinhamento vertical perfeito */
+    justify-content: flex-end;
+    gap: 25px;
+    margin-right: 15vw;
+    height: 70px; /* Garante que a altura do container seja a mesma da nav */
+}
+
+/* Força os ícones a terem um tamanho consistente */
+.icones-nav svg {
+    display: block; 
+    vertical-align: middle;
+}
+
+/* Isso evita que a classe .icone-ativo cause o pulo de posição */
+.icones-nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    height: 100%; /* Mantém a altura igual para não "pular" */
 }
