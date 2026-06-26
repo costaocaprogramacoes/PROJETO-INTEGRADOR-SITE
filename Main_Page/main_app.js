@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dados das Categorias
     const categorias = [
-        { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 15 },
-        { icone: "fa-solid fa-desktop", titulo: "MONITORES", itens: 10 },
-        { icone: "fa-solid fa-headphones", titulo: "HEADSETS", itens: 13 },
-        { icone: "fa-solid fa-computer-mouse", titulo: "MOUSES", itens: 20 }
+        { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 20 },
+        { icone: "fa-solid fa-desktop", titulo: "MONITORES", itens: 15 },
+        { icone: "fa-solid fa-headphones", titulo: "HEADSETS", itens: 10 },
+        { icone: "fa-solid fa-computer-mouse", titulo: "MOUSES", itens: 8 }
     ];
 
     // Dados dos Jogos em Destaque
