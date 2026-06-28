@@ -2,7 +2,7 @@ const catalogoJogos = [
     {
         id: 1,
         nome: "Cyberpunk 2077",
-        imagem: "./img_jogos/cyberpunk.png",
+        imagem: "./img_jogos/cyberpunk.webp",
         categoria: "RPG / Open World",
         estrelas: "⭐⭐⭐⭐",
         nota: "4.2",
@@ -20,7 +20,7 @@ const catalogoJogos = [
     {
         id: 2,
         nome: "Valorant",
-        imagem: "./img_jogos/valorant.png",
+        imagem: "./img_jogos/valorant.webp",
         categoria: "Tactical Shooter",
         estrelas: "⭐⭐⭐⭐⭐",
         nota: "4.5",
@@ -38,7 +38,7 @@ const catalogoJogos = [
     {
         id: 3,
         nome: "Baldur's Gate 3",
-        imagem: "./img_jogos/baldurs.png",
+        imagem: "./img_jogos/baldurs.webp",
         categoria: "RPG / Strategy",
         estrelas: "⭐⭐⭐⭐⭐",
         nota: "4.9",
@@ -56,7 +56,7 @@ const catalogoJogos = [
     {
         id: 4,
         nome: "Fortnite",
-        imagem: "./img_jogos/fortnite.png",
+        imagem: "./img_jogos/fortnite.webp",
         categoria: "Battle Royale",
         estrelas: "⭐⭐⭐⭐",
         nota: "3.8",

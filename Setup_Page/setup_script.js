@@ -1,7 +1,7 @@
 // 1. Banco de dados com as informações dos jogos
 const dadosJogos = {
     "SUBNAUTICA 2": {
-        img: "./img_setup/subnautica.jpg",
+        img: "./img_setup/subnautica.webp",
         titulo: "Subnautica 2",
         nota: "⭐⭐⭐⭐ 4.5",
         tags: ["Survival / Open World", "Co-op", "Sci-Fi"],
@@ -12,7 +12,7 @@ const dadosJogos = {
         }
     },
     "RESIDENT EVIL REQUIEM": {
-        img: "./img_setup/requiem.png",
+        img: "./img_setup/requiem.webp",
         titulo: "Resident Evil Requiem",
         nota: "⭐⭐⭐⭐ 4.5",
         tags: ["Survival Horror", "Third-Person", "Atmospheric"],
@@ -23,7 +23,7 @@ const dadosJogos = {
         }
     },
     "GOD OF WAR RAGNARÖK": {
-        img: "./img_setup/ragnarok.png",
+        img: "./img_setup/ragnarok.webp",
         titulo: "God Of War Ragnarök",
         nota: "⭐⭐⭐⭐⭐4.9",
         tags: ["Action / Adventure", "Over-the-Shoulder", "Cinematic"],
@@ -34,7 +34,7 @@ const dadosJogos = {
         }
     },
     "PRAGMATA": {
-        img: "./img_setup/pragmata.png",
+        img: "./img_setup/pragmata.webp",
         titulo: "Pragmata",
         nota: "⭐⭐⭐⭐ 4.3",
         tags: ["Action / Sci-Fi", "Dystopian", "Adventure"],
