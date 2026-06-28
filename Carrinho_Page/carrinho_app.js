@@ -60,9 +60,22 @@ function renderizarCarrinho() {
         subtotal += (precoNumerico * item.quantidade);
         totalItens += item.quantidade;
 
+        // --- MÁGICA DO CAMINHO DA IMAGEM ---
+        let caminhoImagem = item.imagem;
+        
+        // Se a imagem existir e não tiver "../" no começo, significa que veio da raiz da loja
+        if (caminhoImagem && !caminhoImagem.startsWith('../')) {
+            // Remove uma barra inicial caso exista acidentalmente (ex: /img_loja/...)
+            if (caminhoImagem.startsWith('/')) {
+                caminhoImagem = caminhoImagem.substring(1);
+            }
+            // Adiciona o caminho relativo para voltar à raiz e entrar na Loja_Page
+            caminhoImagem = '../Loja_Page/' + caminhoImagem;
+        }
+
         htmlItens += `
             <div class="item-card">
-                <img src="${item.imagem}" alt="${item.nome}" class="item-img">
+                <img src="${caminhoImagem}" alt="${item.nome}" class="item-img" onerror="this.src='https://via.placeholder.com/80?text=Sem+Img'">
                 <div class="item-info">
                     <span class="item-cat">${item.categoria}</span>
                     <span class="item-nome">${item.nome}</span>

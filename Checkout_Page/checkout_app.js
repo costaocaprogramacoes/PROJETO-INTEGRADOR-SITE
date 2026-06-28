@@ -62,6 +62,7 @@ function renderizarResumoCheckout() {
 
     if (carrinho.length === 0) {
         alert("Seu carrinho está vazio!");
+        // O caminho de volta aqui deve ser ajustado conforme o nome da pasta do carrinho
         window.location.href = '../Carrinho_Page/carrinho.html';
         return;
     }
@@ -79,12 +80,22 @@ function renderizarResumoCheckout() {
         const precoNumerico = converterPrecoParaNumero(item.precoPromocao);
         subtotal += (precoNumerico * item.quantidade);
 
+        // --- MÁGICA DO CAMINHO DA IMAGEM ---
+        let caminhoImagem = item.imagem;
+        
+        if (caminhoImagem && !caminhoImagem.startsWith('../')) {
+            if (caminhoImagem.startsWith('/')) {
+                caminhoImagem = caminhoImagem.substring(1);
+            }
+            caminhoImagem = '../Loja_Page/' + caminhoImagem;
+        }
+
         htmlProdutos += `
             <div class="checkout-item-mini">
-                <img src="${item.imagem}" alt="${item.nome}" class="item-mini-img">
+                <img src="${caminhoImagem}" alt="${item.nome}" class="item-mini-img" onerror="this.src='https://via.placeholder.com/45?text=Sem+Img'">
                 <div class="item-mini-info">
                     <span class="item-mini-nome">${item.nome}</span>
-                    <span class="item-mini-qty">Qty: ${item.quantidade}</span>
+                    <span class="item-mini-qtd">Qtd: ${item.quantidade}</span>
                 </div>
                 <span class="item-mini-preco">R$ ${item.precoPromocao}</span>
             </div>
