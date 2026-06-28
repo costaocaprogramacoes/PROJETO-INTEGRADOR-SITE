@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUSGG - Setup</title>
     <link rel="stylesheet" href="setup_style.css">
-    <title>NEXUSGG</title>
 </head>
-
 <body>
-
     <div class="bimg"></div>
-
     <header>
         <nav class="navegacao">
             <div class="navg">
@@ -24,17 +21,18 @@
                 <div class="icones-nav">
                     <div class="search-container">
                         <input type="text" class="search-box" placeholder="Pesquisar...">
-
                         <svg class="icone btn-lupa" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </div>
-                    <svg class="icone" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
+                    <a href="../Carrinho_Page/carrinho.html">
+                        <svg class="icone" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -49,13 +47,10 @@
     </div>
 
     <div class="texto">
-        <p>
-            Selecione o jogo e veja o hardware recomendado pelos nossos especialistas
-            para rodar com máximo desempenho.
-        </p>
+        <p>Selecione o jogo e veja o hardware recomendado pelos nossos especialistas para rodar com máximo desempenho.</p>
     </div>
 
-    <div class="botao">
+    <div class="botao" id="botoes-jogos-container">
         <button class="ativo">SUBNAUTICA 2</button>
         <button>RESIDENT EVIL REQUIEM</button>
         <button>GOD OF WAR RAGNARÖK</button>
@@ -63,169 +58,49 @@
     </div>
 
     <div class="area-principal">
-
         <div class="card-jogo">
-
-            <img src="./img_setup/subnautica.jpg" alt="Subnautica 2">
-
+            <img src="./img_setup/subnautica.webp" alt="Subnautica 2">
             <div class="info">
                 <h2>Subnautica 2</h2>
                 <p>⭐⭐⭐⭐☆ 4.2</p>
-
-                <div class="tags">
-                    <span>Survival / Open World</span>
-                    <span>Co-op</span>
-                    <span>Sci-Fi</span>
-                </div>
-
+                <div class="tags"></div>
                 <h3>NÍVEL DE PERFORMANCE</h3>
-
                 <div class="niveis">
                     <button class="ativo">MÍNIMO</button>
                     <button>IDEAL</button>
                     <button>ULTRA</button>
                 </div>
-
                 <div class="spec">
-
                     <div class="linha">
                         <span style="color: #7070A0; font-size: 12px;">CPU</span>
-                        <span>Intel Core i5-8400 or AMD Ryzen 2600</span>
+                        <span>...</span>
                     </div>
-
                     <div class="linha">
                         <span style="color: #7070A0; font-size: 12px;">GPU</span>
-                        <span>NVIDIA GTX 1060</span>
+                        <span>...</span>
                     </div>
-
                     <div class="linha">
                         <span style="color: #7070A0; font-size: 12px;">RAM</span>
-                        <span>12 GB</span>
+                        <span>...</span>
                     </div>
-
                     <div class="linha">
                         <span style="color: #7070A0; font-size: 12px;">ARMAZENAMENTO</span>
-                        <span class="ssd">70 GB SSD</span>
+                        <span class="ssd">...</span>
                     </div>
-
                 </div>
             </div>
         </div>
 
         <div class="container">
+            <h2 id="titulo-setup" style="margin-bottom: 1vw; margin-top: 1.5vw;">🏆 SETUP RECOMENDADO</h2>
+            
+            <div id="setup-components"></div>
 
-            <h2 style="margin-bottom: 1vw; margin-top: 1.5vw;">🏆 SETUP RECOMENDADO PARA ULTRA</h2>
-
-            <div class="card">
-                <div class="topo-card">
-                    <div class="info-componente">
-                        <span class="categoria">PROCESSADOR</span>
-                        <h3>Intel Core i9-12900K</h3>
-                    </div>
-                    <div class="info-direita">
-                        <span class="nota">98/100</span>
-                        <span class="preco">R$ 3.499</span>
-                        <button>ADICIONAR</button>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="progresso" style="width:98%;"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="topo-card">
-                    <div class="info-componente">
-                        <span class="categoria">PLACA DE VÍDEO</span>
-                        <h3>NVIDIA RTX 4080 16GB</h3>
-                    </div>
-                    <div class="info-direita">
-                        <span class="nota">100/100</span>
-                        <span class="preco">R$ 7.299</span>
-                        <button>ADICIONAR</button>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="progresso" style="width:100%;"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="topo-card">
-                    <div class="info-componente">
-                        <span class="categoria">MEMÓRIA RAM</span>
-                        <h3>Corsair Vengeance 32GB DDR5</h3>
-                    </div>
-                    <div class="info-direita">
-                        <span class="nota">95/100</span>
-                        <span class="preco">R$ 899</span>
-                        <button>ADICIONAR</button>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="progresso" style="width:95%;"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="topo-card">
-                    <div class="info-componente">
-                        <span class="categoria">MONITOR</span>
-                        <h3>LG 27" OLED 4K 144Hz</h3>
-                    </div>
-                    <div class="info-direita">
-                        <span class="nota">99/100</span>
-                        <span class="preco">R$ 4.999</span>
-                        <button>ADICIONAR</button>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="progresso" style="width:99%;"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="topo-card">
-                    <div class="info-componente">
-                        <span class="categoria">HEADSET</span>
-                        <h3>SteelSeries Arctis Nova Pro</h3>
-                    </div>
-                    <div class="info-direita">
-                        <span class="nota">94/100</span>
-                        <span class="preco">R$ 1.499</span>
-                        <button>ADICIONAR</button>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="progresso" style="width:94%;"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="topo-card">
-                    <div class="info-componente">
-                        <span class="categoria">MOUSE</span>
-                        <h3>Razer DeathAdder V3 Pro</h3>
-                    </div>
-                    <div class="info-direita">
-                        <span class="nota">92/100</span>
-                        <span class="preco">R$ 699</span>
-                        <button>ADICIONAR</button>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="progresso" style="width:92%;"></div>
-                </div>
-            </div>
-
-            <button class="btn-setup-completo">
+            <button class="btn-setup-completo" onclick="alert('Setup completo adicionado ao carrinho com sucesso!')">
                 ADICIONAR SETUP COMPLETO AO CARRINHO
             </button>
-
         </div>
     </div>
-
-    <script src="setup_script.js"></script>
 
     <footer class="footer">
         <div class="footer-container">
@@ -275,5 +150,7 @@
             </div>
         </div>
     </footer>
+    
+    <script src="setup_script.js"></script>
 </body>
 </html>
