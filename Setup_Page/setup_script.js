@@ -1,7 +1,7 @@
-// 1. Banco de dados com as informações dos jogos e configurações
+// 1. Banco de dados com as informações dos jogos
 const dadosJogos = {
     "SUBNAUTICA 2": {
-        img: "./img_setup/subnautica.jpg",
+        img: "./img_setup/subnautica.webp",
         titulo: "Subnautica 2",
         nota: "⭐⭐⭐⭐ 4.5",
         tags: ["Survival / Open World", "Co-op", "Sci-Fi"],
@@ -12,7 +12,7 @@ const dadosJogos = {
         }
     },
     "RESIDENT EVIL REQUIEM": {
-        img: "./img_setup/requiem.png",
+        img: "./img_setup/requiem.webp",
         titulo: "Resident Evil Requiem",
         nota: "⭐⭐⭐⭐ 4.5",
         tags: ["Survival Horror", "Third-Person", "Atmospheric"],
@@ -23,7 +23,7 @@ const dadosJogos = {
         }
     },
     "GOD OF WAR RAGNARÖK": {
-        img: "./img_setup/ragnarok.png",
+        img: "./img_setup/ragnarok.webp",
         titulo: "God Of War Ragnarök",
         nota: "⭐⭐⭐⭐⭐4.9",
         tags: ["Action / Adventure", "Over-the-Shoulder", "Cinematic"],
@@ -34,7 +34,7 @@ const dadosJogos = {
         }
     },
     "PRAGMATA": {
-        img: "./img_setup/pragmata.png",
+        img: "./img_setup/pragmata.webp",
         titulo: "Pragmata",
         nota: "⭐⭐⭐⭐ 4.3",
         tags: ["Action / Sci-Fi", "Dystopian", "Adventure"],
@@ -46,30 +46,46 @@ const dadosJogos = {
     }
 };
 
-// 2. Estado inicial
+// 2. Componentes Dinâmicos Recomendados (Simulação de Loja)
+const componentesRecomendados = {
+    "MÍNIMO": [
+        { categoria: "PROCESSADOR", nome: "Intel Core i5-12400F", nota: 85, preco: "999" },
+        { categoria: "PLACA DE VÍDEO", nome: "NVIDIA RTX 3060 12GB", nota: 88, preco: "1.899" },
+        { categoria: "MEMÓRIA RAM", nome: "Corsair Vengeance 16GB DDR4", nota: 90, preco: "349" },
+        { categoria: "MONITOR", nome: "AOC Hero 24\" 144Hz", nota: 89, preco: "899" }
+    ],
+    "IDEAL": [
+        { categoria: "PROCESSADOR", nome: "AMD Ryzen 5 7600X", nota: 92, preco: "1.599" },
+        { categoria: "PLACA DE VÍDEO", nome: "NVIDIA RTX 4070 12GB", nota: 95, preco: "4.199" },
+        { categoria: "MEMÓRIA RAM", nome: "Kingston Fury 32GB DDR5", nota: 94, preco: "799" },
+        { categoria: "MONITOR", nome: "Dell Alienware 27\" 165Hz", nota: 96, preco: "2.599" }
+    ],
+    "ULTRA": [
+        { categoria: "PROCESSADOR", nome: "Intel Core i9-13900K", nota: 98, preco: "3.499" },
+        { categoria: "PLACA DE VÍDEO", nome: "NVIDIA RTX 4080 16GB", nota: 100, preco: "7.299" },
+        { categoria: "MEMÓRIA RAM", nome: "Corsair Dominator 32GB DDR5", nota: 95, preco: "1.299" },
+        { categoria: "MONITOR", nome: "LG 27\" OLED 4K 144Hz", nota: 99, preco: "4.999" },
+        { categoria: "HEADSET", nome: "SteelSeries Arctis Nova Pro", nota: 94, preco: "1.499" },
+        { categoria: "MOUSE", nome: "Razer DeathAdder V3 Pro", nota: 92, preco: "699" }
+    ]
+};
+
+// 3. Lógica de atualização
 let jogoAtual = "SUBNAUTICA 2";
 let nivelAtual = "MÍNIMO";
 
-// 3. Seletores do DOM
-const botoesJogos = document.querySelectorAll('.botao button');
+const botoesJogos = document.querySelectorAll('#botoes-jogos-container button');
 const botoesNiveis = document.querySelectorAll('.niveis button');
-
 const imgJogo = document.querySelector('.card-jogo img');
 const tituloJogo = document.querySelector('.info h2');
 const notaJogo = document.querySelector('.info p');
 const containerTags = document.querySelector('.tags');
-
 const linhasSpec = document.querySelectorAll('.spec .linha span:nth-child(2)');
-const cpuSpec = linhasSpec[0];
-const gpuSpec = linhasSpec[1];
-const ramSpec = linhasSpec[2];
-const armazSpec = linhasSpec[3];
+const setupComponentsContainer = document.getElementById("setup-components");
+const tituloSetup = document.getElementById("titulo-setup");
 
-// 4. Função principal para atualizar a interface
 function atualizarInterface() {
     const dados = dadosJogos[jogoAtual];
-    
-    // Proteção caso clique num jogo que não existe no banco de dados
     if (!dados) return; 
     
     const specs = dados.niveis[nivelAtual];
@@ -85,47 +101,69 @@ function atualizarInterface() {
         containerTags.appendChild(span);
     });
 
-    cpuSpec.textContent = specs.cpu;
-    gpuSpec.textContent = specs.gpu;
-    ramSpec.textContent = specs.ram;
-    armazSpec.textContent = specs.armaz;
+    linhasSpec[0].textContent = specs.cpu;
+    linhasSpec[1].textContent = specs.gpu;
+    linhasSpec[2].textContent = specs.ram;
+    linhasSpec[3].textContent = specs.armaz;
+
+    renderizarHardware();
 }
 
-// 5. Evento de clique nos botões dos Jogos
+function renderizarHardware() {
+    tituloSetup.textContent = `🏆 SETUP RECOMENDADO PARA ${nivelAtual}`;
+    setupComponentsContainer.innerHTML = "";
+    
+    const listaComponentes = componentesRecomendados[nivelAtual];
+    
+    listaComponentes.forEach(comp => {
+        setupComponentsContainer.innerHTML += `
+        <div class="card">
+            <div class="topo-card">
+                <div class="info-componente">
+                    <span class="categoria">${comp.categoria}</span>
+                    <h3>${comp.nome}</h3>
+                </div>
+                <div class="info-direita">
+                    <span class="nota">${comp.nota}/100</span>
+                    <span class="preco">R$ ${comp.preco}</span>
+                    <button onclick="alert('${comp.nome} adicionado ao carrinho!')">ADICIONAR</button>
+                </div>
+            </div>
+            <div class="barra">
+                <div class="progresso" style="width:${comp.nota}%;"></div>
+            </div>
+        </div>
+        `;
+    });
+}
+
 botoesJogos.forEach(botao => {
     botao.addEventListener('click', (e) => {
         botoesJogos.forEach(b => b.classList.remove('ativo'));
         e.target.classList.add('ativo');
-        
         jogoAtual = e.target.textContent.trim();
         atualizarInterface();
     });
 });
 
-// 6. Evento de clique nos botões dos Níveis de Performance
 botoesNiveis.forEach(botao => {
     botao.addEventListener('click', (e) => {
         botoesNiveis.forEach(b => b.classList.remove('ativo'));
         e.target.classList.add('ativo');
-        
         nivelAtual = e.target.textContent.trim();
         atualizarInterface();
     });
 });
 
-// 7. Inicializa a primeira visualização
+// Inicialização
 atualizarInterface();
 
-// 8. Lógica da Barra de Pesquisa
+// Lógica Lupa
 const btnLupa = document.querySelector('.btn-lupa');
 const searchBox = document.querySelector('.search-box');
-
 if (btnLupa && searchBox) {
     btnLupa.addEventListener('click', () => {
         searchBox.classList.toggle('ativo');
-        // Coloca o cursor automaticamente para digitar quando abrir
-        if (searchBox.classList.contains('ativo')) {
-            searchBox.focus();
-        }
+        if (searchBox.classList.contains('ativo')) searchBox.focus();
     });
 }
