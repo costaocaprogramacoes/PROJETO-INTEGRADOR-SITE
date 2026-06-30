@@ -1,80 +1,269 @@
-const catalogoJogos = [
+// Catálogo Base (Os seus 15 jogos originais)
+const catalogoBase = [
     {
-        id: 1,
-        nome: "Cyberpunk 2077",
-        imagem: "./img_jogos/cyberpunk.webp",
-        categoria: "RPG / Open World",
-        estrelas: "⭐⭐⭐⭐",
-        nota: "4.2",
-        tags: [
-            { classe: "rtx", texto: "RTX Required" },
-            { classe: "vram", texto: "VRAM Hungry" },
-            { classe: "cpu", texto: "CPU Intensive" }
-        ],
-        specs: {
-            minimo: { cpu: "Intel Core i7-6700K", gpu: "NVIDIA GTX 1060", ram: "12 GB" },
-            recomendado: { cpu: "Intel Core i7-8700K", gpu: "NVIDIA RTX 2080 SUPER", ram: "16 GB" },
-            ultra: { cpu: "Intel Core i9-12900K", gpu: "NVIDIA RTX 4080", ram: "32 GB DDR5" }
-        }
+        nome: "Cyberpunk 2077", imagem: "./img_jogos/Cyberpunk 2077.webp", categoria: "RPG / Open World", estrelas: "⭐⭐⭐⭐", nota: "4.2",
+        tags: [{ classe: "rtx", texto: "RTX Required" }, { classe: "vram", texto: "VRAM Hungry" }, { classe: "cpu", texto: "CPU Intensive" }],
+        specs: { minimo: { cpu: "Intel Core i7-6700K", gpu: "NVIDIA GTX 1060", ram: "12 GB" }, recomendado: { cpu: "Intel Core i7-8700K", gpu: "NVIDIA RTX 2080 SUPER", ram: "16 GB" }, ultra: { cpu: "Intel Core i9-12900K", gpu: "NVIDIA RTX 4080", ram: "32 GB DDR5" } }
     },
     {
-        id: 2,
-        nome: "Valorant",
-        imagem: "./img_jogos/valorant.webp",
-        categoria: "Tactical Shooter",
-        estrelas: "⭐⭐⭐⭐⭐",
-        nota: "4.5",
-        tags: [
-            { classe: "rtx", texto: "High FPS" },
-            { classe: "vram", texto: "Low Latency" },
-            { classe: "cpu", texto: "Competitive" }
-        ],
-        specs: {
-            minimo: { cpu: "Intel Core i3-4150", gpu: "NVIDIA GT 730", ram: "4 GB" },
-            recomendado: { cpu: "Intel Core i5-9400F", gpu: "NVIDIA GTX 1050 Ti", ram: "8 GB" },
-            ultra: { cpu: "Intel Core i7-13700K", gpu: "NVIDIA RTX 3070", ram: "16 GB DDR5" }
-        }
+        nome: "Valorant", imagem: "./img_jogos/Valorant.webp", categoria: "Tactical Shooter", estrelas: "⭐⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "High FPS" }, { classe: "vram", texto: "Low Latency" }, { classe: "cpu", texto: "Competitive" }],
+        specs: { minimo: { cpu: "Intel Core i3-4150", gpu: "NVIDIA GT 730", ram: "4 GB" }, recomendado: { cpu: "Intel Core i5-9400F", gpu: "NVIDIA GTX 1050 Ti", ram: "8 GB" }, ultra: { cpu: "Intel Core i7-13700K", gpu: "NVIDIA RTX 3070", ram: "16 GB DDR5" } }
     },
     {
-        id: 3,
-        nome: "Baldur's Gate 3",
-        imagem: "./img_jogos/baldurs.webp",
-        categoria: "RPG / Strategy",
-        estrelas: "⭐⭐⭐⭐⭐",
-        nota: "4.9",
-        tags: [
-            { classe: "rtx", texto: "Story Driven" },
-            { classe: "vram", texto: "GPU Intensive" },
-            { classe: "cpu", texto: "Co-op" }
-        ],
-        specs: {
-            minimo: { cpu: "Intel Core i7-8700K", gpu: "NVIDIA GTX 1060", ram: "8 GB" },
-            recomendado: { cpu: "Intel Core i7-10700K", gpu: "NVIDIA 2060 SUPER", ram: "16 GB" },
-            ultra: { cpu: "Intel Core i9-13900K", gpu: "NVIDIA RTX 4090", ram: "32 GB DDR5" }
-        }
+        nome: "Baldur's Gate 3", imagem: "./img_jogos/Baldurs Gate 3.webp", categoria: "RPG / Strategy", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Story Driven" }, { classe: "vram", texto: "GPU Intensive" }, { classe: "cpu", texto: "Co-op" }],
+        specs: { minimo: { cpu: "Intel Core i7-8700K", gpu: "NVIDIA GTX 1060", ram: "8 GB" }, recomendado: { cpu: "Intel Core i7-10700K", gpu: "NVIDIA 2060 SUPER", ram: "16 GB" }, ultra: { cpu: "Intel Core i9-13900K", gpu: "NVIDIA RTX 4090", ram: "32 GB DDR5" } }
     },
     {
-        id: 4,
-        nome: "Fortnite",
-        imagem: "./img_jogos/fortnite.webp",
-        categoria: "Battle Royale",
-        estrelas: "⭐⭐⭐⭐",
-        nota: "3.8",
-        tags: [
-            { classe: "rtx", texto: "Free to Play" },
-            { classe: "vram", texto: "Cross-platform" },
-            { classe: "cpu", texto: "High FPS" }
-        ],
-        specs: {
-            minimo: { cpu: "Intel Core i5-7300U", gpu: "NVIDIA GTX 960", ram: "8 GB" },
-            recomendado: { cpu: "Intel Core i7-8700", gpu: "NVIDIA RTX 3070", ram: "16 GB" },
-            ultra: { cpu: "Intel Core i9-12900K", gpu: "NVIDIA RTX 4070 Ti", ram: "32 GB DDR5" }
-        }
+        nome: "Fortnite", imagem: "./img_jogos/Fortnite.webp", categoria: "Battle Royale", estrelas: "⭐⭐⭐⭐", nota: "3.8",
+        tags: [{ classe: "rtx", texto: "Free to Play" }, { classe: "vram", texto: "Cross-platform" }, { classe: "cpu", texto: "High FPS" }],
+        specs: { minimo: { cpu: "Intel Core i5-7300U", gpu: "NVIDIA GTX 960", ram: "8 GB" }, recomendado: { cpu: "Intel Core i7-8700", gpu: "NVIDIA RTX 3070", ram: "16 GB" }, ultra: { cpu: "Intel Core i9-12900K", gpu: "NVIDIA RTX 4070 Ti", ram: "32 GB DDR5" } }
+    },
+    {
+        nome: "Resident Evil 4 Remake", imagem: "./img_jogos/Resident Evil 4 Remake.webp", categoria: "Survival Horror", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Ray Tracing" }, { classe: "vram", texto: "Story Driven" }, { classe: "cpu", texto: "Gore" }],
+        specs: { minimo: { cpu: "Ryzen 3 1200 / Core i5-7500", gpu: "GTX 1050 Ti / RX 560", ram: "8 GB" }, recomendado: { cpu: "Ryzen 5 3600 / Core i7-8700", gpu: "GTX 1070 / RX 5700", ram: "16 GB" }, ultra: { cpu: "Ryzen 9 5900X / Core i7-12700", gpu: "RTX 3070 / RX 6800", ram: "16 GB" } }
+    },
+    {
+        nome: "Resident Evil Requiem", imagem: "./img_jogos/Resident Evil Requiem.webp", categoria: "Survival Horror", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Next-Gen Graphics" }, { classe: "vram", texto: "Story Driven" }, { classe: "cpu", texto: "High Tension" }],
+        specs: { minimo: { cpu: "Core i5-8500 / Ryzen 5 3500", gpu: "GTX 1660 / RX 5500 XT", ram: "16 GB" }, recomendado: { cpu: "Core i7-8700 / Ryzen 5 5500", gpu: "RTX 2060 Super / RX 6600", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 7 5800X", gpu: "RTX 4070 / RX 7800 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "Subnautica 2", imagem: "./img_jogos/Subnautica 2.webp", categoria: "Survival / Exploration", estrelas: "⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "Open World" }, { classe: "vram", texto: "Crafting" }, { classe: "cpu", texto: "Co-op" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1660 / RX 5500 XT", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 5 5600X", gpu: "RTX 3060 / RX 6600 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4070 / RX 7800 XT", ram: "32 GB DDR5" } }
+    },
+    {
+        nome: "Hollow Knight: Silksong", imagem: "./img_jogos/Hollow Knight Silksong.webp", categoria: "Metroidvania / Platformer", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Indie" }, { classe: "vram", texto: "Great Soundtrack" }, { classe: "cpu", texto: "Difficult" }],
+        specs: { minimo: { cpu: "Intel Core 2 Duo E5200", gpu: "GeForce 9800GTX+", ram: "4 GB" }, recomendado: { cpu: "Intel Core i5 / AMD FX-4300", gpu: "GTX 560 / Radeon HD 5850", ram: "8 GB" }, ultra: { cpu: "Intel Core i7 / Ryzen 3", gpu: "GTX 1650 / RX 570", ram: "16 GB" } }
+    },
+    {
+        nome: "Microsoft Flight Simulator", imagem: "./img_jogos/Microsoft Flight Simulator.webp", categoria: "Simulation", estrelas: "⭐⭐⭐⭐", nota: "4.7",
+        tags: [{ classe: "rtx", texto: "Ultra Realistic" }, { classe: "vram", texto: "CPU Intensive" }, { classe: "cpu", texto: "Cloud Data" }],
+        specs: { minimo: { cpu: "Ryzen 3 1200 / Core i5-4460", gpu: "RX 570 / GTX 770", ram: "8 GB" }, recomendado: { cpu: "Ryzen 5 1500X / Core i5-8400", gpu: "RX 590 / GTX 970", ram: "16 GB" }, ultra: { cpu: "Ryzen 7 Pro 2700X / Core i7-9800X", gpu: "Radeon VII / RTX 2080 Ti", ram: "32 GB" } }
+    },
+    {
+        nome: "Starfield", imagem: "./img_jogos/Starfield.webp", categoria: "RPG / Space Exploration", estrelas: "⭐⭐⭐⭐", nota: "4.0",
+        tags: [{ classe: "rtx", texto: "Open World" }, { classe: "vram", texto: "SSD Required" }, { classe: "cpu", texto: "Sci-fi" }],
+        specs: { minimo: { cpu: "Ryzen 5 2600X / Core i7-6800K", gpu: "RX 5700 XT / GTX 1070 Ti", ram: "16 GB" }, recomendado: { cpu: "Ryzen 5 3600X / Core i5-10600K", gpu: "RX 6800 XT / RTX 2080", ram: "16 GB" }, ultra: { cpu: "Ryzen 7 7800X3D / Core i7-13700K", gpu: "RX 7900 XTX / RTX 4080", ram: "32 GB DDR5" } }
+    },
+    {
+        nome: "Assassin's Creed Shadows", imagem: "./img_jogos/Assassins Creed Shadows.webp", categoria: "Action RPG / Open World", estrelas: "⭐⭐⭐⭐", nota: "4.2",
+        tags: [{ classe: "rtx", texto: "Stealth" }, { classe: "vram", texto: "Historical" }, { classe: "cpu", texto: "GPU Intensive" }],
+        specs: { minimo: { cpu: "Ryzen 5 3600 / Core i5-8600", gpu: "RX 570 / GTX 1060", ram: "8 GB" }, recomendado: { cpu: "Ryzen 7 3700X / Core i7-9700K", gpu: "RX 5700 XT / RTX 2070", ram: "16 GB" }, ultra: { cpu: "Ryzen 7 7800X3D / Core i5-13600K", gpu: "RX 7900 XTX / RTX 4080", ram: "32 GB DDR5" } }
+    },
+    {
+        nome: "Far Cry 6", imagem: "./img_jogos/Far Cry 6.webp", categoria: "First-Person Shooter", estrelas: "⭐⭐⭐⭐", nota: "4.1",
+        tags: [{ classe: "rtx", texto: "Co-op" }, { classe: "vram", texto: "Open World" }, { classe: "cpu", texto: "Action" }],
+        specs: { minimo: { cpu: "Ryzen 3 1200 / Core i5-4460", gpu: "RX 460 / GTX 960", ram: "8 GB" }, recomendado: { cpu: "Ryzen 5 3600X / Core i7-7700", gpu: "RX VEGA64 / GTX 1080", ram: "16 GB" }, ultra: { cpu: "Ryzen 9 5900X / Core i7-10700K", gpu: "RX 6800 / RTX 3080", ram: "16 GB" } }
+    },
+    {
+        nome: "Alan Wake 2", imagem: "./img_jogos/Alan Wake 2.webp", categoria: "Survival Horror", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Path Tracing" }, { classe: "vram", texto: "Heavy GPU" }, { classe: "cpu", texto: "Narrative" }],
+        specs: { minimo: { cpu: "Core i5-7600K / Ryzen 5 3600", gpu: "RTX 2060 / RX 6600", ram: "16 GB" }, recomendado: { cpu: "Ryzen 7 3700X / Core i7-10700K", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Ryzen 7 7800X3D / Core i9-13900K", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Hogwarts Legacy", imagem: "./img_jogos/Hogwarts Legacy.webp", categoria: "Action RPG", estrelas: "⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "Magic" }, { classe: "vram", texto: "Open World" }, { classe: "cpu", texto: "RAM Hungry" }],
+        specs: { minimo: { cpu: "Core i5-6600 / Ryzen 5 1400", gpu: "GTX 960 / RX 470", ram: "16 GB" }, recomendado: { cpu: "Core i7-8700 / Ryzen 5 3600", gpu: "GTX 1080 Ti / RX 5700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-10700K / Ryzen 7 5800X", gpu: "RTX 3090 / RX 7900 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "The Last of Us Part I", imagem: "./img_jogos/The Last Of Us Part I.webp", categoria: "Action-Adventure", estrelas: "⭐⭐⭐⭐⭐", nota: "4.7",
+        tags: [{ classe: "rtx", texto: "Story Rich" }, { classe: "vram", texto: "VRAM Hungry" }, { classe: "cpu", texto: "CPU Intensive" }],
+        specs: { minimo: { cpu: "Core i7-4770K / Ryzen 5 1500X", gpu: "GTX 970 / RX 470", ram: "16 GB" }, recomendado: { cpu: "Core i7-8700 / Ryzen 5 3600X", gpu: "RTX 2070 Super / RX 6600 XT", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 9 5900X", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Black Myth: Wukong", imagem: "./img_jogos/Black Myth Wukong.webp", categoria: "Action RPG", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Unreal Engine 5" }, { classe: "vram", texto: "Boss Fights" }, { classe: "cpu", texto: "Mythology" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 1600", gpu: "GTX 1060 / RX 580", ram: "16 GB" }, recomendado: { cpu: "Core i7-9700 / Ryzen 5 5500", gpu: "RTX 2060 / RX 5700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-9700 / Ryzen 5 5500", gpu: "RTX 4080 Super / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Call of Duty: Warzone", imagem: "./img_jogos/Call Of Duty Warzone.webp", categoria: "Battle Royale / Shooter", estrelas: "⭐⭐⭐⭐", nota: "4.2",
+        tags: [{ classe: "rtx", texto: "Free to Play" }, { classe: "vram", texto: "Competitive" }, { classe: "cpu", texto: "High FPS" }],
+        specs: { minimo: { cpu: "Core i5-6600 / Ryzen 5 1400", gpu: "GTX 960 / RX 470", ram: "8 GB" }, recomendado: { cpu: "Core i7-6700K / Ryzen 5 1600X", gpu: "GTX 1060 / RX 580", ram: "16 GB" }, ultra: { cpu: "Core i9-9900K / Ryzen 9 3900X", gpu: "RTX 3080 / RX 6800 XT", ram: "16 GB" } }
+    },
+    {
+        nome: "Clair Obscur: Expedition 33", imagem: "./img_jogos/Clair Obscur Expedition 33.webp", categoria: "Turn-Based RPG", estrelas: "⭐⭐⭐⭐⭐", nota: "4.7",
+        tags: [{ classe: "rtx", texto: "Unreal Engine 5" }, { classe: "vram", texto: "Story Rich" }, { classe: "cpu", texto: "GPU Intensive" }],
+        specs: { minimo: { cpu: "Core i7-8700K / Ryzen 5 1600X", gpu: "GTX 1060 / RX 5600 XT", ram: "8 GB" }, recomendado: { cpu: "Core i7-12700K / Ryzen 7 5800X", gpu: "RTX 3060 Ti / RX 6800 XT", ram: "16 GB" }, ultra: { cpu: "Core i9-13900K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB DDR5" } }
+    },
+    {
+        nome: "God of War Ragnarök", imagem: "./img_jogos/God Of War Ragnarok.webp", categoria: "Action-Adventure", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Masterpiece" }, { classe: "vram", texto: "Story Driven" }, { classe: "cpu", texto: "Cinematic" }],
+        specs: { minimo: { cpu: "Core i5-4670K / Ryzen 3 1200", gpu: "GTX 1060 / RX 5500 XT", ram: "8 GB" }, recomendado: { cpu: "Core i5-8600 / Ryzen 5 3600", gpu: "RTX 2060 Super / RX 5700", ram: "16 GB" }, ultra: { cpu: "Core i5-11600K / Ryzen 7 3700X", gpu: "RTX 4070 Ti / RX 7900 XT", ram: "16 GB" } }
+    },
+    {
+        nome: "Pragmata", imagem: "./img_jogos/Pragmata.webp", categoria: "Sci-Fi Action-Adventure", estrelas: "⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "Ray Tracing" }, { classe: "vram", texto: "Next-Gen" }, { classe: "cpu", texto: "RE Engine" }],
+        specs: { minimo: { cpu: "Core i5-8500 / Ryzen 5 3500", gpu: "GTX 1660 / RX 5500 XT", ram: "16 GB" }, recomendado: { cpu: "Core i7-8700 / Ryzen 5 5500", gpu: "RTX 2060 Super / RX 6600", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 7 5800X", gpu: "RTX 4070 / RX 7800 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "Avatar: Frontiers of Pandora", imagem: "./img_jogos/Avatar Frontiers of Pandora.webp", categoria: "Action-Adventure / Open World", estrelas: "⭐⭐⭐⭐", nota: "4.3",
+        tags: [{ classe: "rtx", texto: "Snowdrop Engine" }, { classe: "vram", texto: "GPU Intensive" }, { classe: "cpu", texto: "Co-op" }],
+        specs: { minimo: { cpu: "Core i7-8700K / Ryzen 5 3600", gpu: "GTX 1070 / RX 5700", ram: "16 GB" }, recomendado: { cpu: "Core i5-11600K / Ryzen 5 5600X", gpu: "RTX 3060 Ti / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 5800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Dying Light: The Beast", imagem: "./img_jogos/Dying Light The Beast.webp", categoria: "Survival Horror / Parkour", estrelas: "⭐⭐⭐⭐⭐", nota: "4.6",
+        tags: [{ classe: "rtx", texto: "Zombies" }, { classe: "vram", texto: "Open World" }, { classe: "cpu", texto: "First-Person" }],
+        specs: { minimo: { cpu: "Core i5-8600K / Ryzen 5 3600", gpu: "GTX 1060 / RX 5600 XT", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 7 5800X", gpu: "RTX 3070 / RX 6800", ram: "16 GB" }, ultra: { cpu: "Core i5-13600K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Star Wars Jedi: Survivor", imagem: "./img_jogos/Star Wars Jedi Survivor.webp", categoria: "Action-Adventure / Souls-lite", estrelas: "⭐⭐⭐⭐", nota: "4.4",
+        tags: [{ classe: "rtx", texto: "Sci-Fi" }, { classe: "vram", texto: "VRAM Hungry" }, { classe: "cpu", texto: "Story Driven" }],
+        specs: { minimo: { cpu: "Core i5-11600K / Ryzen 5 5600X", gpu: "GTX 1070 / RX 580", ram: "8 GB" }, recomendado: { cpu: "Core i7-11700K / Ryzen 5 5600X", gpu: "RTX 2070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i9-13900K / Ryzen 9 7900X", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Lies of P", imagem: "./img_jogos/Lies of P.webp", categoria: "Action RPG / Souls-like", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Well Optimized" }, { classe: "vram", texto: "Dark Fantasy" }, { classe: "cpu", texto: "Difficult" }],
+        specs: { minimo: { cpu: "Core i3-6300 / Ryzen 3 1200", gpu: "GTX 960 / RX 560", ram: "8 GB" }, recomendado: { cpu: "Core i5-6600 / Ryzen 5 3600", gpu: "GTX 1660 / RX 6500 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-10700K / Ryzen 7 3700X", gpu: "RTX 3070 / RX 6800", ram: "16 GB" } }
+    },
+    {
+        nome: "The Callisto Protocol", imagem: "./img_jogos/The Callisto Protocol.webp", categoria: "Survival Horror", estrelas: "⭐⭐⭐⭐", nota: "3.9",
+        tags: [{ classe: "rtx", texto: "Gore" }, { classe: "vram", texto: "Sci-Fi" }, { classe: "cpu", texto: "Linear" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1060 / RX 580", ram: "8 GB" }, recomendado: { cpu: "Core i7-8700 / Ryzen 5 3600", gpu: "GTX 1070 / RX 5700", ram: "16 GB" }, ultra: { cpu: "Core i9-9900K / Ryzen 9 3900X", gpu: "RTX 3080 / RX 6900 XT", ram: "16 GB" } }
+    },
+    {
+        nome: "Forza Horizon 6", imagem: "./img_jogos/Forza Horizon 6.webp", categoria: "Racing / Open World", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Photorealistic" }, { classe: "vram", texto: "Open World" }, { classe: "cpu", texto: "Multiplayer" }],
+        specs: { minimo: { cpu: "Core i5-10400 / Ryzen 5 3600", gpu: "GTX 1660 Super / RX 5600 XT", ram: "16 GB" }, recomendado: { cpu: "Core i5-12400 / Ryzen 5 5600X", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Senua's Saga: Hellblade II", imagem: "./img_jogos/Senuas Saga Hellblade II.webp", categoria: "Action-Adventure", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Unreal Engine 5" }, { classe: "vram", texto: "Story Rich" }, { classe: "cpu", texto: "Psychological Horror" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1070 / RX 5700", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 5 5600X", gpu: "RTX 3080 / RX 6800 XT", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 7 5700X", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Horizon Forbidden West Complete Edition", imagem: "./img_jogos/Horizon Forbidden West Complete Edition.webp", categoria: "Action RPG", estrelas: "⭐⭐⭐⭐⭐", nota: "4.7",
+        tags: [{ classe: "rtx", texto: "Open World" }, { classe: "vram", texto: "Sci-Fi" }, { classe: "cpu", texto: "Beautiful Visuals" }],
+        specs: { minimo: { cpu: "Core i3-8100 / Ryzen 3 1300X", gpu: "GTX 1650 / RX 5500 XT", ram: "16 GB" }, recomendado: { cpu: "Core i5-8600 / Ryzen 5 3600", gpu: "RTX 3060 / RX 5700", ram: "16 GB" }, ultra: { cpu: "Core i7-11700 / Ryzen 7 5700X", gpu: "RTX 4080 / RX 7900 XT", ram: "16 GB" } }
+    },
+    {
+        nome: "A Plague Tale: Requiem", imagem: "./img_jogos/A Plague Tale Requiem.webp", categoria: "Action-Adventure / Stealth", estrelas: "⭐⭐⭐⭐", nota: "4.6",
+        tags: [{ classe: "rtx", texto: "Stunning Visuals" }, { classe: "vram", texto: "GPU Intensive" }, { classe: "cpu", texto: "Story Driven" }],
+        specs: { minimo: { cpu: "Core i5-4690K / FX-8300", gpu: "GTX 970 / RX 590", ram: "16 GB" }, recomendado: { cpu: "Core i7-8700K / Ryzen 5 3600", gpu: "RTX 3070 / RX 6800 XT", ram: "16 GB" }, ultra: { cpu: "Core i9-12900K / Ryzen 9 5900X", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "The Last of Us Part II Remastered", imagem: "./img_jogos/The Last of Us Part II Remastered.webp", categoria: "Action-Adventure", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Story Rich" }, { classe: "vram", texto: "Emotional" }, { classe: "cpu", texto: "Survival Horror" }],
+        specs: { minimo: { cpu: "Core i7-4770K / Ryzen 5 1500X", gpu: "GTX 1060 / RX 580", ram: "16 GB" }, recomendado: { cpu: "Core i7-8700 / Ryzen 5 3600X", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 9 5900X", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "The Witcher 3: Wild Hunt - Complete Edition", imagem: "./img_jogos/The Witcher 3 Wild Hunt.webp", categoria: "Action RPG", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Masterpiece" }, { classe: "vram", texto: "Open World" }, { classe: "cpu", texto: "Fantasy" }],
+        specs: { minimo: { cpu: "Core i5-7400 / Ryzen 5 1600", gpu: "GTX 970 / RX 480", ram: "8 GB" }, recomendado: { cpu: "Core i7-8700K / Ryzen 5 3600", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 7 5800X", gpu: "RTX 4080 / RX 7900 XTX", ram: "16 GB" } }
+    },
+    {
+        nome: "Dragon's Dogma 2", imagem: "./img_jogos/Dragons Dogma 2.webp", categoria: "Action RPG", estrelas: "⭐⭐⭐⭐", nota: "4.2",
+        tags: [{ classe: "rtx", texto: "Open World" }, { classe: "vram", texto: "CPU Intensive" }, { classe: "cpu", texto: "Fantasy" }],
+        specs: { minimo: { cpu: "Core i5-10600 / Ryzen 5 3600", gpu: "GTX 1070 / RX 5500 XT", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700 / Ryzen 5 3600X", gpu: "RTX 2080 / RX 6700", ram: "16 GB" }, ultra: { cpu: "Core i7-12700K / Ryzen 7 5800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Marvel's Spider-Man 2", imagem: "./img_jogos/Marvels Spider-Man 2.webp", categoria: "Action-Adventure", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Open World" }, { classe: "vram", texto: "Superhero" }, { classe: "cpu", texto: "Fast-Paced" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1650 / RX 5500 XT", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 5 3600", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Crimson Desert", imagem: "./img_jogos/Crimson Desert.webp", categoria: "Action RPG / Open World", estrelas: "⭐⭐⭐⭐", nota: "4.6",
+        tags: [{ classe: "rtx", texto: "Stunning Visuals" }, { classe: "vram", texto: "Fantasy" }, { classe: "cpu", texto: "Next-Gen" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1060 / RX 580", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 7 3700X", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "League of Legends", imagem: "./img_jogos/League Of Legends.webp", categoria: "MOBA", estrelas: "⭐⭐⭐⭐", nota: "4.3",
+        tags: [{ classe: "rtx", texto: "Free to Play" }, { classe: "vram", texto: "Competitive" }, { classe: "cpu", texto: "Low Specs" }],
+        specs: { minimo: { cpu: "Core i3-530 / Ryzen 3 1200", gpu: "Intel HD 4600 / Vega 8", ram: "4 GB" }, recomendado: { cpu: "Core i5-3300 / Ryzen 3 3100", gpu: "GTX 560 / Radeon HD 6950", ram: "8 GB" }, ultra: { cpu: "Core i5-8400 / Ryzen 5 3600", gpu: "GTX 1650 / RX 570", ram: "16 GB" } }
+    },
+    {
+        nome: "Roblox", imagem: "./img_jogos/Roblox.webp", categoria: "Sandbox / MMO", estrelas: "⭐⭐⭐⭐", nota: "4.1",
+        tags: [{ classe: "rtx", texto: "Free to Play" }, { classe: "vram", texto: "Multiplayer" }, { classe: "cpu", texto: "Low Specs" }],
+        specs: { minimo: { cpu: "Core 2 Duo / AMD Athlon", gpu: "Integrated Graphics", ram: "4 GB" }, recomendado: { cpu: "Core i3-8100 / Ryzen 3 1200", gpu: "GTX 660 / RX 460", ram: "8 GB" }, ultra: { cpu: "Core i5-10400 / Ryzen 5 3600", gpu: "GTX 1650 / RX 570", ram: "16 GB" } }
+    },
+    {
+        nome: "Minecraft", imagem: "./img_jogos/Minecraft.webp", categoria: "Sandbox / Survival", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Procedural" }, { classe: "vram", texto: "Crafting" }, { classe: "cpu", texto: "CPU Intensive" }],
+        specs: { minimo: { cpu: "Core i3-3210 / A8-7600", gpu: "Intel HD 4000 / Radeon R5", ram: "4 GB" }, recomendado: { cpu: "Core i5-4690 / Ryzen 5 1500X", gpu: "GTX 960 / RX 460", ram: "8 GB" }, ultra: { cpu: "Core i7-10700K / Ryzen 7 3700X", gpu: "RTX 3070 / RX 6800", ram: "16 GB" } }
+    },
+    {
+        nome: "Star Wars Outlaws", imagem: "./img_jogos/Star Wars Outlaws.webp", categoria: "Action-Adventure / Open World", estrelas: "⭐⭐⭐⭐", nota: "4.4",
+        tags: [{ classe: "rtx", texto: "Sci-Fi" }, { classe: "vram", texto: "Stealth" }, { classe: "cpu", texto: "Snowdrop Engine" }],
+        specs: { minimo: { cpu: "Core i7-8700K / Ryzen 5 3600", gpu: "GTX 1660 / RX 5600 XT", ram: "16 GB" }, recomendado: { cpu: "Core i5-10400 / Ryzen 5 5600X", gpu: "RTX 3060 Ti / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Indiana Jones and the Great Circle", imagem: "./img_jogos/Indiana Jones and the Great Circle.webp", categoria: "Action-Adventure", estrelas: "⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "First-Person" }, { classe: "vram", texto: "Puzzles" }, { classe: "cpu", texto: "Cinematic" }],
+        specs: { minimo: { cpu: "Core i7-8700K / Ryzen 5 3600", gpu: "RTX 2060 / RX 6600", ram: "16 GB" }, recomendado: { cpu: "Core i5-11600K / Ryzen 5 5600X", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Silent Hill f", imagem: "./img_jogos/Silent Hill F.webp", categoria: "Survival Horror", estrelas: "⭐⭐⭐⭐", nota: "4.6",
+        tags: [{ classe: "rtx", texto: "Psychological" }, { classe: "vram", texto: "Atmospheric" }, { classe: "cpu", texto: "Japanese Horror" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1060 / RX 580", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 7 3700X", gpu: "RTX 3060 Ti / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i5-13600K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Red Dead Redemption 2", imagem: "./img_jogos/Red Dead Redemption 2.webp", categoria: "Action-Adventure / Open World", estrelas: "⭐⭐⭐⭐⭐", nota: "4.9",
+        tags: [{ classe: "rtx", texto: "Masterpiece" }, { classe: "vram", texto: "Story Rich" }, { classe: "cpu", texto: "Realistic" }],
+        specs: { minimo: { cpu: "Core i5-2500K / FX-6300", gpu: "GTX 770 / R9 280", ram: "8 GB" }, recomendado: { cpu: "Core i7-4770K / Ryzen 5 1500X", gpu: "GTX 1060 / RX 480", ram: "12 GB" }, ultra: { cpu: "Core i9-9900K / Ryzen 7 3700X", gpu: "RTX 3070 / RX 6800", ram: "16 GB" } }
+    },
+    {
+        nome: "ARC Raiders", imagem: "./img_jogos/ARC Raiders.webp", categoria: "Extraction Shooter", estrelas: "⭐⭐⭐⭐", nota: "4.3",
+        tags: [{ classe: "rtx", texto: "Co-op" }, { classe: "vram", texto: "Sci-Fi" }, { classe: "cpu", texto: "Unreal Engine 5" }],
+        specs: { minimo: { cpu: "Core i5-6600K / Ryzen 5 1600", gpu: "GTX 1060 / RX 580", ram: "12 GB" }, recomendado: { cpu: "Core i7-9700K / Ryzen 5 3600", gpu: "RTX 2070 / RX 5700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-12700K / Ryzen 7 5800X", gpu: "RTX 3080 / RX 6800 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "HELLDIVERS™ 2", imagem: "./img_jogos/HELLDIVERS 2.webp", categoria: "Co-op / Third-Person Shooter", estrelas: "⭐⭐⭐⭐⭐", nota: "4.8",
+        tags: [{ classe: "rtx", texto: "Co-op" }, { classe: "vram", texto: "Cinematic" }, { classe: "cpu", texto: "CPU Intensive" }],
+        specs: { minimo: { cpu: "Core i7-4790K / Ryzen 5 1500X", gpu: "GTX 1050 Ti / RX 470", ram: "8 GB" }, recomendado: { cpu: "Core i7-9700K / Ryzen 7 3700X", gpu: "RTX 2060 / RX 6600 XT", ram: "16 GB" }, ultra: { cpu: "Core i5-12600K / Ryzen 7 5800X3D", gpu: "RTX 4070 / RX 7900 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "Dispatch", imagem: "./img_jogos/Dispatch.webp", categoria: "Co-op Horror", estrelas: "⭐⭐⭐⭐", nota: "4.2",
+        tags: [{ classe: "rtx", texto: "Multiplayer" }, { classe: "vram", texto: "Atmospheric" }, { classe: "cpu", texto: "Horror" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1060 / RX 580", ram: "8 GB" }, recomendado: { cpu: "Core i7-10700 / Ryzen 5 3600", gpu: "RTX 3060 / RX 6600 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4070 / RX 7800 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "Dead by Daylight", imagem: "./img_jogos/Dead by Daylight.webp", categoria: "Asymmetrical Multiplayer", estrelas: "⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "Horror" }, { classe: "vram", texto: "Survival" }, { classe: "cpu", texto: "Competitive" }],
+        specs: { minimo: { cpu: "Core i3-4170 / FX-8120", gpu: "GTX 460 / HD 6850", ram: "8 GB" }, recomendado: { cpu: "Core i5-8400 / Ryzen 3 1200", gpu: "GTX 1060 / RX 580", ram: "8 GB" }, ultra: { cpu: "Core i5-10400 / Ryzen 5 3600", gpu: "GTX 1660 Super / RX 5600 XT", ram: "16 GB" } }
+    },
+    {
+        nome: "Diablo® IV", imagem: "./img_jogos/Diablo IV.webp", categoria: "Action RPG", estrelas: "⭐⭐⭐⭐", nota: "4.4",
+        tags: [{ classe: "rtx", texto: "Hack and Slash" }, { classe: "vram", texto: "Dark Fantasy" }, { classe: "cpu", texto: "Multiplayer" }],
+        specs: { minimo: { cpu: "Core i5-2500K / FX-8350", gpu: "GTX 660 / R9 280", ram: "8 GB" }, recomendado: { cpu: "Core i5-4670K / Ryzen 3 1300X", gpu: "GTX 970 / RX 470", ram: "16 GB" }, ultra: { cpu: "Core i7-8700K / Ryzen 7 2700X", gpu: "RTX 3080 / RX 6800 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "Kingdom Come: Deliverance II", imagem: "./img_jogos/Kingdom Come Deliverance II.webp", categoria: "Action RPG / Medieval", estrelas: "⭐⭐⭐⭐⭐", nota: "4.7",
+        tags: [{ classe: "rtx", texto: "Historical" }, { classe: "vram", texto: "Open World" }, { classe: "cpu", texto: "CPU Intensive" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 2600", gpu: "GTX 1660 / RX 580", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700K / Ryzen 5 5600X", gpu: "RTX 3070 / RX 6700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4080 / RX 7900 XTX", ram: "32 GB" } }
+    },
+    {
+        nome: "Peak", imagem: "./img_jogos/Peak.webp", categoria: "Action / Indie", estrelas: "⭐⭐⭐⭐", nota: "4.0",
+        tags: [{ classe: "rtx", texto: "Fast-Paced" }, { classe: "vram", texto: "Stylized" }, { classe: "cpu", texto: "Low Specs" }],
+        specs: { minimo: { cpu: "Core i3-8100 / Ryzen 3 1200", gpu: "GTX 960 / RX 460", ram: "8 GB" }, recomendado: { cpu: "Core i5-9400F / Ryzen 5 2600", gpu: "GTX 1660 / RX 580", ram: "16 GB" }, ultra: { cpu: "Core i5-12400 / Ryzen 5 5600X", gpu: "RTX 3060 / RX 6600 XT", ram: "16 GB" } }
+    },
+    {
+        nome: "Nioh 3", imagem: "./img_jogos/Nioh 3.webp", categoria: "Action RPG / Souls-like", estrelas: "⭐⭐⭐⭐⭐", nota: "4.6",
+        tags: [{ classe: "rtx", texto: "Samurai" }, { classe: "vram", texto: "Difficult" }, { classe: "cpu", texto: "Fast-Paced" }],
+        specs: { minimo: { cpu: "Core i5-8400 / Ryzen 5 3400G", gpu: "GTX 1650 / RX 570", ram: "16 GB" }, recomendado: { cpu: "Core i7-10700 / Ryzen 5 5600X", gpu: "RTX 3060 / RX 6600 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-13700K / Ryzen 7 7800X3D", gpu: "RTX 4070 Ti / RX 7900 XT", ram: "32 GB" } }
+    },
+    {
+        nome: "Mortal Kombat 1", imagem: "./img_jogos/Mortal Kombat 1.webp", categoria: "Fighting", estrelas: "⭐⭐⭐⭐⭐", nota: "4.5",
+        tags: [{ classe: "rtx", texto: "Gore" }, { classe: "vram", texto: "Competitive" }, { classe: "cpu", texto: "Multiplayer" }],
+        specs: { minimo: { cpu: "Core i5-6600 / Ryzen 3 3100", gpu: "GTX 980 / RX 470", ram: "8 GB" }, recomendado: { cpu: "Core i5-8400 / Ryzen 5 3600X", gpu: "GTX 1080 Ti / RX 5700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-10700K / Ryzen 7 5800X", gpu: "RTX 3080 / RX 6800 XT", ram: "32 GB" } }
     }
 ];
 
+// Duplicando itens para formar 25 jogos (5 páginas de 5 itens) e gerando IDs únicos
+const catalogoExpandido = [...catalogoBase, ...catalogoBase.slice(0, 0)].map((jogo, index) => ({
+    ...jogo, 
+    id: index + 1
+}));
+
+// Variáveis de Controle da Paginação
+const ITENS_POR_PAGINA = 5;
+let paginaAtual = 1;
+let termoPesquisa = "";
+
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById('catalogo-container');
     const searchBox = document.getElementById('search-jogos');
     const btnLupa = document.querySelector('.btn-lupa');
 
@@ -86,72 +275,136 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Renderizar os jogos na tela
-    function renderizarJogos(lista) {
-        container.innerHTML = "";
-        
-        if (lista.length === 0) {
-            container.innerHTML = `<p style="color: #8a8fb8; margin: 2vw 16.3vw;">Nenhum jogo encontrado.</p>`;
-            return;
-        }
-
-        lista.forEach(jogo => {
-            const cardHTML = `
-            <div class="cards">
-                <div class="img_card">
-                    <img src="${jogo.imagem}" alt="${jogo.nome}">
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h2>${jogo.nome}</h2>
-                            <span class="categoria">${jogo.categoria}</span>
-                            <div class="star">${jogo.estrelas}<span class="nota">${jogo.nota}</span></div>
-                        </div>
-                        <div class="tags">
-                            ${jogo.tags.map(tag => `<span class="tag ${tag.classe}">${tag.texto}</span>`).join('')}
-                        </div>
-                    </div>
-
-                    <div class="spec-card">
-                        <div class="spec-box min">
-                            <h3>MÍNIMO</h3>
-                            <p><strong>CPU:</strong> ${jogo.specs.minimo.cpu}</p>
-                            <p><strong>GPU:</strong> ${jogo.specs.minimo.gpu}</p>
-                            <p><strong>RAM:</strong> ${jogo.specs.minimo.ram}</p>
-                        </div>
-                        <div class="spec-box med">
-                            <h3>RECOMENDADO</h3>
-                            <p><strong>CPU:</strong> ${jogo.specs.recomendado.cpu}</p>
-                            <p><strong>GPU:</strong> ${jogo.specs.recomendado.gpu}</p>
-                            <p><strong>RAM:</strong> ${jogo.specs.recomendado.ram}</p>
-                        </div>
-                        <div class="spec-box max">
-                            <h3>ULTRA</h3>
-                            <p><strong>CPU:</strong> ${jogo.specs.ultra.cpu}</p>
-                            <p><strong>GPU:</strong> ${jogo.specs.ultra.gpu}</p>
-                            <p><strong>RAM:</strong> ${jogo.specs.ultra.ram}</p>
-                        </div>
-                    </div>
-
-                    <div class="buttons">
-                        <button class="btn_setup" onclick="window.location.href='../Setup_Page/setup.html'">MONTAR SETUP</button>
-                    </div>
-                </div>
-            </div>`;
-            container.innerHTML += cardHTML;
+    // Filtro de pesquisa
+    if (searchBox) {
+        searchBox.addEventListener('input', (e) => {
+            termoPesquisa = e.target.value.toLowerCase();
+            paginaAtual = 1; // Volta pra pagina 1 ao pesquisar
+            renderizarCatalogo();
         });
     }
 
-    // Filtro de pesquisa
-    searchBox.addEventListener('input', (e) => {
-        const termo = e.target.value.toLowerCase();
-        const filtrados = catalogoJogos.filter(jogo => 
-            jogo.nome.toLowerCase().includes(termo) || 
-            jogo.categoria.toLowerCase().includes(termo)
-        );
-        renderizarJogos(filtrados);
-    });
-
-    renderizarJogos(catalogoJogos);
+    // Inicia a aplicação
+    renderizarCatalogo();
+    atualizarBadgeCarrinho();
 });
+
+// Função principal de Filtro e Divisão de Páginas
+function renderizarCatalogo() {
+    const filtrados = catalogoExpandido.filter(jogo => 
+        jogo.nome.toLowerCase().includes(termoPesquisa) || 
+        jogo.categoria.toLowerCase().includes(termoPesquisa)
+    );
+
+    const totalItens = filtrados.length;
+    const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
+    
+    // Trava de segurança para não acessar página vazia
+    if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+
+    // Lógica de fatiamento (Slice) da array
+    const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+    const fim = inicio + ITENS_POR_PAGINA;
+    const jogosPagina = filtrados.slice(inicio, fim);
+
+    renderizarCards(jogosPagina);
+    renderizarBotoesPaginacao(totalPaginas);
+}
+
+// Renderiza apenas os 5 itens da página atual
+function renderizarCards(lista) {
+    const container = document.getElementById('catalogo-container');
+    container.innerHTML = "";
+    
+    if (lista.length === 0) {
+        container.innerHTML = `<p style="color: #8a8fb8; margin: 2vw 0; text-align: center;">Nenhum jogo encontrado.</p>`;
+        return;
+    }
+
+    lista.forEach(jogo => {
+        const cardHTML = `
+        <div class="cards">
+            <div class="img_card">
+                <img src="${jogo.imagem}" alt="${jogo.nome}">
+            </div>
+            <div class="card-content">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h2>${jogo.nome}</h2>
+                        <span class="categoria">${jogo.categoria}</span>
+                        <div class="star">${jogo.estrelas}<span class="nota">${jogo.nota}</span></div>
+                    </div>
+                    <div class="tags">
+                        ${jogo.tags.map(tag => `<span class="tag ${tag.classe}">${tag.texto}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="spec-card">
+                    <div class="spec-box min">
+                        <h3>MÍNIMO</h3>
+                        <p><strong>CPU:</strong> ${jogo.specs.minimo.cpu}</p>
+                        <p><strong>GPU:</strong> ${jogo.specs.minimo.gpu}</p>
+                        <p><strong>RAM:</strong> ${jogo.specs.minimo.ram}</p>
+                    </div>
+                    <div class="spec-box med">
+                        <h3>RECOMENDADO</h3>
+                        <p><strong>CPU:</strong> ${jogo.specs.recomendado.cpu}</p>
+                        <p><strong>GPU:</strong> ${jogo.specs.recomendado.gpu}</p>
+                        <p><strong>RAM:</strong> ${jogo.specs.recomendado.ram}</p>
+                    </div>
+                    <div class="spec-box max">
+                        <h3>ULTRA</h3>
+                        <p><strong>CPU:</strong> ${jogo.specs.ultra.cpu}</p>
+                        <p><strong>GPU:</strong> ${jogo.specs.ultra.gpu}</p>
+                        <p><strong>RAM:</strong> ${jogo.specs.ultra.ram}</p>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn_setup" onclick="window.location.href='../Setup_Page/setup.html'">MONTAR SETUP</button>
+                </div>
+            </div>
+        </div>`;
+        container.innerHTML += cardHTML;
+    });
+}
+
+// Renderiza os botões dinamicamente
+function renderizarBotoesPaginacao(totalPaginas) {
+    const containerPaginacao = document.getElementById("container-paginacao");
+    containerPaginacao.innerHTML = "";
+    
+    // Se só tiver 1 página ou nenhuma, não mostra os botões
+    if (totalPaginas <= 1) return;
+
+    for (let i = 1; i <= totalPaginas; i++) {
+        const botao = document.createElement("button");
+        botao.innerText = i;
+        
+        if (i === paginaAtual) botao.classList.add("ativo");
+        
+        botao.addEventListener("click", () => {
+            paginaAtual = i;
+            renderizarCatalogo();
+            // Dá um scroll suave de volta pro topo do catálogo
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        });
+        
+        containerPaginacao.appendChild(botao);
+    }
+}
+
+function atualizarBadgeCarrinho() {
+    const badge = document.getElementById('badge-carrinho');
+    if(!badge) return;
+
+    let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
+    let totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+
+    if (totalItens > 0) {
+        badge.innerText = totalItens;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}

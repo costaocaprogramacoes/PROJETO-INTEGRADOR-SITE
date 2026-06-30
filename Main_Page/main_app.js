@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dados dos Jogos em Destaque
     const destaques = [
-        { img: "./img_main/subnautica.webp", estrelas: "★★★★⯨", nota: "4.5", nome: "Subnautica 2", genero: "Survival / Open World", tags: ["Co-op", "Sci-Fi"] },
-        { img: "./img_main/clair_obscur.webp", estrelas: "★★★★☆", nota: "4.4", nome: "Clair Obscur: Expedition 33", genero: "Turn-Based RPG", tags: ["Story Driven", "Dark Fantasy"] },
-        { img: "./img_main/pragmata.webp", estrelas: "★★★★☆", nota: "4.3", nome: "Pragmata", genero: "Action / Sci-Fi", tags: ["Dystopian", "Adventure"] },
-        { img: "./img_main/wukong.webp", estrelas: "★★★★★", nota: "4.7", nome: "Black Myth: Wukong", genero: "Action RPG / Souls-like", tags: ["Action Game", "Mythological"] },
-        { img: "./img_main/ragnarok.webp", estrelas: "★★★★★", nota: "4.9", nome: "God of War Ragnarök", genero: "Action / Adventure", tags: ["Over-the-Shoulder", "Cinematic"] },
-        { img: "./img_main/requiem.webp", estrelas: "★★★★⯨", nota: "4.5", nome: "Resident Evil Requiem", genero: "Survival Horror", tags: ["Third-Person", "Atmospheric"] },
-        { img: "./img_main/blackflag.webp", estrelas: "★★★★⯨", nota: "4.6", nome: "Assassin's Creed Black Flag Resynced", genero: "Action / Open World", tags: ["Naval Combat", "Stealth"] },
-        { img: "./img_main/warzone.webp", estrelas: "★★★☆☆", nota: "3.9", nome: "Call of Duty: Warzone", genero: "Battle Royale / FPS", tags: ["Free to Play", "Cross-platform"] }
+        { img: "./img_main/Subnautica 2.webp", estrelas: "★★★★⯨", nota: "4.5", nome: "Subnautica 2", genero: "Survival / Open World", tags: ["Co-op", "Sci-Fi"] },
+        { img: "./img_main/Clair Obscur Expedition 33.webp", estrelas: "★★★★☆", nota: "4.4", nome: "Clair Obscur: Expedition 33", genero: "Turn-Based RPG", tags: ["Story Driven", "Dark Fantasy"] },
+        { img: "./img_main/Pragmata.webp", estrelas: "★★★★☆", nota: "4.3", nome: "Pragmata", genero: "Action / Sci-Fi", tags: ["Dystopian", "Adventure"] },
+        { img: "./img_main/Black Myth Wukong.webp", estrelas: "★★★★★", nota: "4.7", nome: "Black Myth: Wukong", genero: "Action RPG / Souls-like", tags: ["Action Game", "Mythological"] },
+        { img: "./img_main/God Of War Ragnarok.webp", estrelas: "★★★★★", nota: "4.9", nome: "God of War Ragnarök", genero: "Action / Adventure", tags: ["Over-the-Shoulder", "Cinematic"] },
+        { img: "./img_main/Resident Evil Requiem.webp", estrelas: "★★★★⯨", nota: "4.5", nome: "Resident Evil Requiem", genero: "Survival Horror", tags: ["Third-Person", "Atmospheric"] },
+        { img: "./img_main/Assassins Creed Shadows.webp", estrelas: "★★★★", nota: "4.2", nome: "Assassin's Creed Shadows", genero: "Action / Open World", tags: ["Historical", "Stealth"] },
+        { img: "./img_main/Call Of Duty Warzone.webp", estrelas: "★★★☆☆", nota: "3.9", nome: "Call of Duty: Warzone", genero: "Battle Royale / FPS", tags: ["Free to Play", "Cross-platform"] }
     ];
 
     // Renderizar Categorias

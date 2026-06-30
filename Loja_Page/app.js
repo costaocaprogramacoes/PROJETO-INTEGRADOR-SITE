@@ -102,9 +102,43 @@ const produtos = [
     { "id": 101, "categoria": "MONITOR", "nome": "Gigabyte M27Q 27\" QHD 170Hz", "score": 100, "precoOriginal": "2399", "precoPromocao": "2199", "imagem": "./img_loja/monitor/Gigabyte M27Q 27.webp", "video": null },
     { "id": 102, "categoria": "MONITOR", "nome": "MSI G244F 24\" 170Hz", "score": 99, "precoOriginal": "1099", "precoPromocao": "999", "imagem": "./img_loja/monitor/MSI G244F 24.webp", "video": null },
     { "id": 103, "categoria": "MONITOR", "nome": "MSI MAG 274QRFW 27\" QHD 180Hz", "score": 100, "precoOriginal": "2299", "precoPromocao": "2099", "imagem": "./img_loja/monitor/MSI MAG 274QRFW 27.webp", "video": null },
+    { "id": 104, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA GTX 1060 6GB", "score": 60, "precoOriginal": "999", "precoPromocao": "799", "imagem": "./img_loja/placavideo/gtx1060.webp", "video": null },
+    { "id": 105, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA GTX 1070 8GB", "score": 65, "precoOriginal": "1.299", "precoPromocao": "999", "imagem": "./img_loja/placavideo/gtx1070.webp", "video": null },
+    { "id": 106, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 2060 6GB", "score": 75, "precoOriginal": "1.799", "precoPromocao": "1.499", "imagem": "./img_loja/placavideo/rtx2060.webp", "video": null },
+    { "id": 107, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 2070 8GB", "score": 80, "precoOriginal": "1.999", "precoPromocao": "1.699", "imagem": "./img_loja/placavideo/rtx2070.webp", "video": null },
+    { "id": 108, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 3070 8GB", "score": 88, "precoOriginal": "3.299", "precoPromocao": "2.899", "imagem": "./img_loja/placavideo/rtx3070.webp", "video": null },
+    { "id": 109, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 3080 10GB", "score": 92, "precoOriginal": "4.499", "precoPromocao": "3.999", "imagem": "./img_loja/placavideo/rtx3080.webp", "video": null },
+    { "id": 110, "categoria": "PROCESSADOR", "nome": "Intel Core i7-8700K", "score": 75, "precoOriginal": "1.199", "precoPromocao": "999", "imagem": "./img_loja/processador/i7-8700k.webp", "video": null },
+    { "id": 111, "categoria": "PROCESSADOR", "nome": "Intel Core i7-10700K", "score": 82, "precoOriginal": "1.599", "precoPromocao": "1.399", "imagem": "./img_loja/processador/i7-10700k.webp", "video": null },
+    { "id": 112, "categoria": "PROCESSADOR", "nome": "AMD Ryzen 5 3600", "score": 70, "precoOriginal": "899", "precoPromocao": "699", "imagem": "./img_loja/processador/ryzen5-3600.webp", "video": null },
+    { "id": 113, "categoria": "PROCESSADOR", "nome": "AMD Ryzen 7 5800X", "score": 88, "precoOriginal": "1.699", "precoPromocao": "1.499", "imagem": "./img_loja/processador/ryzen7-5800x.webp", "video": null },
+    { "id": 114, "categoria": "PLACA DE VÍDEO", "nome": "AMD Radeon RX 580 8GB", "score": 50, "precoOriginal": "850", "precoPromocao": "650", "imagem": "./img_loja/placavideo/rx580.webp", "video": null },
+    { "id": 115, "categoria": "PLACA DE VÍDEO", "nome": "AMD Radeon RX 6600 XT", "score": 80, "precoOriginal": "1.799", "precoPromocao": "1.499", "imagem": "./img_loja/placavideo/rx6600xt.webp", "video": null },
+    { "id": 116, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 4070 Ti", "score": 96, "precoOriginal": "5.499", "precoPromocao": "4.899", "imagem": "./img_loja/placavideo/rtx4070ti.webp", "video": null },
+    { "id": 117, "categoria": "PLACA DE VÍDEO", "nome": "AMD Radeon RX 7900 XTX", "score": 99, "precoOriginal": "6.999", "precoPromocao": "6.299", "imagem": "./img_loja/placavideo/rx7900xtx.webp", "video": null },
+    { "id": 118, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA GTX 1660 SUPER", "score": 68, "precoOriginal": "1.399", "precoPromocao": "1.199", "imagem": "./img_loja/placavideo/gtx1660super.webp", "video": null },
+    { "id": 119, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 2060 SUPER", "score": 82, "precoOriginal": "2.199", "precoPromocao": "1.899", "imagem": "./img_loja/placavideo/rtx2060super.webp", "video": null },
+    { "id": 120, "categoria": "PLACA DE VÍDEO", "nome": "AMD Radeon RX 6700", "score": 85, "precoOriginal": "2.299", "precoPromocao": "1.999", "imagem": "./img_loja/placavideo/rx6700.webp", "video": null },
+    { "id": 121, "categoria": "PLACA DE VÍDEO", "nome": "AMD Radeon RX 6800 XT", "score": 94, "precoOriginal": "3.899", "precoPromocao": "3.499", "imagem": "./img_loja/placavideo/rx6800xt.webp", "video": null },
+    { "id": 122, "categoria": "PLACA DE VÍDEO", "nome": "AMD Radeon RX 7900 XT", "score": 97, "precoOriginal": "5.699", "precoPromocao": "5.299", "imagem": "./img_loja/placavideo/rx7900xt.webp", "video": null },
+    { "id": 123, "categoria": "PROCESSADOR", "nome": "Intel Core i5-8600K", "score": 65, "precoOriginal": "799", "precoPromocao": "599", "imagem": "./img_loja/processador/i5-8600k.webp", "video": null },
+    { "id": 124, "categoria": "PROCESSADOR", "nome": "Intel Core i7-11700K", "score": 86, "precoOriginal": "1.899", "precoPromocao": "1.699", "imagem": "./img_loja/processador/i7-11700k.webp", "video": null },
+    { "id": 125, "categoria": "PROCESSADOR", "nome": "AMD Ryzen 5 5600X", "score": 84, "precoOriginal": "1.199", "precoPromocao": "999", "imagem": "./img_loja/processador/ryzen5-5600x.webp", "video": null },
+    { "id": 126, "categoria": "PROCESSADOR", "nome": "AMD Ryzen 7 3700X", "score": 78, "precoOriginal": "1.399", "precoPromocao": "1.199", "imagem": "./img_loja/processador/ryzen7-3700x.webp", "video": null },
+    { "id": 127, "categoria": "PROCESSADOR", "nome": "AMD Ryzen 9 7900X", "score": 95, "precoOriginal": "2.899", "precoPromocao": "2.599", "imagem": "./img_loja/processador/ryzen9-7900x.webp", "video": null },
+    { "id": 128, "categoria": "PLACA MAE", "nome": "Gigabyte B450M DS3H V2", "score": 85, "precoOriginal": "699", "precoPromocao": "549", "imagem": "./img_loja/placamae/b450m.webp", "video": null },
+    { "id": 129, "categoria": "PLACA MAE", "nome": "ASUS TUF Gaming B450M-PLUS", "score": 90, "precoOriginal": "850", "precoPromocao": "699", "imagem": "./img_loja/placamae/b450m-tuf.webp", "video": null },
+    { "id": 130, "categoria": "PLACA MAE", "nome": "MSI B450 Tomahawk MAX II", "score": 92, "precoOriginal": "950", "precoPromocao": "799", "imagem": "./img_loja/placamae/b450-tomahawk.webp", "video": null },
+    { "id": 131, "categoria": "PLACA MAE", "nome": "ASUS Prime H610M-K D4", "score": 80, "precoOriginal": "650", "precoPromocao": "499", "imagem": "./img_loja/placamae/h610m.webp", "video": null },
+    { "id": 132, "categoria": "PLACA MAE", "nome": "Gigabyte H610M H", "score": 82, "precoOriginal": "699", "precoPromocao": "549", "imagem": "./img_loja/placamae/h610m-h.webp", "video": null },
+    { "id": 133, "categoria": "PLACA MAE", "nome": "MSI PRO B660M-A DDR4", "score": 90, "precoOriginal": "1.299", "precoPromocao": "999", "imagem": "./img_loja/placamae/b660m-pro.webp", "video": null },
+    { "id": 134, "categoria": "PLACA MAE", "nome": "ASUS TUF Gaming B760M-PLUS D4", "score": 95, "precoOriginal": "1.499", "precoPromocao": "1.299", "imagem": "./img_loja/placamae/b760m-tuf.webp", "video": null },
+    { "id": 135, "categoria": "PLACA MAE", "nome": "Gigabyte X670 AORUS ELITE AX", "score": 98, "precoOriginal": "2.899", "precoPromocao": "2.499", "imagem": "./img_loja/placamae/x670-aorus.webp", "video": null },
+    { "id": 136, "categoria": "PLACA MAE", "nome": "ASUS ROG Strix B650-A Gaming WiFi", "score": 97, "precoOriginal": "2.199", "precoPromocao": "1.899", "imagem": "./img_loja/placamae/b650-strix.webp", "video": null },
+    { "id": 137, "categoria": "PLACA MAE", "nome": "MSI MAG X670E Tomahawk WiFi", "score": 99, "precoOriginal": "3.199", "precoPromocao": "2.799", "imagem": "./img_loja/placamae/x670e-tomahawk.webp", "video": null }
 ];
 
-const ITENS_POR_PAGINA = 9; // Fica muito melhor numa grid preenchida com múltiplas linhas de 3
+const ITENS_POR_PAGINA = 8; 
 let paginaAtual = 1;
 let termoPesquisa = "";
 
@@ -116,6 +150,7 @@ const btnLupa = document.querySelector(".btn-lupa");
 document.addEventListener("DOMContentLoaded", () => {
     renderizarLoja();
     configurarEventos();
+    atualizarBadgeCarrinho();
 });
 
 function renderizarLoja() {
@@ -214,36 +249,27 @@ function configurarEventos() {
     }
 }
 
-// ... Mantenha todo o seu código de produtos e filtros lá em cima ...
-
-// Substitua a função comprarItem antiga por esta:
 function comprarItem(id) {
     const produto = produtos.find(p => p.id === id);
     if (!produto) return;
 
-    // Busca o carrinho salvo no navegador (ou cria um novo vazio)
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
     
-    // Verifica se o item já está no carrinho
     let itemExistente = carrinho.find(item => item.id === id);
 
     if (itemExistente) {
         itemExistente.quantidade += 1;
     } else {
-        // Clona o produto e adiciona a quantidade = 1
         const produtoParaCarrinho = { ...produto, quantidade: 1 };
         carrinho.push(produtoParaCarrinho);
     }
 
-    // Salva de volta no navegador
     localStorage.setItem('nexus_cart', JSON.stringify(carrinho));
 
-    // Mostra a notificação e atualiza a bolinha
     mostrarToast(`<b>${produto.nome}</b> adicionado ao carrinho!`);
     atualizarBadgeCarrinho();
 }
 
-// Funcionalidade da notificação (Toast)
 let toastTimeout;
 function mostrarToast(mensagem) {
     const toast = document.getElementById('toast-notificacao');
@@ -253,20 +279,17 @@ function mostrarToast(mensagem) {
     toast.classList.add('mostrar');
 
     clearTimeout(toastTimeout);
-    // Esconde automaticamente após 5 segundos
     toastTimeout = setTimeout(() => {
         toast.classList.remove('mostrar');
     }, 5000);
 }
 
-// Atualiza o numero na bolinha do carrinho
 function atualizarBadgeCarrinho() {
     const badge = document.getElementById('badge-carrinho');
     if(!badge) return;
 
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
     
-    // Soma a quantidade de todos os itens
     let totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
 
     if (totalItens > 0) {
@@ -276,7 +299,3 @@ function atualizarBadgeCarrinho() {
         badge.style.display = 'none';
     }
 }
-
-// Adicione atualizarBadgeCarrinho() dentro do seu DOMContentLoaded lá em cima, 
-// ou simplesmente coloque essa linha no final do arquivo para rodar ao carregar a página:
-atualizarBadgeCarrinho();

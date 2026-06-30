@@ -54,65 +54,31 @@ a { text-decoration: none; color: inherit; }
     color: #8a8fb8;
 }
 
-/* O ">" impede que o CSS afete o <span class="req"> sem querer */
-.desc_pag > span:nth-of-type(1) { 
-    font-size: 14px; 
-    letter-spacing: 2px; 
-}
-
-.desc_pag > span:nth-of-type(2) { 
-    font-size: 32px; 
-    font-weight: bold; 
-    color: #fff; 
-    font-family: "Nasalization", sans-serif; 
-}
-
-/* A palavra REQUISITOS agora herda o tamanho gigante e fica roxa na mesma linha */
-.desc_pag span.req { 
-    color: #A855F7; 
-}
-
-.desc_pag > span:last-of-type { 
-    display: block; 
-    margin-top: 10px; 
-    font-size: 16px; 
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    color: #8a8fb8;
-}
+.desc_pag > span:nth-of-type(1) { font-size: 14px; letter-spacing: 2px; }
+.desc_pag > span:nth-of-type(2) { font-size: 32px; font-weight: bold; color: #fff; font-family: "Nasalization", sans-serif; }
+.desc_pag span.req { color: #A855F7; }
+.desc_pag > span:last-of-type { display: block; margin-top: 10px; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: normal; color: #8a8fb8; }
 
 /* Container Principal alinhado com o Header */
 #catalogo-container {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding: 0 15vw 50px 15vw; 
+    padding: 0 15vw 20px 15vw; /* Reduzi o padding bottom para aproximar a paginação */
 }
 
-/* CARDS DE JOGOS (O que havia sumido) */
+/* CARDS DE JOGOS */
 .cards {
-    display: flex;
-    background-color: #0c0f17; 
-    border: 1px solid #16204a;
-    border-radius: 8px;
-    width: 100%;
-    overflow: hidden;
-    transition: 0.3s;
+    display: flex; background-color: #0c0f17; border: 1px solid #16204a; border-radius: 8px; width: 100%; overflow: hidden; transition: 0.3s;
 }
-.cards:hover { 
-    border-color: #00d9ff; 
-    box-shadow: 0 0 15px rgba(0, 217, 255, 0.1); 
-}
+.cards:hover { border-color: #00d9ff; box-shadow: 0 0 15px rgba(0, 217, 255, 0.1); }
 
-.img_card { width: 280px; min-width: 280px; }
-.img_card img { width: 100%; height: 100%; object-fit: cover; }
+/* --- AJUSTE DA IMAGEM E CONTEÚDO DO CARD --- */
+.img_card { width: 42%; min-width: 350px; }
+.img_card img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .card-content {
-    flex: 1; 
-    padding: 24px; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 20px;
+    flex: 1; padding: 24px 30px; display: flex; flex-direction: column; justify-content: center; gap: 15px; 
 }
 
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
@@ -124,10 +90,8 @@ a { text-decoration: none; color: inherit; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-size: 11px; padding: 4px 8px; border-radius: 4px; background-color: #121824; color: #00d2ff; }
 
-/* Caixas de Requisitos (Mínimo, Recomendado, Ultra) */
-.spec-card {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%;
-}
+/* Caixas de Requisitos */
+.spec-card { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
 .spec-box { background-color: #101420; border: 1px solid #1c2336; border-radius: 6px; padding: 16px; font-size: 13px; }
 .spec-box h3 { font-size: 12px; margin-bottom: 12px; letter-spacing: 1px; }
 .min h3 { color: #ffd000; }
@@ -139,6 +103,17 @@ a { text-decoration: none; color: inherit; }
 .buttons { display: flex; justify-content: flex-end; }
 .btn_setup { background-color: #00d2ff; color: #000; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; font-size: 13px; cursor: pointer; transition: 0.2s; }
 .btn_setup:hover { background-color: #00b4db; box-shadow: 0 0 12px rgba(0, 210, 255, 0.4); }
+
+/* ================== PAGINAÇÃO ================== */
+.paginacao { 
+    display: flex; justify-content: center; gap: 10px; margin-top: 10px; padding-bottom: 40px; 
+}
+.paginacao button { 
+    width: 40px; height: 40px; border: 1px solid #00d5ff5e; border-radius: 6px; background: #0b1023; color: white; cursor: pointer; transition: 0.3s; 
+}
+.paginacao button:hover, .paginacao button.ativo { 
+    background: #00d4ff; color: #000; box-shadow: 0 0 10px #00d4ff; 
+}
 
 /* ================== FOOTER UNIFICADO ================== */
 .footer {
