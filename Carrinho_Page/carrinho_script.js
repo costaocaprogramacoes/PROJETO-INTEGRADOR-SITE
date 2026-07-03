@@ -20,9 +20,13 @@ function configurarLupaPesquisa() {
 
 function converterPrecoParaNumero(precoString) {
     if (!precoString) return 0;
-    let semPonto = precoString.replace(/\./g, '');
-    let formatado = semPonto.replace(',', '.');
-    return parseFloat(formatado);
+    let limpo = String(precoString).trim().replace(/[^\d,]/g, '').replace(',', '.');
+    return parseFloat(limpo) || 0;
+}
+
+// Pega o preço efetivo do item: usa a promoção se existir, senão o preço normal
+function obterPrecoItem(item) {
+    return converterPrecoParaNumero(item.precoPromocao || item.precoOriginal);
 }
 
 function formatarMoeda(valor) {
@@ -56,7 +60,7 @@ function renderizarCarrinho() {
     let totalItens = 0;
 
     carrinho.forEach(item => {
-        const precoNumerico = converterPrecoParaNumero(item.precoPromocao);
+        const precoNumerico = obterPrecoItem(item);
         subtotal += (precoNumerico * item.quantidade);
         totalItens += item.quantidade;
 
@@ -87,7 +91,7 @@ function renderizarCarrinho() {
                 </div>
                 <div class="item-acoes">
                     <i class="fa-solid fa-trash btn-remover" onclick="removerItem(${item.id})"></i>
-                    <span class="item-preco">R$ ${item.precoPromocao}</span>
+                    <span class="item-preco">R$ ${formatarMoeda(precoNumerico)}</span>
                 </div>
             </div>
         `;
@@ -121,7 +125,6 @@ function renderizarCarrinho() {
 
             <ul class="trust-badges">
                 <li><i class="fa-solid fa-shield-halved"></i> Compra 100% segura</li>
-                <li><i class="fa-solid fa-box"></i> Entrega em 3–7 dias úteis</li>
                 <li><i class="fa-solid fa-check"></i> 30 dias de garantia</li>
             </ul>
         </aside>

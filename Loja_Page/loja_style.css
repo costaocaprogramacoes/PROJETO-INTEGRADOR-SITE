@@ -70,7 +70,20 @@ a { text-decoration: none; color: inherit; }
 .filtro-grupo { margin-bottom: 20px; }
 .filtro-grupo h4 { color: #00d9ff; margin-bottom: 12px; font-size: 14px; }
 .filtro-grupo label { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; color: #a0aabf; cursor: pointer; }
-.filtro-grupo input[type="checkbox"] { cursor: pointer; accent-color: #00d9ff; }
+.filtro-grupo input[type="checkbox"],
+.filtro-grupo input[type="radio"] { cursor: pointer; accent-color: #00d9ff; }
+
+.preco-inputs { display: flex; gap: 10px; }
+.preco-campo { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.preco-campo span { font-size: 11px; color: #7070A0; }
+.preco-campo input[type="number"] {
+    width: 100%; background: #08080F; border: 1px solid #161f3b; border-radius: 6px;
+    color: white; padding: 8px 10px; font-size: 13px; outline: none; transition: border-color 0.3s ease;
+}
+.preco-campo input[type="number"]:focus { border-color: #00d9ff; }
+.preco-campo input[type="number"]::-webkit-outer-spin-button,
+.preco-campo input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.preco-campo input[type="number"] { -moz-appearance: textfield; }
 
 /* GRID DE PRODUTOS */
 .conteudo-produtos { flex: 1; display: flex; flex-direction: column; min-width: 0; }
@@ -109,6 +122,8 @@ a { text-decoration: none; color: inherit; }
 .paginacao { display: flex; justify-content: center; gap: 10px; margin-top: 40px; }
 .paginacao button { width: 40px; height: 40px; border: 1px solid #00d5ff5e; border-radius: 6px; background: #0b1023; color: white; cursor: pointer; transition: 0.3s; }
 .paginacao button:hover, .paginacao button.ativo { background: #00d4ff; color: #000; box-shadow: 0 0 10px #00d4ff; }
+.paginacao button.pontos { color: #7070A0; font-weight: bold; letter-spacing: 2px; }
+.paginacao button.pontos:hover { color: #000; }
 
 /* ================== FOOTER UNIFICADO (TEXTO REDUZIDO E CRAVADO) ================== */
 .footer {

@@ -8,11 +8,30 @@
 const ITENS_POR_PAGINA = 8; 
 let paginaAtual = 1;
 let termoPesquisa = "";
+let ordenacao = "relevancia";
+let precoMin = null;
+let precoMax = null;
 
 const containerProdutos = document.getElementById("container-produtos");
 const containerPaginacao = document.getElementById("container-paginacao");
 const searchBox = document.getElementById("search-box");
 const btnLupa = document.querySelector(".btn-lupa");
+const inputPrecoMin = document.getElementById("preco-min");
+const inputPrecoMax = document.getElementById("preco-max");
+
+// Converte o preço "efetivo" do produto (promoção se existir, senão o preço normal) em número real.
+// Formato dos dados: "7.299", "1.199,99", " 599,99", "R$ 1.499,99"
+function obterPrecoNumerico(produto) {
+    let valor = produto.precoPromocao || produto.precoOriginal;
+    if (typeof valor === "number") return valor;
+
+    valor = String(valor)
+        .trim()
+        .replace(/[^\d,]/g, "")  // remove tudo que não for dígito ou vírgula (ex: "R$", espaços, pontos de milhar)
+        .replace(",", ".");      // vírgula decimal vira ponto
+
+    return parseFloat(valor) || 0;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     renderizarLoja();
@@ -23,12 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderizarLoja() {
     const checkboxesMarcados = Array.from(document.querySelectorAll('.filtro-grupo input[type="checkbox"]:checked')).map(cb => cb.value);
 
-    const produtosFiltrados = produtos.filter(produto => {
+    let produtosFiltrados = produtos.filter(produto => {
         const matchesCategoria = checkboxesMarcados.length === 0 || checkboxesMarcados.includes(produto.categoria);
         const matchesPesquisa = produto.nome.toLowerCase().includes(termoPesquisa.toLowerCase()) || 
                                 produto.categoria.toLowerCase().includes(termoPesquisa.toLowerCase());
-        return matchesCategoria && matchesPesquisa;
+
+        const precoNumerico = obterPrecoNumerico(produto);
+        const matchesPrecoMin = precoMin === null || precoNumerico >= precoMin;
+        const matchesPrecoMax = precoMax === null || precoNumerico <= precoMax;
+
+        return matchesCategoria && matchesPesquisa && matchesPrecoMin && matchesPrecoMax;
     });
+
+    produtosFiltrados = ordenarProdutos(produtosFiltrados);
 
     const totalItens = produtosFiltrados.length;
     const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
@@ -41,6 +67,25 @@ function renderizarLoja() {
 
     renderizarCards(produtosPagina);
     renderizarBotoesPaginacao(totalPaginas);
+}
+
+function ordenarProdutos(lista) {
+    const listaOrdenada = [...lista];
+
+    switch (ordenacao) {
+        case "menor-preco":
+            listaOrdenada.sort((a, b) => obterPrecoNumerico(a) - obterPrecoNumerico(b));
+            break;
+        case "maior-preco":
+            listaOrdenada.sort((a, b) => obterPrecoNumerico(b) - obterPrecoNumerico(a));
+            break;
+        case "relevancia":
+        default:
+            listaOrdenada.sort((a, b) => b.score - a.score);
+            break;
+    }
+
+    return listaOrdenada;
 }
 
 function renderizarCards(listaProdutos) {
@@ -65,8 +110,8 @@ function renderizarCards(listaProdutos) {
                 <div class="cardp"><p>${produto.categoria}</p></div>
                 <div class="h1"><p>${produto.nome}</p></div>
                 <div class="score"><p>🔹Score ${produto.score}/100</p></div>
-                <div class="precos"><span>R$ ${produto.precoOriginal}</span></div>
-                <div class="promos"><span>R$ ${produto.precoPromocao}</span></div>
+                ${produto.precoPromocao ? `<div class="precos"><span>R$ ${produto.precoOriginal}</span></div>` : ''}
+                <div class="promos"><span>R$ ${produto.precoPromocao || produto.precoOriginal}</span></div>
                 <div class="botao"><button onclick="comprarItem(${produto.id})">Comprar</button></div>
             </div>
         `;
@@ -78,17 +123,59 @@ function renderizarBotoesPaginacao(totalPaginas) {
     containerPaginacao.innerHTML = "";
     if (totalPaginas <= 1) return;
 
-    for (let i = 1; i <= totalPaginas; i++) {
+    const MAX_VISIVEL = 5;
+
+    const criarBotaoNumero = (numero) => {
         const botao = document.createElement("button");
-        botao.innerText = i;
-        if (i === paginaAtual) botao.classList.add("ativo");
-        
+        botao.innerText = numero;
+        if (numero === paginaAtual) botao.classList.add("ativo");
+
         botao.addEventListener("click", () => {
-            paginaAtual = i;
+            paginaAtual = numero;
             renderizarLoja();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         containerPaginacao.appendChild(botao);
+    };
+
+    const criarPontinhos = (proximaPagina) => {
+        const botao = document.createElement("button");
+        botao.innerText = "...";
+        botao.classList.add("pontos");
+
+        botao.addEventListener("click", () => {
+            paginaAtual = proximaPagina;
+            renderizarLoja();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        containerPaginacao.appendChild(botao);
+    };
+
+    // Se todas as páginas cabem nos botões visíveis, mostra todas normalmente
+    if (totalPaginas <= MAX_VISIVEL) {
+        for (let i = 1; i <= totalPaginas; i++) criarBotaoNumero(i);
+        return;
+    }
+
+    // Calcula a janela de páginas visíveis, sempre contendo a página atual
+    let inicio = Math.max(1, paginaAtual - Math.floor(MAX_VISIVEL / 2));
+    let fim = inicio + MAX_VISIVEL - 1;
+
+    if (fim > totalPaginas) {
+        fim = totalPaginas;
+        inicio = fim - MAX_VISIVEL + 1;
+    }
+
+    // Pontinhos à esquerda, caso a janela não comece na página 1
+    if (inicio > 1) {
+        criarPontinhos(inicio - 1);
+    }
+
+    for (let i = inicio; i <= fim; i++) criarBotaoNumero(i);
+
+    // Pontinhos à direita, caso a janela não termine na última página
+    if (fim < totalPaginas) {
+        criarPontinhos(fim + 1);
     }
 }
 
@@ -103,6 +190,30 @@ function configurarEventos() {
     if (searchBox) {
         searchBox.addEventListener("input", (e) => {
             termoPesquisa = e.target.value;
+            paginaAtual = 1;
+            renderizarLoja();
+        });
+    }
+
+    document.querySelectorAll('input[name="ordenacao"]').forEach(radio => {
+        radio.addEventListener("change", (e) => {
+            ordenacao = e.target.value;
+            paginaAtual = 1;
+            renderizarLoja();
+        });
+    });
+
+    if (inputPrecoMin) {
+        inputPrecoMin.addEventListener("input", (e) => {
+            precoMin = e.target.value === "" ? null : parseFloat(e.target.value);
+            paginaAtual = 1;
+            renderizarLoja();
+        });
+    }
+
+    if (inputPrecoMax) {
+        inputPrecoMax.addEventListener("input", (e) => {
+            precoMax = e.target.value === "" ? null : parseFloat(e.target.value);
             paginaAtual = 1;
             renderizarLoja();
         });

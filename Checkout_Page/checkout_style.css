@@ -76,15 +76,13 @@ a { text-decoration: none; color: inherit; }
 /* RESUMO DO PEDIDO CHECKOUT */
 .resumo-pedido { width: 350px; background: #0b1023; border: 1px solid #161f3b; border-radius: 8px; padding: 25px; }
 .resumo-pedido h3 { font-size: 14px; color: #a0aabf; letter-spacing: 1px; margin-bottom: 20px; }
-.checkout-lista-produtos { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; max-height: 240px; overflow-y: auto; padding-right: 5px; }
-.checkout-lista-produtos::-webkit-scrollbar { width: 4px; }
-.checkout-lista-produtos::-webkit-scrollbar-thumb { background: #161f3b; border-radius: 4px; }
-.checkout-item-mini { display: flex; align-items: center; gap: 15px; background: #0e142c; border: 1px solid #161f3b; padding: 10px; border-radius: 6px; }
-.item-mini-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; background: #12182b; }
-.item-mini-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-.item-mini-nome { font-size: 13px; font-weight: bold; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
+.checkout-lista-produtos { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
+.checkout-item-mini { display: flex; align-items: center; gap: 12px; background: #0e142c; border: 1px solid #161f3b; padding: 10px; border-radius: 6px; }
+.item-mini-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; background: #12182b; flex-shrink: 0; }
+.item-mini-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.item-mini-nome { font-size: 13px; font-weight: bold; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .item-mini-qtd { font-size: 11px; color: #7070A0; }
-.item-mini-preco { font-size: 14px; font-weight: bold; color: white; white-space: nowrap; }
+.item-mini-preco { font-size: 14px; font-weight: bold; color: white; white-space: nowrap; flex-shrink: 0; }
 
 .resumo-linha { display: flex; justify-content: space-between; font-size: 14px; color: #a0aabf; margin-bottom: 15px; }
 .resumo-linha span:last-child { color: white; font-weight: bold; }
