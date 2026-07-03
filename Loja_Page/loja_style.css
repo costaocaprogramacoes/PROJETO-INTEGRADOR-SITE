@@ -32,7 +32,7 @@ a { text-decoration: none; color: inherit; }
     justify-content: flex-end; color: #7070A0; height: 100%;
 }
 .icones-nav a { display: flex; align-items: center; }
-.icones-nav .icone { cursor: pointer; transition: color 0.3s ease; display: block; vertical-align: middle; }
+.icones-nav .icone { cursor: pointer; transition: color 0.3s ease; display: block;}
 .icones-nav .icone:hover { color: #00d9ff; }
 
 /* Barra de Pesquisa */
@@ -146,11 +146,6 @@ a { text-decoration: none; color: inherit; }
 .footer-logo p {
     line-height: 1.5;
     font-size: 12px; /* Reduzido */
-}
-
-.footer-col {
-    /* O SEGREDO DO ALINHAMENTO: 
-       Sem larguras forçadas. A coluna agora tem exatamente a largura da maior palavra. */
 }
 
 .footer-col h3 {
