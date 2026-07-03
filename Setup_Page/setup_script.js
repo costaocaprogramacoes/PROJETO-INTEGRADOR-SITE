@@ -217,6 +217,21 @@ const produtos = [
     { "id": 156, "categoria": "PLACA MAE", "nome": "Gigabyte X670 AORUS ELITE AX", "score": 98, "precoOriginal": "2.899", "precoPromocao": "2.499", "imagem": "./img_loja/placamae/Gigabyte X670 AORUS ELITE AX.webp", "video": null },
     { "id": 157, "categoria": "PLACA MAE", "nome": "ASUS ROG Strix B650-A Gaming WiFi", "score": 97, "precoOriginal": "2.199", "precoPromocao": "1.899", "imagem": "./img_loja/placamae/ASUS ROG Strix B650-A Gaming WiFi.webp", "video": null },
     { "id": 158, "categoria": "PLACA MAE", "nome": "MSI MAG X670E Tomahawk WiFi", "score": 99, "precoOriginal": "3.199", "precoPromocao": "2.799", "imagem": "./img_loja/placamae/MSI MAG X670E Tomahawk WiFi.webp", "video": null },
+    { "id": 159, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Kingston NV2 1TB", "score": 90, "precoOriginal": "499", "precoPromocao": "389", "imagem": "./img_loja/armazenamento/Kingston NV2 1TB.webp", "video": null },
+    { "id": 160, "categoria": "ARMAZENAMENTO", "nome": "SSD SATA Kingston A400 480GB", "score": 75, "precoOriginal": "250", "precoPromocao": "199", "imagem": "./img_loja/armazenamento/Kingston A400 480GB.webp", "video": null },
+    { "id": 161, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Samsung 990 PRO 2TB", "score": 100, "precoOriginal": "1899", "precoPromocao": "1599", "imagem": "./img_loja/armazenamento/Samsung 990 PRO 2TB.webp", "video": null },
+    { "id": 162, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Samsung 980 1TB", "score": 95, "precoOriginal": "699", "precoPromocao": "549", "imagem": "./img_loja/armazenamento/Samsung 980 1TB.webp", "video": null },
+    { "id": 163, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 WD Blue SN580 1TB", "score": 92, "precoOriginal": "550", "precoPromocao": "459", "imagem": "./img_loja/armazenamento/WD Blue SN580 1TB.webp", "video": null },
+    { "id": 164, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 WD Black SN850X 2TB", "score": 100, "precoOriginal": "1699", "precoPromocao": "1449", "imagem": "./img_loja/armazenamento/WD Black SN850X 2TB.webp", "video": null },
+    { "id": 165, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Crucial P3 Plus 1TB", "score": 93, "precoOriginal": "520", "precoPromocao": "429", "imagem": "./img_loja/armazenamento/Crucial P3 Plus 1TB.webp", "video": null },
+    { "id": 166, "categoria": "ARMAZENAMENTO", "nome": "SSD SATA Crucial BX500 500GB", "score": 76, "precoOriginal": "270", "precoPromocao": "219", "imagem": "./img_loja/armazenamento/Crucial BX500 500GB.webp", "video": null },
+    { "id": 167, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Corsair MP600 PRO XT 2TB", "score": 99, "precoOriginal": "1799", "precoPromocao": "1549", "imagem": "./img_loja/armazenamento/Corsair MP600 PRO XT 2TB.webp", "video": null },
+    { "id": 168, "categoria": "ARMAZENAMENTO", "nome": "HD Seagate BarraCuda 2TB 7200RPM", "score": 85, "precoOriginal": "450", "precoPromocao": "369", "imagem": "./img_loja/armazenamento/Seagate BarraCuda 2TB.webp", "video": null },
+    { "id": 169, "categoria": "ARMAZENAMENTO", "nome": "HD Seagate BarraCuda 1TB 7200RPM", "score": 80, "precoOriginal": "320", "precoPromocao": "259", "imagem": "./img_loja/armazenamento/Seagate BarraCuda 1TB.webp", "video": null },
+    { "id": 170, "categoria": "ARMAZENAMENTO", "nome": "HD WD Blue 2TB 7200RPM", "score": 85, "precoOriginal": "460", "precoPromocao": "379", "imagem": "./img_loja/armazenamento/WD Blue 2TB.webp", "video": null },
+    { "id": 171, "categoria": "ARMAZENAMENTO", "nome": "HD Toshiba P300 1TB 7200RPM", "score": 78, "precoOriginal": "300", "precoPromocao": "239", "imagem": "./img_loja/armazenamento/Toshiba P300 1TB.webp", "video": null },
+    { "id": 172, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 XPG S70 Blade 1TB", "score": 96, "precoOriginal": "650", "precoPromocao": "539", "imagem": "./img_loja/armazenamento/XPG S70 Blade 1TB.webp", "video": null },
+    { "id": 173, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Kingston Fury Renegade 2TB", "score": 98, "precoOriginal": "1599", "precoPromocao": "1399", "imagem": "./img_loja/armazenamento/Kingston Fury Renegade 2TB.webp", "video": null }
 ];
 
 /* =========================================================================
@@ -249,7 +264,7 @@ function extrairEspecificacoes(p) {
 }
 
 // Estrutura que guarda as peças separadas por categoria
-const dbComponentes = { cpu: [], placamae: [], gpu: [], ram: [], storage: [], fonte: [], monitor: [], mouse: [], teclado: [], headset: [] };
+const dbComponentes = { cpu: [], placamae: [], gpu: [], ram: [], armazenamento: [], fonte: [], monitor: [], mouse: [], teclado: [], headset: [] };
 
 // Popula o objeto `dbComponentes` usando a lista gigante
 produtos.forEach(p => {
@@ -271,19 +286,14 @@ produtos.forEach(p => {
     else if (p.categoria === "MOUSE") dbComponentes.mouse.push(item);
     else if (p.categoria === "TECLADO") dbComponentes.teclado.push(item);
     else if (p.categoria === "HEADSET") dbComponentes.headset.push(item);
+    else if (p.categoria === "ARMAZENAMENTO") dbComponentes.armazenamento.push(item);
 });
-
-// Adicionando um SSD manualmente, já que não existia na lista
-dbComponentes.storage.push(
-    { id: 's1', nome: 'SSD NVMe M.2 Kingston 1TB', nota: 85, preco: '450', img: '../Loja_Page/img_loja/ssd1.webp', specs: {} }
-);
-
 // Objeto que rastreia o que o usuário selecionou
 const setupSelecionado = {
-    cpu: null, placamae: null, gpu: null, ram: null, storage: null, fonte: null, monitor: null, mouse: null, teclado: null, headset: null
+    cpu: null, placamae: null, gpu: null, ram: null, armazenamento: null, fonte: null, monitor: null, mouse: null, teclado: null, headset: null
 };
 
-const ordemMontagem = ['cpu', 'placamae', 'gpu', 'ram', 'storage', 'fonte', 'monitor', 'mouse', 'teclado', 'headset'];
+const ordemMontagem = ['cpu', 'placamae', 'gpu', 'ram', 'armazenamento', 'fonte', 'monitor', 'mouse', 'teclado', 'headset'];
 
 /* =========================================================================
    3. LÓGICA DE RENDERIZAÇÃO E INTERFACE
@@ -522,7 +532,7 @@ window.adicionarSetupAoCarrinho = function() {
             // Se não achar (como o SSD manual s1), usamos os dados do próprio setupSelecionado
             const produtoOriginal = produtos.find(p => p.id.toString() === pecaSelecionada.id.toString()) || {
                 id: pecaSelecionada.id,
-                categoria: cat === 'storage' ? 'ARMAZENAMENTO' : cat.toUpperCase(),
+                categoria: cat === 'armazenamento' ? 'ARMAZENAMENTO' : cat.toUpperCase(),
                 nome: pecaSelecionada.nome,
                 precoPromocao: pecaSelecionada.preco,
                 imagem: pecaSelecionada.img
