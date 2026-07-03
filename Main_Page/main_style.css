@@ -477,11 +477,6 @@ nav {
     font-size: 12px; /* Reduzido */
 }
 
-.footer-col {
-    /* O SEGREDO DO ALINHAMENTO: 
-       Sem larguras forçadas. A coluna agora tem exatamente a largura da maior palavra. */
-}
-
 .footer-col h3 {
     color: #00e5ff;
     margin-bottom: 15px;
@@ -540,7 +535,6 @@ nav {
 /* Força os ícones a terem um tamanho consistente */
 .icones-nav svg {
     display: block; 
-    vertical-align: middle;
 }
 
 /* Isso evita que a classe .icone-ativo cause o pulo de posição */
@@ -550,4 +544,14 @@ nav {
     text-decoration: none;
     color: inherit;
     height: 100%; /* Mantém a altura igual para não "pular" */
+    position: relative;
+}
+
+/* ================== BADGE DO CARRINHO ================== */
+.carrinho-link { position: relative; display: flex; align-items: center; }
+.badge-carrinho {
+    position: absolute; top: 16px; right: -10px;
+    background: #00d9ff; color: black; font-size: 11px; font-weight: bold;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
 }

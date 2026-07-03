@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Atualiza a bolinha de contagem do carrinho
+    atualizarBadgeCarrinho();
+
     // Dados das Categorias
     const categorias = [
         { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 20 },
@@ -68,3 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join('');
     }
 });
+
+function atualizarBadgeCarrinho() {
+    const badge = document.getElementById('badge-carrinho');
+    if (!badge) return;
+
+    let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
+    let totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+
+    if (totalItens > 0) {
+        badge.innerText = totalItens;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
