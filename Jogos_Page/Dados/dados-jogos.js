@@ -1,4 +1,66 @@
-// Catálogo Base (Os seus 15 jogos originais)
+/* =========================================================================
+   BANCO DE DADOS - JOGOS
+   Fonte unica de dados de jogos, usada em duas paginas:
+   - Jogos_Page/jogos.html  -> usa "catalogoBase" (ficha completa, specs, tags)
+   - Setup_Page/setup.html  -> usa "catalogoJogos" (nome + peso, para calculo de FPS)
+========================================================================= */
+
+// Catalogo de Jogos (usado no Montador de PC para simular FPS/qualidade)
+const catalogoJogos = [
+    { nome: "Cyberpunk 2077", peso: 1.6 },
+    { nome: "Valorant", peso: 0.5 },
+    { nome: "Baldur's Gate 3", peso: 1.2 },
+    { nome: "Fortnite", peso: 0.7 },
+    { nome: "Red Dead Redemption 2", peso: 0.7 },
+    { nome: "Grand Theft Auto V", peso: 0.7 },
+    { nome: "Resident Evil 4 Remake", peso: 1.2 },
+    { nome: "Resident Evil Requiem", peso: 1.3 },
+    { nome: "Subnautica 2", peso: 1.3 },
+    { nome: "Hollow Knight: Silksong", peso: 0.3 },
+    { nome: "Microsoft Flight Simulator", peso: 1.6 },
+    { nome: "Starfield", peso: 1.6 },
+    { nome: "Assassin's Creed Shadows", peso: 1.5 },
+    { nome: "Far Cry 6", peso: 1.1 },
+    { nome: "Alan Wake 2", peso: 1.7 },
+    { nome: "Hogwarts Legacy", peso: 1.4 },
+    { nome: "The Last of Us Part I", peso: 1.5 },
+    { nome: "Black Myth: Wukong", peso: 1.6 },
+    { nome: "Call of Duty: Warzone", peso: 0.9 },
+    { nome: "Clair Obscur: Expedition 33", peso: 1.5 },
+    { nome: "God of War Ragnarök", peso: 1.3 },
+    { nome: "Pragmata", peso: 1.3 },
+    { nome: "Avatar: Frontiers of Pandora", peso: 1.5 },
+    { nome: "Dying Light: The Beast", peso: 1.5 },
+    { nome: "Star Wars Jedi: Survivor", peso: 1.6 },
+    { nome: "Lies of P", peso: 1.0 },
+    { nome: "The Callisto Protocol", peso: 1.2 },
+    { nome: "Forza Horizon 6", peso: 1.5 },
+    { nome: "Senua's Saga: Hellblade II", peso: 1.6 },
+    { nome: "Horizon Forbidden West Complete Edition", peso: 1.4 },
+    { nome: "A Plague Tale: Requiem", peso: 1.5 },
+    { nome: "The Last of Us Part II Remastered", peso: 1.4 },
+    { nome: "The Witcher 3: Wild Hunt - Complete Edition", peso: 1.4 },
+    { nome: "Dragon's Dogma 2", peso: 1.5 },
+    { nome: "Marvel's Spider-Man 2", peso: 1.4 },
+    { nome: "Crimson Desert", peso: 1.5 },
+    { nome: "League of Legends", peso: 0.3 },
+    { nome: "Roblox", peso: 0.3 },
+    { nome: "Minecraft", peso: 0.6 },
+    { nome: "Star Wars Outlaws", peso: 1.5 },
+    { nome: "Indiana Jones and the Great Circle", peso: 1.5 },
+    { nome: "Silent Hill f", peso: 1.5 },
+    { nome: "ARC Raiders", peso: 1.3 },
+    { nome: "HELLDIVERS™ 2", peso: 1.2 },
+    { nome: "Dispatch", peso: 1.3 },
+    { nome: "Dead by Daylight", peso: 0.6 },
+    { nome: "Diablo® IV", peso: 0.9 },
+    { nome: "Kingdom Come: Deliverance II", peso: 1.6 },
+    { nome: "Peak", peso: 0.6 },
+    { nome: "Nioh 3", peso: 1.3 },
+    { nome: "Mortal Kombat 1", peso: 1.1 }
+];
+
+// Catalogo Base de Jogos (usado na pagina de Jogos: cards, specs, tags)
 const catalogoBase = [
     {
         nome: "Cyberpunk 2077", imagem: "./img_jogos/Cyberpunk 2077.webp", categoria: "RPG / Open World", estrelas: "⭐⭐⭐⭐", nota: "4.2",
@@ -251,160 +313,3 @@ const catalogoBase = [
         specs: { minimo: { cpu: "Core i5-6600 / Ryzen 3 3100", gpu: "GTX 980 / RX 470", ram: "8 GB" }, recomendado: { cpu: "Core i5-8400 / Ryzen 5 3600X", gpu: "GTX 1080 Ti / RX 5700 XT", ram: "16 GB" }, ultra: { cpu: "Core i7-10700K / Ryzen 7 5800X", gpu: "RTX 3080 / RX 6800 XT", ram: "32 GB" } }
     }
 ];
-
-// Duplicando itens para formar 25 jogos (5 páginas de 5 itens) e gerando IDs únicos
-const catalogoExpandido = [...catalogoBase, ...catalogoBase.slice(0, 0)].map((jogo, index) => ({
-    ...jogo, 
-    id: index + 1
-}));
-
-// Variáveis de Controle da Paginação
-const ITENS_POR_PAGINA = 5;
-let paginaAtual = 1;
-let termoPesquisa = "";
-
-document.addEventListener("DOMContentLoaded", () => {
-    const searchBox = document.getElementById('search-jogos');
-    const btnLupa = document.querySelector('.btn-lupa');
-
-    // Lógica Lupa
-    if (btnLupa && searchBox) {
-        btnLupa.addEventListener('click', () => {
-            searchBox.classList.toggle('ativo');
-            if (searchBox.classList.contains('ativo')) searchBox.focus();
-        });
-    }
-
-    // Filtro de pesquisa
-    if (searchBox) {
-        searchBox.addEventListener('input', (e) => {
-            termoPesquisa = e.target.value.toLowerCase();
-            paginaAtual = 1; // Volta pra pagina 1 ao pesquisar
-            renderizarCatalogo();
-        });
-    }
-
-    // Inicia a aplicação
-    renderizarCatalogo();
-    atualizarBadgeCarrinho();
-});
-
-// Função principal de Filtro e Divisão de Páginas
-function renderizarCatalogo() {
-    const filtrados = catalogoExpandido.filter(jogo => 
-        jogo.nome.toLowerCase().includes(termoPesquisa) || 
-        jogo.categoria.toLowerCase().includes(termoPesquisa)
-    );
-
-    const totalItens = filtrados.length;
-    const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
-    
-    // Trava de segurança para não acessar página vazia
-    if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
-
-    // Lógica de fatiamento (Slice) da array
-    const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
-    const fim = inicio + ITENS_POR_PAGINA;
-    const jogosPagina = filtrados.slice(inicio, fim);
-
-    renderizarCards(jogosPagina);
-    renderizarBotoesPaginacao(totalPaginas);
-}
-
-// Renderiza apenas os 5 itens da página atual
-function renderizarCards(lista) {
-    const container = document.getElementById('catalogo-container');
-    container.innerHTML = "";
-    
-    if (lista.length === 0) {
-        container.innerHTML = `<p style="color: #8a8fb8; margin: 2vw 0; text-align: center;">Nenhum jogo encontrado.</p>`;
-        return;
-    }
-
-    lista.forEach(jogo => {
-        const cardHTML = `
-        <div class="cards">
-            <div class="img_card">
-                <img src="${jogo.imagem}" alt="${jogo.nome}">
-            </div>
-            <div class="card-content">
-                <div class="card-header">
-                    <div class="card-title">
-                        <h2>${jogo.nome}</h2>
-                        <span class="categoria">${jogo.categoria}</span>
-                        <div class="star">${jogo.estrelas}<span class="nota">${jogo.nota}</span></div>
-                    </div>
-                    <div class="tags">
-                        ${jogo.tags.map(tag => `<span class="tag ${tag.classe}">${tag.texto}</span>`).join('')}
-                    </div>
-                </div>
-
-                <div class="spec-card">
-                    <div class="spec-box min">
-                        <h3>MÍNIMO</h3>
-                        <p><strong>CPU:</strong> ${jogo.specs.minimo.cpu}</p>
-                        <p><strong>GPU:</strong> ${jogo.specs.minimo.gpu}</p>
-                        <p><strong>RAM:</strong> ${jogo.specs.minimo.ram}</p>
-                    </div>
-                    <div class="spec-box med">
-                        <h3>RECOMENDADO</h3>
-                        <p><strong>CPU:</strong> ${jogo.specs.recomendado.cpu}</p>
-                        <p><strong>GPU:</strong> ${jogo.specs.recomendado.gpu}</p>
-                        <p><strong>RAM:</strong> ${jogo.specs.recomendado.ram}</p>
-                    </div>
-                    <div class="spec-box max">
-                        <h3>ULTRA</h3>
-                        <p><strong>CPU:</strong> ${jogo.specs.ultra.cpu}</p>
-                        <p><strong>GPU:</strong> ${jogo.specs.ultra.gpu}</p>
-                        <p><strong>RAM:</strong> ${jogo.specs.ultra.ram}</p>
-                    </div>
-                </div>
-
-                <div class="buttons">
-                    <button class="btn_setup" onclick="window.location.href='../Setup_Page/setup.html'">MONTAR SETUP</button>
-                </div>
-            </div>
-        </div>`;
-        container.innerHTML += cardHTML;
-    });
-}
-
-// Renderiza os botões dinamicamente
-function renderizarBotoesPaginacao(totalPaginas) {
-    const containerPaginacao = document.getElementById("container-paginacao");
-    containerPaginacao.innerHTML = "";
-    
-    // Se só tiver 1 página ou nenhuma, não mostra os botões
-    if (totalPaginas <= 1) return;
-
-    for (let i = 1; i <= totalPaginas; i++) {
-        const botao = document.createElement("button");
-        botao.innerText = i;
-        
-        if (i === paginaAtual) botao.classList.add("ativo");
-        
-        botao.addEventListener("click", () => {
-            paginaAtual = i;
-            renderizarCatalogo();
-            // Dá um scroll suave de volta pro topo do catálogo
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-        });
-        
-        containerPaginacao.appendChild(botao);
-    }
-}
-
-function atualizarBadgeCarrinho() {
-    const badge = document.getElementById('badge-carrinho');
-    if(!badge) return;
-
-    let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
-    let totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
-
-    if (totalItens > 0) {
-        badge.innerText = totalItens;
-        badge.style.display = 'flex';
-    } else {
-        badge.style.display = 'none';
-    }
-}
