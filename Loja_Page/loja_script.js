@@ -285,16 +285,21 @@ function salvarOverridesSpecs(overrides) {
     localStorage.setItem(CHAVE_SPECS, JSON.stringify(overrides));
 }
 
-// Retorna as specs "efetivas" do produto: especificações base do arquivo de dados
-// mescladas com qualquer alteração feita pelo usuário (guardada no localStorage).
+// Retorna as specs "efetivas" do produto, mesclando 3 origens (da mais
+// "oficial" pra mais "provisória"):
+//   1) produto.especificacoes  -> vem do dados-produtos.js (base fixa)
+//   2) especificacoesExtras    -> vem do especificacoes-extras.js (commitado no Git,
+//                                  visível pra todo mundo que der git pull)
+//   3) overrides do localStorage -> edições feitas AGORA neste navegador,
+//                                  que ainda não foram exportadas/commitadas
 function obterSpecsProduto(produto) {
-    const overrides = obterOverridesSpecs();
+    const overridesLocais = obterOverridesSpecs();
     const base = produto.especificacoes || {};
-    const specsSalvas = overrides[produto.id];
+    const commitado = (typeof especificacoesExtras !== 'undefined' && especificacoesExtras[produto.id]) || null;
+    const local = overridesLocais[produto.id];
 
-    // Se já existe um override salvo para este produto, ele manda (permite remover specs base também)
-    if (specsSalvas) return { ...specsSalvas };
-
+    if (local) return { ...local };
+    if (commitado) return { ...commitado };
     return { ...base };
 }
 
@@ -333,6 +338,13 @@ function garantirModalExiste() {
                         <input type="text" id="input-spec-nome" placeholder="Nome (ex: Fabricante)">
                         <input type="text" id="input-spec-valor" placeholder="Valor (ex: NVIDIA)">
                         <button type="button" onclick="adicionarEspecificacao()">+ Adicionar</button>
+                    </div>
+
+                    <div id="modal-export-area" class="modal-export-area">
+                        <button type="button" class="modal-btn-exportar" onclick="exportarEspecificacoes()">
+                            ⬇ Exportar para o Git
+                        </button>
+                        <p class="modal-export-aviso">Baixa <code>especificacoes-extras.js</code> atualizado. Substitua o arquivo no repositório e faça commit + push para que as mudanças apareçam para todo mundo.</p>
                     </div>
                 </div>
             </div>
@@ -399,11 +411,13 @@ function renderizarSpecsModal() {
     const podeEditar = usuarioPodeEditarSpecs();
     const lista = document.getElementById('modal-specs-lista');
     const formAdd = document.getElementById('modal-add-spec-form');
+    const areaExport = document.getElementById('modal-export-area');
     const specs = obterSpecsProduto(produtoModalAtual);
     const chaves = Object.keys(specs);
 
-    // Mostra o formulário de adicionar especificação apenas para admin
+    // Mostra o formulário de adicionar especificação e o botão de exportar apenas para admin
     if (formAdd) formAdd.style.display = podeEditar ? 'flex' : 'none';
+    if (areaExport) areaExport.style.display = podeEditar ? 'block' : 'none';
 
     if (chaves.length === 0) {
         lista.innerHTML = podeEditar
@@ -462,6 +476,35 @@ function removerEspecificacao(nome) {
     salvarOverridesSpecs(overrides);
 
     renderizarSpecsModal();
+}
+
+// Gera o arquivo especificacoes-extras.js com TUDO que já existia commitado
+// mais TODAS as edições locais (de qualquer produto, não só o que está aberto
+// no modal) e força o download. O admin substitui o arquivo no projeto e
+// faz commit + push — assim quem der 'git pull' já vê as specs atualizadas.
+function exportarEspecificacoes() {
+    if (!usuarioPodeEditarSpecs()) return;
+
+    const overridesLocais = obterOverridesSpecs();
+    const combinado = { ...(typeof especificacoesExtras !== 'undefined' ? especificacoesExtras : {}) };
+
+    Object.keys(overridesLocais).forEach(id => {
+        combinado[id] = overridesLocais[id];
+    });
+
+    const conteudo = `/* =========================================================================\n   ESPECIFICACOES-EXTRAS.JS\n   Gerado automaticamente pelo botão "Exportar para o Git" na Loja.\n   Substitua o arquivo antigo por este no repositório e faça commit + push.\n========================================================================= */\n\nconst especificacoesExtras = ${JSON.stringify(combinado, null, 4)};\n`;
+
+    const blob = new Blob([conteudo], { type: 'text/javascript' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'especificacoes-extras.js';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    mostrarToast('Arquivo <b>especificacoes-extras.js</b> baixado! Substitua no projeto e dê commit + push.');
 }
 
 document.addEventListener('keydown', (e) => {
