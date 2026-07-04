@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarCarrinho();
     atualizarBadgeCarrinho();
     configurarLupaPesquisa();
+    if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
 });
 
 function configurarLupaPesquisa() {

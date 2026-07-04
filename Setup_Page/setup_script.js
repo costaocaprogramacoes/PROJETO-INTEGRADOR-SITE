@@ -401,3 +401,4 @@ function atualizarBadgeSimples() {
 // Iniciar a aplicação na primeira carga
 renderAllLists();
 atualizarBadgeSimples();
+if (typeof renderizarAreaConta === 'function') renderizarAreaConta();

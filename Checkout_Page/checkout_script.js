@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarAbasPagamento();
     renderizarResumoCheckout();
     configurarLupaPesquisa();
+    if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
 });
 
 function configurarLupaPesquisa() {

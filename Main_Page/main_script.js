@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Atualiza a bolinha de contagem do carrinho
     atualizarBadgeCarrinho();
 
+    // Mostra "Entrar" ou o usuário logado no header
+    if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
+
     // Dados das Categorias
     const categorias = [
         { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 29 },

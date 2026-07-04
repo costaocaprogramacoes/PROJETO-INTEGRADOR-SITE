@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inicia a aplicação
     renderizarCatalogo();
     atualizarBadgeCarrinho();
+    if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
 });
 
 // Função principal de Filtro e Divisão de Páginas

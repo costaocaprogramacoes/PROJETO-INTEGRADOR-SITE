@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarLoja();
     configurarEventos();
     atualizarBadgeCarrinho();
+    if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
 });
 
 function renderizarLoja() {
@@ -99,20 +100,23 @@ function renderizarCards(listaProdutos) {
     listaProdutos.forEach(produto => {
         const cardHTML = `
             <div class="card">
-                <div class="video-container">
+                <div class="video-container" onclick="abrirModalProduto(${produto.id})">
                     <img class="card1-img" src="${produto.imagem}" alt="${produto.nome}">
                     ${produto.video ? `
                         <video class="video-hover" autoplay muted loop playsinline>
                             <source src="${produto.video}" type="video/mp4">
                         </video>
                     ` : ''}
+                    <div class="overlay-detalhes">
+                        <button type="button" class="btn-ver-detalhes" onclick="event.stopPropagation(); abrirModalProduto(${produto.id})">Ver Detalhes</button>
+                    </div>
                 </div>
                 <div class="cardp"><p>${produto.categoria}</p></div>
                 <div class="h1"><p>${produto.nome}</p></div>
                 <div class="score"><p>🔹Score ${produto.score}/100</p></div>
                 ${produto.precoPromocao ? `<div class="precos"><span>R$ ${produto.precoOriginal}</span></div>` : ''}
                 <div class="promos"><span>R$ ${produto.precoPromocao || produto.precoOriginal}</span></div>
-                <div class="botao"><button onclick="comprarItem(${produto.id})">Comprar</button></div>
+                <div class="botao"><button onclick="event.stopPropagation(); comprarItem(${produto.id})">Comprar</button></div>
             </div>
         `;
         containerProdutos.innerHTML += cardHTML;
@@ -261,6 +265,208 @@ function mostrarToast(mensagem) {
         toast.classList.remove('mostrar');
     }, 5000);
 }
+
+/* =========================================================================
+   MODAL DE DETALHES DO PRODUTO
+   As especificações de cada produto ficam salvas no localStorage
+   (chave 'nexus_specs_overrides'), guardadas por id do produto.
+   Isso permite adicionar/remover specs sem alterar o arquivo de dados,
+   e as alterações continuam salvas mesmo depois de recarregar a página.
+========================================================================= */
+
+const CHAVE_SPECS = 'nexus_specs_overrides';
+let produtoModalAtual = null;
+
+function obterOverridesSpecs() {
+    return JSON.parse(localStorage.getItem(CHAVE_SPECS)) || {};
+}
+
+function salvarOverridesSpecs(overrides) {
+    localStorage.setItem(CHAVE_SPECS, JSON.stringify(overrides));
+}
+
+// Retorna as specs "efetivas" do produto: especificações base do arquivo de dados
+// mescladas com qualquer alteração feita pelo usuário (guardada no localStorage).
+function obterSpecsProduto(produto) {
+    const overrides = obterOverridesSpecs();
+    const base = produto.especificacoes || {};
+    const specsSalvas = overrides[produto.id];
+
+    // Se já existe um override salvo para este produto, ele manda (permite remover specs base também)
+    if (specsSalvas) return { ...specsSalvas };
+
+    return { ...base };
+}
+
+function garantirModalExiste() {
+    if (document.getElementById('modal-produto-overlay')) return;
+
+    const modalHTML = `
+        <div id="modal-produto-overlay" class="modal-produto-overlay">
+            <div class="modal-produto">
+                <button type="button" class="modal-fechar" onclick="fecharModalProduto()">&times;</button>
+
+                <div class="modal-produto-topo">
+                    <div class="modal-produto-imagem">
+                        <img id="modal-img" src="" alt="">
+                    </div>
+
+                    <div class="modal-produto-info">
+                        <p class="modal-categoria" id="modal-categoria"></p>
+                        <h2 id="modal-nome"></h2>
+                        <p class="modal-score" id="modal-score"></p>
+
+                        <div class="modal-precos">
+                            <span class="modal-preco-original" id="modal-preco-original" style="display:none;"></span>
+                            <span class="modal-preco-final" id="modal-preco-final"></span>
+                        </div>
+
+                        <button type="button" class="modal-btn-comprar" id="modal-btn-comprar">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+
+                <div class="modal-specs-area">
+                    <h3>ESPECIFICAÇÕES</h3>
+                    <div id="modal-specs-lista" class="modal-specs-lista"></div>
+
+                    <div class="modal-add-spec" id="modal-add-spec-form">
+                        <input type="text" id="input-spec-nome" placeholder="Nome (ex: Fabricante)">
+                        <input type="text" id="input-spec-valor" placeholder="Valor (ex: NVIDIA)">
+                        <button type="button" onclick="adicionarEspecificacao()">+ Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    document.getElementById('modal-produto-overlay').addEventListener('click', (e) => {
+        if (e.target.id === 'modal-produto-overlay') fecharModalProduto();
+    });
+}
+
+function abrirModalProduto(id) {
+    const produto = produtos.find(p => p.id === id);
+    if (!produto) return;
+
+    garantirModalExiste();
+    produtoModalAtual = produto;
+
+    document.getElementById('modal-img').src = produto.imagem;
+    document.getElementById('modal-img').alt = produto.nome;
+    document.getElementById('modal-categoria').innerText = produto.categoria;
+    document.getElementById('modal-nome').innerText = produto.nome;
+    document.getElementById('modal-score').innerText = `🔹 Score ${produto.score}/100`;
+
+    const precoOriginalEl = document.getElementById('modal-preco-original');
+    const precoFinalEl = document.getElementById('modal-preco-final');
+
+    if (produto.precoPromocao) {
+        precoOriginalEl.style.display = 'inline';
+        precoOriginalEl.innerText = `R$ ${produto.precoOriginal}`;
+    } else {
+        precoOriginalEl.style.display = 'none';
+    }
+    precoFinalEl.innerText = `R$ ${produto.precoPromocao || produto.precoOriginal}`;
+
+    document.getElementById('modal-btn-comprar').onclick = () => {
+        comprarItem(produto.id);
+    };
+
+    renderizarSpecsModal();
+
+    document.getElementById('modal-produto-overlay').classList.add('ativo');
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharModalProduto() {
+    const overlay = document.getElementById('modal-produto-overlay');
+    if (overlay) overlay.classList.remove('ativo');
+    document.body.style.overflow = '';
+    produtoModalAtual = null;
+}
+
+// Só o administrador logado pode adicionar/remover especificações.
+// Usuários comuns (ou visitantes deslogados) veem a lista, mas somente leitura.
+function usuarioPodeEditarSpecs() {
+    return typeof ehAdmin === 'function' && ehAdmin();
+}
+
+function renderizarSpecsModal() {
+    if (!produtoModalAtual) return;
+
+    const podeEditar = usuarioPodeEditarSpecs();
+    const lista = document.getElementById('modal-specs-lista');
+    const formAdd = document.getElementById('modal-add-spec-form');
+    const specs = obterSpecsProduto(produtoModalAtual);
+    const chaves = Object.keys(specs);
+
+    // Mostra o formulário de adicionar especificação apenas para admin
+    if (formAdd) formAdd.style.display = podeEditar ? 'flex' : 'none';
+
+    if (chaves.length === 0) {
+        lista.innerHTML = podeEditar
+            ? `<p class="modal-specs-vazio">Nenhuma especificação cadastrada ainda. Adicione abaixo!</p>`
+            : `<p class="modal-specs-vazio">Nenhuma especificação cadastrada para este produto.</p>`;
+        return;
+    }
+
+    lista.innerHTML = chaves.map(nome => `
+        <div class="modal-spec-item">
+            <span class="modal-spec-nome">${nome}</span>
+            <span class="modal-spec-valor">${specs[nome]}</span>
+            ${podeEditar ? `<button type="button" class="modal-spec-remover" onclick="removerEspecificacao('${nome.replace(/'/g, "\\'")}')" title="Remover especificação">&times;</button>` : ''}
+        </div>
+    `).join('');
+}
+
+function adicionarEspecificacao() {
+    if (!produtoModalAtual) return;
+    if (!usuarioPodeEditarSpecs()) return; // proteção extra: só admin pode chegar até aqui
+
+    const inputNome = document.getElementById('input-spec-nome');
+    const inputValor = document.getElementById('input-spec-valor');
+
+    const nome = inputNome.value.trim();
+    const valor = inputValor.value.trim();
+
+    if (!nome || !valor) {
+        inputNome.focus();
+        return;
+    }
+
+    const overrides = obterOverridesSpecs();
+    const specsAtuais = obterSpecsProduto(produtoModalAtual);
+
+    specsAtuais[nome] = valor;
+    overrides[produtoModalAtual.id] = specsAtuais;
+    salvarOverridesSpecs(overrides);
+
+    inputNome.value = '';
+    inputValor.value = '';
+    inputNome.focus();
+
+    renderizarSpecsModal();
+}
+
+function removerEspecificacao(nome) {
+    if (!produtoModalAtual) return;
+    if (!usuarioPodeEditarSpecs()) return; // proteção extra: só admin pode chegar até aqui
+
+    const overrides = obterOverridesSpecs();
+    const specsAtuais = obterSpecsProduto(produtoModalAtual);
+
+    delete specsAtuais[nome];
+    overrides[produtoModalAtual.id] = specsAtuais;
+    salvarOverridesSpecs(overrides);
+
+    renderizarSpecsModal();
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') fecharModalProduto();
+});
 
 function atualizarBadgeCarrinho() {
     const badge = document.getElementById('badge-carrinho');
