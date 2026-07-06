@@ -212,8 +212,8 @@ window.verificarCompatibilidadeGeral = function() {
         }
     });
 
-    // O poder bruto do PC é a média do Score da CPU e da GPU (já que removemos o display do score do visual)
-    const pcPower = (setupSelecionado.cpu.nota + setupSelecionado.gpu.nota) / 2;
+    // Calcula o "poder" ponderado do PC (GPU pesa mais que CPU para FPS, com penalidade de gargalo e bônus/penalidade de RAM/Armazenamento)
+    const pcPower = calcularPoderDoPC();
 
     // Gerar opções do select (Dropdown) baseado no array 'catalogoJogos'
     const selectOptionsHTML = catalogoJogos.map((jogo, index) => 
@@ -224,7 +224,7 @@ window.verificarCompatibilidadeGeral = function() {
         <div style="padding: 20px;">
             <div style="margin-bottom: 20px;">
                 <label style="color:#7070A0; font-size:12px; font-weight:bold;">ESCOLHA UM JOGO PARA TESTAR:</label>
-                <select id="jogoTestado" onchange="atualizarResultadoFPS(${pcPower})" style="width: 100%; padding: 10px; margin-top: 8px; background: #060a16; color: white; border: 1px solid #1a2340; border-radius: 4px; outline: none; font-size:14px; cursor:pointer;">
+                <select id="jogoTestado" onchange="atualizarResultadoFPS()" style="width: 100%; padding: 10px; margin-top: 8px; background: #060a16; color: white; border: 1px solid #1a2340; border-radius: 4px; outline: none; font-size:14px; cursor:pointer;">
                     ${selectOptionsHTML}
                 </select>
             </div>
@@ -244,44 +244,105 @@ window.verificarCompatibilidadeGeral = function() {
     `;
 
     // Chama a função uma vez para popular o resultado do primeiro jogo do Select
-    window.atualizarResultadoFPS(pcPower);
+    window.atualizarResultadoFPS();
+}
+
+// Calcula o "poder" ponderado do PC, considerando gargalo (bottleneck) entre CPU/GPU e o impacto de RAM/Armazenamento
+function calcularPoderDoPC() {
+    const cpuScore = setupSelecionado.cpu.nota;
+    const gpuScore = setupSelecionado.gpu.nota;
+
+    // A GPU pesa mais no resultado final de FPS (~63%), a CPU entra com ~37%
+    let poder = (gpuScore * 0.63) + (cpuScore * 0.37);
+
+    // Gargalo: se a GPU é muito mais forte que a CPU, parte do potencial da GPU se perde
+    const diferenca = gpuScore - cpuScore;
+    if (diferenca > 12) {
+        poder -= (diferenca - 12) * 0.35;
+    }
+    // Gargalo inverso: CPU muito acima da GPU também limita levemente (a GPU é o teto)
+    else if (diferenca < -12) {
+        poder -= (Math.abs(diferenca) - 12) * 0.15;
+    }
+
+    // Memória RAM: capacidade insuficiente derruba o desempenho, capacidade alta ajuda um pouco
+    if (setupSelecionado.ram) {
+        const capMatch = setupSelecionado.ram.nome.match(/(\d+)\s*GB/i);
+        const capacidade = capMatch ? parseInt(capMatch[1], 10) : 16;
+        if (capacidade <= 8) poder -= 12;
+        else if (capacidade < 16) poder -= 6;
+        else if (capacidade >= 32) poder += 3;
+    } else {
+        poder -= 8; // Sem RAM selecionada, assume-se um cenário abaixo do ideal
+    }
+
+    // Armazenamento: HD mecânico causa engasgos/stutter (carregamento de texturas), SSD NVMe ajuda a manter a fluidez
+    if (setupSelecionado.armazenamento) {
+        const nomeArmz = setupSelecionado.armazenamento.nome.toUpperCase();
+        if (nomeArmz.includes("HD ") || nomeArmz.startsWith("HD")) poder -= 4;
+        else if (nomeArmz.includes("NVME")) poder += 2;
+    }
+
+    return Math.max(poder, 15);
 }
 
 // Calcula FPS e Qualidade com base no Jogo escolhido
-window.atualizarResultadoFPS = function(pcPower) {
+window.atualizarResultadoFPS = function() {
     const selector = document.getElementById('jogoTestado');
     const resultBox = document.getElementById('resultado-fps-box');
     if (!selector || !resultBox) return;
+    if (!setupSelecionado.cpu || !setupSelecionado.gpu) return;
 
     const jogo = catalogoJogos[selector.value];
-    
-    // Cálculo estimado (Poder do PC dividido pelo peso de processamento do Jogo)
-    const desempenhoCalculado = pcPower / jogo.peso; 
-    
+    const pcPower = calcularPoderDoPC();
+
+    // Estimativa de FPS contínua (não apenas faixas fixas), variando de acordo com peso do jogo e poder do PC
+    let fpsCalculado = Math.round((pcPower * pcPower) / (jogo.peso * 55));
+
+    // Ruído leve determinístico (baseado no nome do jogo + peças) pra simular variações reais entre motores gráficos
+    const seed = (jogo.nome.length * 7 + setupSelecionado.cpu.id.length + setupSelecionado.gpu.id.length) % 9;
+    fpsCalculado += (seed - 4);
+    fpsCalculado = Math.max(fpsCalculado, 14);
+
     let qualidadeRecomendada = "";
+    let corResultado = "#00ff88";
     let fpsEstimado = "";
 
-    if (desempenhoCalculado > 120) {
+    if (fpsCalculado >= 200) {
         qualidadeRecomendada = "ULTRA / EXTREMO";
-        fpsEstimado = "144+ FPS";
-    } else if (desempenhoCalculado > 90) {
+        fpsEstimado = "300+ FPS";
+    } else if (fpsCalculado >= 144) {
+        qualidadeRecomendada = "ULTRA";
+        fpsEstimado = `${fpsCalculado - 15} a ${fpsCalculado + 20} FPS`;
+    } else if (fpsCalculado >= 100) {
         qualidadeRecomendada = "ALTO / ULTRA";
-        fpsEstimado = "60 a 90 FPS";
-    } else if (desempenhoCalculado > 60) {
+        fpsEstimado = `${fpsCalculado - 10} a ${fpsCalculado + 15} FPS`;
+        corResultado = "#00ff88";
+    } else if (fpsCalculado >= 70) {
+        qualidadeRecomendada = "ALTO";
+        fpsEstimado = `${fpsCalculado - 8} a ${fpsCalculado + 10} FPS`;
+        corResultado = "#7cff5c";
+    } else if (fpsCalculado >= 50) {
         qualidadeRecomendada = "MÉDIO";
-        fpsEstimado = "40 a 60 FPS";
+        fpsEstimado = `${fpsCalculado - 6} a ${fpsCalculado + 8} FPS`;
+        corResultado = "#ffd23f";
+    } else if (fpsCalculado >= 35) {
+        qualidadeRecomendada = "BAIXO";
+        fpsEstimado = `${fpsCalculado - 5} a ${fpsCalculado + 5} FPS`;
+        corResultado = "#ff8c42";
     } else {
-        qualidadeRecomendada = "MÍNIMO / BAIXO";
-        fpsEstimado = "30 FPS";
+        qualidadeRecomendada = "MÍNIMO";
+        fpsEstimado = `~${fpsCalculado} FPS`;
+        corResultado = "#ff3366";
     }
 
     resultBox.innerHTML = `
         <div class="game-result-item">
-            <div class="empty-icon" style="width: 40px; height:40px; margin:0; border: 1px solid #00d9ff; color:#00d9ff; font-size:20px;">🎮</div>
+            <div class="empty-icon" style="width: 40px; height:40px; margin:0; border: 1px solid ${corResultado}; color:${corResultado}; font-size:20px;">🎮</div>
             <div class="game-result-info" style="display:flex; flex-direction:column; gap:4px;">
                 <span style="color: #7070A0; font-size: 11px;">PREDEFINIÇÃO RECOMENDADA</span>
                 <h4 style="color: white; font-size: 16px;">${qualidadeRecomendada}</h4>
-                <span style="font-size: 13px; color: #00ff88; font-weight:bold;">Desempenho: ${fpsEstimado}</span>
+                <span style="font-size: 13px; color: ${corResultado}; font-weight:bold;">Desempenho estimado: ${fpsEstimado}</span>
             </div>
         </div>
     `;
