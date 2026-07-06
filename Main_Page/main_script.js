@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dados das Categorias
     const categorias = [
-        { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 29 },
-        { icone: "fa-solid fa-desktop", titulo: "MONITORES", itens: 15 },
-        { icone: "fa-solid fa-headphones", titulo: "HEADSETS", itens: 10 },
-        { icone: "fa-solid fa-computer-mouse", titulo: "MOUSES", itens: 16 }
+        { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 29, valorFiltro: "PROCESSADOR" },
+        { icone: "fa-solid fa-desktop", titulo: "MONITORES", itens: 15, valorFiltro: "MONITOR" },
+        { icone: "fa-solid fa-headphones", titulo: "HEADSETS", itens: 10, valorFiltro: "HEADSET" },
+        { icone: "fa-solid fa-computer-mouse", titulo: "MOUSES", itens: 16, valorFiltro: "MOUSE" }
     ];
 
     // Dados dos Jogos em Destaque
@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     // Renderizar Categorias
-    const catContainer = document.getElementById('categorias-container');
+const catContainer = document.getElementById('categorias-container');
     if (catContainer) {
         catContainer.innerHTML = categorias.map(cat => `
-            <div class="card" onclick="window.location.href='../Loja_Page/loja.html'">
+            <div class="card" onclick="window.location.href='../Loja_Page/loja.html?categoria=${cat.valorFiltro}'">
                 <i class="${cat.icone}"></i>
                 <div>
                     <h3>${cat.titulo}</h3>

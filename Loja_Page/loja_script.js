@@ -34,6 +34,9 @@ function obterPrecoNumerico(produto) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    verificarFiltroURL();
+    
     renderizarLoja();
     configurarEventos();
     atualizarBadgeCarrinho();
@@ -524,5 +527,20 @@ function atualizarBadgeCarrinho() {
         badge.style.display = 'flex';
     } else {
         badge.style.display = 'none';
+    }
+}
+
+// Função para checar se existe uma categoria na URL e marcar o checkbox
+function verificarFiltroURL() {
+    const parametros = new URLSearchParams(window.location.search);
+    const categoriaURL = parametros.get('categoria'); // Pega o valor ex: "PROCESSADOR"
+
+    if (categoriaURL) {
+        // Busca o checkbox que tem o mesmo value da URL
+        const checkbox = document.querySelector(`.filtro-grupo input[type="checkbox"][value="${categoriaURL}"]`);
+        
+        if (checkbox) {
+            checkbox.checked = true; // Marca o checkbox
+        }
     }
 }

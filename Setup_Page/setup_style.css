@@ -106,6 +106,37 @@ nav { display: flex; }
 .accordion-content { display: none; background: #060a16; border-top: 1px solid #1a2340; }
 .accordion-item.active .accordion-content { display: block; }
 
+/* --- CORES DISTINTAS POR CATEGORIA --- */
+#acc-cpu .acc-title { color: #00d9ff; }
+#acc-cpu.active .acc-icon { color: #00d9ff; }
+
+#acc-placamae .acc-title { color: #ff8c42; }
+#acc-placamae.active .acc-icon { color: #ff8c42; }
+
+#acc-gpu .acc-title { color: #b15bf0; }
+#acc-gpu.active .acc-icon { color: #b15bf0; }
+
+#acc-ram .acc-title { color: #3ddc84; }
+#acc-ram.active .acc-icon { color: #3ddc84; }
+
+#acc-armazenamento .acc-title { color: #ffd23f; }
+#acc-armazenamento.active .acc-icon { color: #ffd23f; }
+
+#acc-fonte .acc-title { color: #ff5470; }
+#acc-fonte.active .acc-icon { color: #ff5470; }
+
+#acc-monitor .acc-title { color: #4d8dff; }
+#acc-monitor.active .acc-icon { color: #4d8dff; }
+
+#acc-mouse .acc-title { color: #ff6ec7; }
+#acc-mouse.active .acc-icon { color: #ff6ec7; }
+
+#acc-teclado .acc-title { color: #2de1c2; }
+#acc-teclado.active .acc-icon { color: #2de1c2; }
+
+#acc-headset .acc-title { color: #a78bfa; }
+#acc-headset.active .acc-icon { color: #a78bfa; }
+
 /* --- OPÇÕES DE PEÇAS (Cards Internos) --- */
 .component-option {
     display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid #101935;
