@@ -103,9 +103,39 @@ a { text-decoration: none; color: inherit; }
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(0,212,255,0.3); }
 
-.video-container { position: relative; width: 100%; height: 160px; cursor: pointer; }
-.card1-img { width: 100%; height: 160px; object-fit: cover; display: block; }
-.video-hover { position: absolute; top: 0; left: 0; width: 100%; height: 160px; object-fit: cover; display: none; }
+/* 1. O CONTAINER (A caixinha onde a imagem fica) */
+.video-container { 
+    position: relative; 
+    width: 100%; 
+    height: 160px; 
+    cursor: pointer; 
+    overflow: hidden; /* ⚡ IMPEDE A IMAGEM DE ESTOURAR O CARD: Corta tudo o que passar de 160px */
+}
+
+/* 2. A IMAGEM DO PRODUTO */
+.card1-img { 
+    width: 100%; 
+    height: 160px; 
+    object-fit: cover; 
+    display: block; 
+    
+    /* ⚡ AJUSTE O ZOOM AQUI ⚡ */
+    transform: scale(1.4); /* 1.4 aumenta em 40%. Se quiser mais perto, tente 1.3 ou 1.4 */
+}
+
+/* 3. O VÍDEO DE HOVER (Para o vídeo acompanhar o mesmo zoom da imagem) */
+.video-hover { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 160px; 
+    object-fit: cover; 
+    display: none; 
+    
+    /* ⚡ MANTENHA O MESMO VALOR DA IMAGEM ⚡ */
+    transform: scale(1.4); 
+}
 .card:hover .video-hover { display: block; }
 
 /* Overlay "Ver Detalhes" ao passar o mouse no card */
