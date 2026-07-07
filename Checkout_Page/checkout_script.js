@@ -97,7 +97,9 @@ function renderizarResumoCheckout() {
 
         htmlProdutos += `
             <div class="checkout-item-mini">
-                <img src="${caminhoImagem}" alt="${item.nome}" class="item-mini-img" onerror="this.src='https://via.placeholder.com/45?text=Sem+Img'">
+                <div class="item-mini-img-container">
+                    <img src="${caminhoImagem}" alt="${item.nome}" class="item-mini-img" onerror="this.src='https://via.placeholder.com/45?text=Sem+Img'">
+                </div>
                 <div class="item-mini-info">
                     <span class="item-mini-nome">${item.nome}</span>
                     <span class="item-mini-qtd">Qtd: ${item.quantidade}</span>

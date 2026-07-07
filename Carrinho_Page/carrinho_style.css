@@ -54,16 +54,28 @@ a { text-decoration: none; color: inherit; }
 
 /* ITEM DO CARRINHO */
 .item-card { background: #0b1023; border: 1px solid #161f3b; border-radius: 8px; padding: 20px; display: flex; align-items: center; gap: 20px; position: relative; }
-.item-img { 
-    width: 80px; 
-    height: 80px; 
-    object-fit: cover; 
-    border-radius: 6px; 
-    background: #12182b; 
+/* 1. O CONTAINER QUE VAI FAZER O RECORTE PERFEITO */
+.item-img-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;   /* ⚡ A mágica acontece aqui: corta o fundo branco que passar dos 80px */
+    background: #12182b;
+    flex-shrink: 0;     /* Impede o flexbox de esmagar o tamanho da imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 2. A IMAGEM COM O ZOOM LIVRE */
+.item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     
-    /* ⚡ TRUQUE DO ZOOM ⚡ */
-    transform: scale(2.5); /* Amplia o centro da imagem em 40%, eliminando o excesso de borda do arquivo */
-    clip-path: inset(22% round 3px);    /* Corta o transbordo para a imagem não sair do limite de 80x80 */
+    /* ⚡ AJUSTE O ZOOM LIVREMENTE AQUI ⚡ */
+    transform: scale(1.5); /* Pode mudar para 1.5, 1.8, 2.5... nada vai estourar! */
 }
 .item-info { flex: 1; }
 .item-cat { color: #5878ff; font-size: 10px; letter-spacing: 1px; display: block; margin-bottom: 5px; text-transform: uppercase; }

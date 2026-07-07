@@ -80,7 +80,9 @@ function renderizarCarrinho() {
 
         htmlItens += `
             <div class="item-card">
-                <img src="${caminhoImagem}" alt="${item.nome}" class="item-img" onerror="this.src='https://via.placeholder.com/80?text=Sem+Img'">
+                <div class="item-img-container">
+                    <img src="${caminhoImagem}" alt="${item.nome}" class="item-img" onerror="this.src='https://via.placeholder.com/80?text=Sem+Img'">
+                </div>
                 <div class="item-info">
                     <span class="item-cat">${item.categoria}</span>
                     <span class="item-nome">${item.nome}</span>
