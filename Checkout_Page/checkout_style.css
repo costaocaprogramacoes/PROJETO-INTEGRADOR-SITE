@@ -78,7 +78,18 @@ a { text-decoration: none; color: inherit; }
 .resumo-pedido h3 { font-size: 14px; color: #a0aabf; letter-spacing: 1px; margin-bottom: 20px; }
 .checkout-lista-produtos { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
 .checkout-item-mini { display: flex; align-items: center; gap: 12px; background: #0e142c; border: 1px solid #161f3b; padding: 10px; border-radius: 6px; }
-.item-mini-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; background: #12182b; flex-shrink: 0; }
+.item-mini-img { 
+    width: 45px; 
+    height: 45px; 
+    object-fit: cover; 
+    border-radius: 4px; 
+    background: #12182b; 
+    flex-shrink: 0; 
+    
+    /* ⚡ TRUQUE DO ZOOM ⚡ */
+    transform: scale(2.5); /* Aplica o mesmo zoom na miniatura */
+    clip-path: inset(22% round 2px);    /* Mantém o recorte perfeito dentro dos 45x45 */
+}
 .item-mini-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .item-mini-nome { font-size: 13px; font-weight: bold; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .item-mini-qtd { font-size: 11px; color: #7070A0; }
