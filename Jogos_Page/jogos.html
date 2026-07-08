@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="jogos_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <title>NEXUSGG - Jogos</title>
 </head>
 <body>
@@ -26,7 +27,6 @@
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </div>
-                    <div id="area-conta" class="area-conta"></div>
                     <a href="../Carrinho_Page/carrinho.html" class="carrinho-link">
                         <svg class="icone" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -35,6 +35,7 @@
                         </svg>
                         <span class="badge-carrinho" id="badge-carrinho" style="display: none;">0</span>
                     </a>
+                    <div id="area-conta" class="area-conta"></div>
                 </div>
             </div>
         </nav>
@@ -49,10 +50,39 @@
             <span>Confira os requisitos e avaliações da comunidade para cada jogo.</span>
         </div>
 
-        <div id="catalogo-container"></div>
-        
-        <!-- NOVO: Container onde os botões de paginação vão aparecer -->
-        <div class="paginacao" id="container-paginacao"></div>
+        <div class="layout-jogos">
+            <aside class="sidebar-filtros">
+                <h3>FILTROS</h3>
+
+                <div class="filtro-grupo">
+                    <h4>Desempenho Necessário</h4>
+                    <label><input type="checkbox" name="peso" value="leve"> Leve (PCs fracos)</label>
+                    <label><input type="checkbox" name="peso" value="medio"> Médio (PCs medianos)</label>
+                    <label><input type="checkbox" name="peso" value="pesado"> Pesado (PCs potentes)</label>
+                </div>
+
+                <div class="filtro-grupo">
+                    <h4>Categoria</h4>
+                    <label><input type="checkbox" name="categoria" value="FPS"> FPS / Tiro</label>
+                    <label><input type="checkbox" name="categoria" value="BATTLE_ROYALE"> Battle Royale</label>
+                    <label><input type="checkbox" name="categoria" value="RPG"> RPG</label>
+                    <label><input type="checkbox" name="categoria" value="MUNDO_ABERTO"> Mundo Aberto</label>
+                    <label><input type="checkbox" name="categoria" value="TERROR"> Terror / Survival Horror</label>
+                    <label><input type="checkbox" name="categoria" value="SOULSLIKE"> Souls-like</label>
+                    <label><input type="checkbox" name="categoria" value="ACAO"> Ação / Aventura</label>
+                    <label><input type="checkbox" name="categoria" value="MULTIPLAYER"> Multiplayer / Co-op</label>
+                    <label><input type="checkbox" name="categoria" value="ESTRATEGIA"> Estratégia / Turn-Based</label>
+                    <label><input type="checkbox" name="categoria" value="SIMULACAO"> Simulação</label>
+                    <label><input type="checkbox" name="categoria" value="LUTA"> Luta</label>
+                    <label><input type="checkbox" name="categoria" value="INDIE"> Indie / Plataforma</label>
+                </div>
+            </aside>
+
+            <div class="conteudo-jogos">
+                <div id="catalogo-container"></div>
+                <div class="paginacao" id="container-paginacao"></div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">

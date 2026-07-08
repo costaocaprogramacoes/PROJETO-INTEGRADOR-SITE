@@ -57,7 +57,7 @@ const catContainer = document.getElementById('categorias-container');
     const destContainer = document.getElementById('destaques-container');
     if (destContainer) {
         destContainer.innerHTML = destaques.map(jogo => `
-            <div class="game-card" onclick="window.location.href='../Setup_Page/setup.html'">
+            <div class="game-card" onclick="window.location.href='../Jogos_Page/jogos.html?jogo=${encodeURIComponent(jogo.nome).replace(/'/g, '%27')}'">
                 <img src="${jogo.img}" alt="${jogo.nome}">
                 <div class="game-info">
                     <div class="stars">${jogo.estrelas}</div>
