@@ -16,8 +16,8 @@ a { text-decoration: none; color: inherit; }
     border-bottom: 1px solid #0d203f; z-index: 1000;
 }
 
-/* O Segredo do alinhamento: 15vw de margem no header */
-.nexus { font-family: "Nasalization"; font-size: 1.2vw; margin-left: 15vw; color: white; cursor: pointer; }
+/* O Segredo do alinhamento: 6vw de margem no header */
+.nexus { font-family: "Nasalization"; font-size: 1.2vw; margin-left: 6vw; color: white; cursor: pointer; }
 .gg { color: aqua; }
 
 .navg ul { display: flex; gap: 30px; list-style: none; height: 100%; margin: 0; padding: 0; }
@@ -28,7 +28,7 @@ a { text-decoration: none; color: inherit; }
 .navg li.ativo-nav a { color: #00d9ff; }
 
 .icones-nav {
-    display: flex; align-items: center; gap: 25px; margin-right: 15vw;
+    display: flex; align-items: center; gap: 25px; margin-right: 6vw;
     justify-content: flex-end; color: #7070A0; height: 100%;
 }
 .icones-nav a { display: flex; align-items: center; }
@@ -46,10 +46,10 @@ a { text-decoration: none; color: inherit; }
 .search-box::placeholder { color: #64688a; }
 
 /* ================== ESTRUTURA DA LOJA ================== */
-/* Cria as linhas imaginárias idênticas aos 15vw do Header */
+/* Cria as linhas imaginárias idênticas aos 6vw do Header */
 .loja-page-content {
     width: 100%;
-    padding: 120px 15vw 50px 15vw; /* Top limpa o header. Left e Right delimitam o conteúdo perfeitamente! */
+    padding: 120px 6vw 50px 6vw; /* Top limpa o header. Left e Right delimitam o conteúdo perfeitamente! */
 }
 
 .titulo-area { text-align: left; margin-bottom: 30px; }
@@ -292,8 +292,8 @@ a { text-decoration: none; color: inherit; }
     background: rgb(6, 3, 22);
     color: #7070A0;
     
-    /* 15vw esquerda e direita para cravar com o Header */
-    padding: 40px 15vw 20px 15vw; 
+    /* 6vw esquerda e direita para cravar com o Header */
+    padding: 40px 6vw 20px 6vw; 
     
     font-family: Arial, sans-serif;
     width: 100%;

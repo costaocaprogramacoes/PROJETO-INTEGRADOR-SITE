@@ -5,7 +5,7 @@
    Deve ser carregado no HTML ANTES deste arquivo.
 ========================================================================= */
 
-const ITENS_POR_PAGINA = 8; 
+const ITENS_POR_PAGINA = 10; 
 let paginaAtual = 1;
 let termoPesquisa = "";
 let ordenacao = "relevancia";

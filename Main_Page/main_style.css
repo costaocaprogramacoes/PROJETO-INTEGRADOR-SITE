@@ -58,7 +58,7 @@ nav {
 .nexus {
     font-family: "Nasalization";
     font-size: 1.2vw;
-    margin-left: 15vw;
+    margin-left: 6vw;
     color: white;
     cursor: pointer;
 }
@@ -106,7 +106,7 @@ nav {
     display: flex;
     align-items: center; /* ✨ É essa linha que resolve o desalinhamento! */
     gap: 25px;
-    margin-right: 15vw;
+    margin-right: 6vw;
     justify-content: flex-end;
     color: #7070A0;
 }
@@ -161,7 +161,7 @@ nav {
 }
 
 .intro{
-    padding: 10vw 16vw;
+    padding: 10vw 7vw;
 }
 
 .texto{
@@ -225,7 +225,7 @@ nav {
     display: flex;
     position: relative;
     top: 8vw;
-    margin-left: 16vw;
+    margin-left: 7vw;
     font-size: smaller;
     border-style: inherit;
     color: aqua;
@@ -446,8 +446,8 @@ nav {
     background: rgb(6, 3, 22);
     color: #7070A0;
     
-    /* 15vw esquerda e direita para cravar com o Header */
-    padding: 40px 15vw 20px 15vw; 
+    /* 6vw esquerda e direita para cravar com o Header */
+    padding: 40px 6vw 20px 6vw; 
     
     font-family: Arial, sans-serif;
     width: 100%;
@@ -528,7 +528,7 @@ nav {
     align-items: center; /* Garante alinhamento vertical perfeito */
     justify-content: flex-end;
     gap: 25px;
-    margin-right: 15vw;
+    margin-right: 6vw;
     height: 70px; /* Garante que a altura do container seja a mesma da nav */
 }
 

@@ -117,7 +117,7 @@ body {
 
     font-size: 1.2vw;
 
-    margin-left: 15vw;
+    margin-left: 6vw;
 
     color: white;
 
@@ -201,7 +201,7 @@ body {
 
     gap: 25px;
 
-    margin-right: 15vw;
+    margin-right: 6vw;
 
     justify-content: flex-end;
 
@@ -961,7 +961,7 @@ button {
     margin-top: 50px;
     background: rgb(6, 3, 22);
     color: #7070A0;
-    padding: 40px 15vw 20px 15vw;
+    padding: 40px 6vw 20px 6vw;
     font-family: Arial, sans-serif;
     width: 100%;
 }

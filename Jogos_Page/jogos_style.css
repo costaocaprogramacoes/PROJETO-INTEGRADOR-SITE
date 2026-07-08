@@ -25,7 +25,7 @@ a { text-decoration: none; color: inherit; }
 .nexus {
     font-family: "Nasalization";
     font-size: 1.2vw;
-    margin-left: 15vw;
+    margin-left: 6vw;
     color: white;
     cursor: pointer;
 }
@@ -41,7 +41,7 @@ a { text-decoration: none; color: inherit; }
 .navg li.ativo-nav a { color: #00d9ff; }
 
 .icones-nav {
-    display: flex; align-items: center; gap: 25px; margin-right: 15vw; justify-content: flex-end; color: #7070A0; height: 70px;
+    display: flex; align-items: center; gap: 25px; margin-right: 6vw; justify-content: flex-end; color: #7070A0; height: 70px;
 }
 .icones-nav .icone { cursor: pointer; transition: color 0.3s ease; display: block;}
 .icones-nav .icone:hover { color: #00d9ff; }
@@ -70,7 +70,7 @@ a { text-decoration: none; color: inherit; }
 
 /* Título e Respiro do Header */
 .desc_pag {
-    padding: 120px 15vw 30px 15vw; 
+    padding: 120px 6vw 30px 6vw; 
     color: #8a8fb8;
 }
 
@@ -84,7 +84,7 @@ a { text-decoration: none; color: inherit; }
     display: flex;
     gap: 2vw;
     align-items: flex-start;
-    padding: 0 15vw 20px 15vw;
+    padding: 0 6vw 20px 6vw;
 }
 
 /* SIDEBAR DE FILTROS */
@@ -176,7 +176,7 @@ a { text-decoration: none; color: inherit; }
 .footer {
     border-top: 1px solid rgb(10, 37, 37);
     margin-top: 50px; background: rgb(6, 3, 22); color: #7070A0;
-    padding: 40px 15vw 20px 15vw; 
+    padding: 40px 6vw 20px 6vw; 
     font-family: Arial, sans-serif; width: 100vw; box-sizing: border-box;
 }
 .footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
