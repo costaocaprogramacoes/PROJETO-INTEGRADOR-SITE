@@ -65,6 +65,18 @@ const setupSelecionado = {
     cpu: null, placamae: null, gpu: null, ram: null, armazenamento: null, fonte: null, monitor: null, mouse: null, teclado: null, headset: null
 };
 
+// ==========================================================
+// LÓGICA DE FILTRO POR JOGO VIA URL
+// ==========================================================
+const paramsSetup = new URLSearchParams(window.location.search);
+const nomeJogoUrl = paramsSetup.get('jogo');
+let jogoFiltradoParaSetup = null;
+
+// Busca os dados completos do jogo se o parâmetro existir na URL
+if (nomeJogoUrl && typeof catalogoJogos !== 'undefined') {
+    jogoFiltradoParaSetup = catalogoJogos.find(j => j.nome.toLowerCase() === nomeJogoUrl.toLowerCase());
+}
+
 const ordemMontagem = ['cpu', 'placamae', 'gpu', 'ram', 'armazenamento', 'fonte', 'monitor', 'mouse', 'teclado', 'headset'];
 
 /* =========================================================================
@@ -77,8 +89,27 @@ function renderAllLists() {
         const container = document.getElementById(`list-${categoria}`);
         if (!container) return;
 
-        container.innerHTML = dbComponentes[categoria].map(item => {
-            let compativel = true;
+        // Adicionamos um .filter() antes do .map()
+container.innerHTML = dbComponentes[categoria].filter(item => {
+    // Se nenhum jogo veio pela URL, mostra todas as peças normalmente
+    if (!jogoFiltradoParaSetup) return true;
+
+    // Lógica de filtro: CPU e GPU precisam ter potência (nota) suficiente para rodar o jogo (peso)
+    if (categoria === 'cpu' || categoria === 'gpu') {
+        // Exemplo matemático: Exige uma nota mínima baseada no peso do jogo
+        // Ajuste o multiplicador (ex: 20) conforme os valores exatos do seu banco de dados
+        const notaMinimaExigida = jogoFiltradoParaSetup.peso * 45; 
+        
+        // Retorna true (mostra a peça) apenas se a nota for maior ou igual ao exigido
+        return item.nota >= notaMinimaExigida; 
+    }
+    
+    // Periféricos, gabinetes e outras peças não sofrem filtro de desempenho
+    return true; 
+    
+}).map(item => {
+    let compativel = true;
+    // ... o restante do código do seu map continua igual
             let motivoIncompatibilidade = "";
 
             // Verifica se a peça é compatível com o que já foi selecionado
@@ -216,10 +247,11 @@ window.verificarCompatibilidadeGeral = function() {
     const pcPower = calcularPoderDoPC();
 
     // Gerar opções do select (Dropdown) baseado no array 'catalogoJogos'
-    const selectOptionsHTML = catalogoJogos.map((jogo, index) => 
-        `<option value="${index}">${jogo.nome}</option>`
-    ).join('');
-
+const selectOptionsHTML = catalogoJogos.map((jogo, index) => {
+    // Verifica se o jogo atual do loop é o mesmo que veio pela URL
+    const isSelecionado = (jogoFiltradoParaSetup && jogo.nome === jogoFiltradoParaSetup.nome) ? 'selected' : '';
+    return `<option value="${index}" ${isSelecionado}>${jogo.nome}</option>`;
+}).join('');
     resultsContainer.innerHTML = `
         <div style="padding: 20px;">
             <div style="margin-bottom: 20px;">

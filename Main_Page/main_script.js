@@ -12,6 +12,46 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Menu Hamburguer (mobile)
+    const btnHamburger = document.getElementById('btn-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+    function fecharMenuMobile() {
+        btnHamburger.classList.remove('ativo');
+        mobileNav.classList.remove('ativo');
+        mobileNavOverlay.classList.remove('ativo');
+        btnHamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    function abrirMenuMobile() {
+        btnHamburger.classList.add('ativo');
+        mobileNav.classList.add('ativo');
+        mobileNavOverlay.classList.add('ativo');
+        btnHamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
+    if (btnHamburger && mobileNav && mobileNavOverlay) {
+        btnHamburger.addEventListener('click', () => {
+            const jaAberto = mobileNav.classList.contains('ativo');
+            jaAberto ? fecharMenuMobile() : abrirMenuMobile();
+        });
+
+        mobileNavOverlay.addEventListener('click', fecharMenuMobile);
+
+        // Fecha o menu ao clicar em qualquer link dele
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', fecharMenuMobile);
+        });
+
+        // Fecha o menu automaticamente se a tela for redimensionada para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) fecharMenuMobile();
+        });
+    }
+
     // Atualiza a bolinha de contagem do carrinho
     atualizarBadgeCarrinho();
 

@@ -184,7 +184,7 @@ function renderizarCards(lista) {
                 </div>
 
                 <div class="buttons">
-                    <button class="btn_setup" onclick="window.location.href='../Setup_Page/setup.html'">MONTAR SETUP</button>
+                    <button class="btn_setup" onclick="window.location.href='../Setup_Page/setup.html?jogo=${encodeURIComponent(jogo.nome)}'">MONTAR SETUP</button>
                 </div>
             </div>
         </div>`;

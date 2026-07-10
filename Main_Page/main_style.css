@@ -547,6 +547,110 @@ nav {
     position: relative;
 }
 
+/* --- MENU HAMBURGUER (mobile) --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1200;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #7070A0;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.hamburger:hover span {
+    background: aqua;
+}
+
+.hamburger.ativo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: aqua;
+}
+
+.hamburger.ativo span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.ativo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: aqua;
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1090;
+}
+
+.mobile-nav-overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    background: rgb(2, 1, 14);
+    border-left: 1px solid #0d203f;
+    z-index: 1100;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 30px 30px 30px;
+    overflow-y: auto;
+}
+
+.mobile-nav.ativo {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mobile-nav li a {
+    display: block;
+    color: #7070A0;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 16px 8px;
+    border-bottom: 1px solid #10162c;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav li.ativo-nav a {
+    color: #00d9ff;
+}
+
+.mobile-nav li a:hover {
+    color: aqua;
+}
+
 /* ================== BADGE DO CARRINHO ================== */
 .carrinho-link { position: relative; display: flex; align-items: center; }
 .badge-carrinho {
@@ -554,4 +658,226 @@ nav {
     background: #00d9ff; color: black; font-size: 11px; font-weight: bold;
     width: 18px; height: 18px; border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
+}
+
+/* =========================================================================
+   RESPONSIVIDADE - MAIN PAGE
+   Mantém a mesma identidade visual (cores, fontes, botões), só reorganiza
+   e re-escala o layout para telas de celular (Xiaomi, Motorola, iPhone etc.)
+========================================================================= */
+
+@media (max-width: 1024px) {
+    .cards-categorias,
+    .cards-jogos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header: esconde o menu horizontal e mostra o hamburguer */
+    .navg ul {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nexus {
+        font-size: 20px;
+        margin-left: 20px;
+    }
+
+    .icones-nav {
+        margin-right: 15px;
+        gap: 16px;
+    }
+
+    /* Empurra o conteúdo pra baixo do header fixo, sem o truque de vw */
+    main {
+        padding-top: 90px;
+    }
+
+    .novidade {
+        position: static;
+        top: auto;
+        margin: 0 20px 15px 20px;
+        font-size: 11px;
+        padding: 6px 14px;
+        border-radius: 20px;
+    }
+
+    .intro {
+        padding: 0 20px 40px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .texto {
+        font-size: 34px;
+        line-height: 1.25;
+    }
+
+    .intro p {
+        font-size: 14px;
+        margin: 14px 0;
+        line-height: 1.6;
+    }
+
+    .intro button {
+        font-size: 13px;
+        padding: 13px 20px;
+        border-radius: 6px;
+        letter-spacing: 0.5px;
+        width: fit-content;
+    }
+
+    .jogos-button {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    /* Barra de estatísticas: tira o truque de transform/vw e vira um bloco normal */
+    .dados {
+        position: static;
+        transform: none;
+        height: auto;
+        width: 100%;
+        padding: 20px 10px;
+        margin-top: 10px;
+    }
+
+    .dados ul {
+        flex-wrap: wrap;
+        gap: 20px 10px;
+        padding: 0;
+    }
+
+    .dados li {
+        width: 42%;
+    }
+
+    .valor {
+        font-size: 22px;
+    }
+
+    .legenda {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    /* Categorias e Jogos em destaque */
+    .categorias,
+    .jogos {
+        padding: 25px 20px;
+    }
+
+    .titulo-categoria,
+    .titulo-jogos {
+        margin: 10px 0 15px 0;
+    }
+
+    .titulo-categoria h2,
+    .titulo-jogos h2 {
+        font-size: 18px;
+    }
+
+    .titulo-categoria a,
+    .titulo-jogos a {
+        font-size: 13px;
+    }
+
+    .cards-categorias,
+    .cards-jogos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .card i {
+        font-size: 20px;
+    }
+
+    .card h3 {
+        font-size: 12px;
+    }
+
+    .card p {
+        font-size: 11px;
+    }
+
+    .game-card img {
+        height: 140px;
+    }
+
+    .game-info {
+        margin-top: -20px;
+    }
+
+    .stars {
+        font-size: 12px;
+    }
+
+    .game-info span,
+    .dados-jogos,
+    .dados-jogos span,
+    .button-jogos {
+        font-size: 11px;
+    }
+
+    .dados-jogos {
+        margin-left: 10px;
+        margin-top: 10px;
+        gap: 4px;
+    }
+
+    .buttons-jogos {
+        margin-left: 10px;
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .button-jogos {
+        padding: 4px 8px;
+    }
+
+    /* Footer empilhado e legível */
+    .footer {
+        padding: 30px 20px 15px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .cards-categorias,
+    .cards-jogos {
+        grid-template-columns: 1fr;
+    }
+
+    .dados li {
+        width: 45%;
+    }
+
+    .texto {
+        font-size: 28px;
+    }
+
+    .mobile-nav {
+        width: 82vw;
+    }
 }
