@@ -6,24 +6,7 @@
 
 // Lista completa de produtos da loja
 const produtos = [
-    { "id": 1, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 4080 16GB", "score": 98, "precoOriginal": "13.903,49", "precoPromocao": null, "imagem": "./img_loja/placavideo/NVIDIA RTX 4080 16GB.webp", "video": null, "especificacoes": {
-        "Fabricante": "NVIDIA",
-        "Modelo": "GeForce RTX 4080 16GB",
-        "Arquitetura": "Ada Lovelace",
-        "Núcleos CUDA": "9728",
-        "Memória": "16 GB GDDR6X",
-        "Interface de memória": "256-bit",
-        "Clock base": "2205 MHz",
-        "Clock boost": "2505 MHz",
-        "Largura de banda": "716,8 GB/s",
-        "TDP": "320 W",
-        "Conector de energia": "1x 16-pin (PCIe 5.0)",
-        "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1",
-        "Suporte a Ray Tracing": "Sim (3ª geração)",
-        "Suporte DLSS": "DLSS 3 (Frame Generation)",
-        "Dimensões": "336 x 137 x 61 mm (3 slots)",
-        "Garantia": "3 anos"
-    } },
+    { "id": 1, "categoria": "PLACA DE VÍDEO", "nome": "NVIDIA RTX 4080 16GB", "score": 98, "precoOriginal": "13.903,49", "precoPromocao": null, "imagem": "./img_loja/placavideo/NVIDIA RTX 4080 16GB.webp", "video": null, "especificacoes": {} },
     { "id": 2, "categoria": "MOUSE", "nome": "Logitech G Pro X Superlight 2", "score": 96, "precoOriginal": "700,90", "precoPromocao": null, "imagem": "./img_loja/mouse/Logitech G Pro X Superlight 2.webp", "video": null, "especificacoes": {} },
     { "id": 3, "categoria": "HEADSET", "nome": "Headset ASTRO A10", "score": 99, "precoOriginal": "499,99", "precoPromocao": null, "imagem": "./img_loja/headset/Headset ASTROA10.webp", "video": null, "especificacoes": {} },
     { "id": 4, "categoria": "HEADSET", "nome": "Corsair HS65 Surround", "score": 97, "precoOriginal": "379,90", "precoPromocao": null, "imagem": "./img_loja/headset/Corsair HS65 Surround.webp", "video": null, "especificacoes": {} },

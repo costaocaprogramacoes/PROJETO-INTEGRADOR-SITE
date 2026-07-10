@@ -5,6 +5,25 @@
 ========================================================================= */
 
 const especificacoesExtras = {
+    "1": {
+        "Fabricante": "NVIDIA",
+        "Modelo": "GeForce RTX 4080 16GB",
+        "Arquitetura": "Ada Lovelace",
+        "Núcleos CUDA": "9728",
+        "Memória": "16 GB GDDR6X",
+        "Interface de memória": "256-bit",
+        "Clock base": "2205 MHz",
+        "Clock boost": "2505 MHz",
+        "Largura de banda": "716,8 GB/s",
+        "TDP": "320 W",
+        "Conector de energia": "1x 16-pin (PCIe 5.0)",
+        "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1",
+        "Suporte a Ray Tracing": "Sim (3ª geração)",
+        "Suporte DLSS": "DLSS 3 (Frame Generation)",
+        "Dimensões": "336 x 137 x 61 mm (3 slots)",
+        "Garantia": "3 anos"
+    },
+    "2": {},
     "3": {
         "Fabricante": "Logitech",
         "Modelo": "G Pro X Superlight 2",
@@ -2383,19 +2402,5 @@ const especificacoesExtras = {
         "Durabilidade (TBW)": "740 TB",
         "Compatibilidade": "PS5, Windows",
         "Software": "XPG SSD Toolbox"
-    },
-    "173": {
-        "Fabricante": "Kingston (FURY)",
-        "Modelo": "Fury Renegade",
-        "Capacidade": "2TB",
-        "Interface": "PCIe 4.0 x4 NVMe",
-        "Fator de forma": "M.2 2280",
-        "NAND": "3D TLC",
-        "Cache": "DRAM",
-        "Leitura sequencial": "Até 7.300 MB/s",
-        "Escrita sequencial": "Até 7.000 MB/s",
-        "Durabilidade (TBW)": "2.000 TB (2 PBW)",
-        "Compatibilidade": "PS5, Windows",
-        "Software": "Kingston SSD Manager"
     }
 };

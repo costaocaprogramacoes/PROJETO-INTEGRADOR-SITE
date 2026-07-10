@@ -194,5 +194,5 @@ const produtos = [
     { "id": 169, "categoria": "ARMAZENAMENTO", "nome": "HD WD Blue 2TB 7200RPM", "score": 85, "precoOriginal": "699,99", "precoPromocao": null, "imagem": "./img_loja/armazenamento/HD WD Blue 2TB 7200RPM.webp", "video": null, "especificacoes": {} },
     { "id": 170, "categoria": "ARMAZENAMENTO", "nome": "HD Toshiba P300 1TB 7200RPM", "score": 78, "precoOriginal": "309,00", "precoPromocao": null, "imagem": "./img_loja/armazenamento/HD Toshiba P300 1TB 7200RPM.webp", "video": null, "especificacoes": {} },
     { "id": 171, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 XPG S70 Blade 1TB", "score": 96, "precoOriginal": "1.299,00", "precoPromocao": null, "imagem": "./img_loja/armazenamento/SSD NVMe M.2 XPG S70 Blade 1TB.webp", "video": null, "especificacoes": {} },
-    { "id": 172, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Kingston Fury Renegade 2TB", "score": 98, "precoOriginal": "3.699,90", "precoPromocao": null, "imagem": "./img_loja/armazenamento/SSD NVMe M.2 Kingston Fury Renegade 2TB.webp", "video": null, "especificacoes": {} },
+    { "id": 172, "categoria": "ARMAZENAMENTO", "nome": "SSD NVMe M.2 Kingston Fury Renegade 2TB", "score": 98, "precoOriginal": "3.699,90", "precoPromocao": null, "imagem": "./img_loja/armazenamento/SSD NVMe M.2 Kingston Fury Renegade 2TB.webp", "video": null, "especificacoes": {} }
 ];
