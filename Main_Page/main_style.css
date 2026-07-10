@@ -661,223 +661,142 @@ nav {
 }
 
 /* =========================================================================
-   RESPONSIVIDADE - MAIN PAGE
-   Mantém a mesma identidade visual (cores, fontes, botões), só reorganiza
-   e re-escala o layout para telas de celular (Xiaomi, Motorola, iPhone etc.)
+   RESPONSIVIDADE DEFINITIVA - MAIN PAGE
 ========================================================================= */
 
 @media (max-width: 1024px) {
+    /* Tablet e Telas Médias */
     .cards-categorias,
     .cards-jogos {
         grid-template-columns: repeat(3, 1fr);
     }
+    .texto { font-size: 40px; }
+    .intro p { font-size: 16px; }
+    .intro button { font-size: 14px; padding: 12px 20px; }
+    .valor { font-size: 24px; }
 }
 
 @media (max-width: 768px) {
-    /* Header: esconde o menu horizontal e mostra o hamburguer */
-    .navg ul {
-        display: none;
-    }
-
-    .hamburger {
+    /* SMARTPHONES E MOBILE */
+    
+    /* 1. Ajuste do Header e Menu Hamburguer */
+    .navg {
         display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+    .navg ul { display: none; } /* Esconde o menu de texto */
+    .hamburger { display: flex; } /* Mostra o botão hambúrguer */
+    .nexus { margin-left: 0; font-size: 22px; }
+    .icones-nav { margin-right: 0; gap: 15px; }
+
+    /* 2. Barra de Pesquisa (Desce para não quebrar o layout do Header) */
+    .search-container { position: static; }
+    .search-box.ativo {
+        width: calc(100% - 40px); /* Ocupa a tela quase toda */
+        position: absolute;
+        top: 80px; /* Desce para baixo do header */
+        right: 20px;
+        left: 20px;
+        height: 45px;
+        border-radius: 8px;
+        font-size: 16px;
+        padding: 0 15px;
+        background: #090f22;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
     }
 
-    .nexus {
-        font-size: 20px;
-        margin-left: 20px;
+    /* 3. Imagem de Fundo (Vídeo) */
+    .bimg {
+        /* Muda o fade do vídeo para escurecer embaixo e facilitar a leitura */
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        opacity: 0.3; 
     }
 
-    .icones-nav {
-        margin-right: 15px;
-        gap: 16px;
-    }
-
-    /* Empurra o conteúdo pra baixo do header fixo, sem o truque de vw */
-    main {
-        padding-top: 90px;
-    }
-
+    /* 4. Introdução e Botões (Removemos o VW e usamos tamanhos fixos) */
     .novidade {
         position: static;
-        top: auto;
-        margin: 0 20px 15px 20px;
+        display: inline-block;
+        margin: 100px 20px 15px 20px;
         font-size: 11px;
         padding: 6px 14px;
         border-radius: 20px;
     }
-
     .intro {
-        padding: 0 20px 40px 20px;
+        padding: 0 20px 20px 20px;
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
     }
+    .texto { font-size: 38px; line-height: 1.15; }
+    .intro p { font-size: 15px; margin: 15px 0 25px 0; line-height: 1.6; max-width: 100%; color: #c4c7d5; }
+    
+    /* Botões empilhados ocupando a tela toda */
+    .intro button { font-size: 14px; padding: 15px; width: 100%; border-radius: 6px; display: block; margin: 0 0 10px 0; text-align: center; }
+    .jogos-button { margin-left: 0; }
 
-    .texto {
-        font-size: 34px;
-        line-height: 1.25;
-    }
-
-    .intro p {
-        font-size: 14px;
-        margin: 14px 0;
-        line-height: 1.6;
-    }
-
-    .intro button {
-        font-size: 13px;
-        padding: 13px 20px;
-        border-radius: 6px;
-        letter-spacing: 0.5px;
-        width: fit-content;
-    }
-
-    .jogos-button {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    /* Barra de estatísticas: tira o truque de transform/vw e vira um bloco normal */
+    /* 5. Barra de Dados numéricos */
     .dados {
         position: static;
         transform: none;
         height: auto;
-        width: 100%;
-        padding: 20px 10px;
-        margin-top: 10px;
+        width: auto;
+        margin: 20px;
+        padding: 25px 15px;
+        border-radius: 12px;
+        background: rgba(11, 16, 35, 0.8);
+        border: 1px solid #161f3b;
     }
+    .dados ul { flex-wrap: wrap; gap: 25px 10px; padding: 0; }
+    .dados li { width: 45%; }
+    .valor { font-size: 26px; margin-bottom: 5px; }
+    .legenda { font-size: 10px; letter-spacing: 1px; }
 
-    .dados ul {
-        flex-wrap: wrap;
-        gap: 20px 10px;
-        padding: 0;
-    }
+    /* 6. Grids e Cards de Jogos */
+    .categorias, .jogos { padding: 30px 20px; }
+    .titulo-categoria, .titulo-jogos { margin: 0 0 20px 0; }
+    .titulo-categoria h2, .titulo-jogos h2 { font-size: 18px; }
+    
+    .cards-categorias, .cards-jogos { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    
+    .card { padding: 15px; }
+    .card i { font-size: 24px; }
+    .card h3 { font-size: 13px; margin-bottom: 5px; }
+    .card p { font-size: 12px; }
 
-    .dados li {
-        width: 42%;
+    .game-card img { 
+        height: 160px; /* Remove o achatamento do VW */
+        -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%); 
+        mask-image: linear-gradient(to bottom, black 55%, transparent 100%); 
     }
-
-    .valor {
-        font-size: 22px;
-    }
-
-    .legenda {
-        font-size: 10px;
-        letter-spacing: 1px;
-    }
-
-    /* Categorias e Jogos em destaque */
-    .categorias,
-    .jogos {
-        padding: 25px 20px;
-    }
-
-    .titulo-categoria,
-    .titulo-jogos {
-        margin: 10px 0 15px 0;
-    }
-
-    .titulo-categoria h2,
-    .titulo-jogos h2 {
-        font-size: 18px;
-    }
-
-    .titulo-categoria a,
-    .titulo-jogos a {
-        font-size: 13px;
-    }
-
-    .cards-categorias,
-    .cards-jogos {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .card {
-        padding: 14px;
-    }
-
-    .card i {
-        font-size: 20px;
-    }
-
-    .card h3 {
-        font-size: 12px;
-    }
-
-    .card p {
-        font-size: 11px;
-    }
-
-    .game-card img {
-        height: 140px;
-    }
-
-    .game-info {
-        margin-top: -20px;
-    }
-
-    .stars {
-        font-size: 12px;
-    }
-
-    .game-info span,
-    .dados-jogos,
-    .dados-jogos span,
-    .button-jogos {
-        font-size: 11px;
-    }
-
-    .dados-jogos {
-        margin-left: 10px;
-        margin-top: 10px;
-        gap: 4px;
-    }
-
-    .buttons-jogos {
-        margin-left: 10px;
-        margin-top: 8px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    .button-jogos {
-        padding: 4px 8px;
-    }
-
-    /* Footer empilhado e legível */
-    .footer {
-        padding: 30px 20px 15px 20px;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+    .game-info { margin-top: -25px; }
+    .stars { font-size: 14px; }
+    .game-info span { font-size: 12px; }
+    .nome { font-size: 15px; }
+    .dados-jogos span { font-size: 12px; }
+    
+    /* 7. Footer */
+    .footer { padding: 40px 20px 20px 20px; }
+    .footer-container { flex-direction: column; gap: 30px; }
+    .footer-logo, .footer-col { text-align: left; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer-info { justify-content: flex-start; flex-wrap: wrap; gap: 15px; }
 }
 
-@media (max-width: 420px) {
-    .cards-categorias,
-    .cards-jogos {
-        grid-template-columns: 1fr;
-    }
-
-    .dados li {
-        width: 45%;
-    }
-
-    .texto {
-        font-size: 28px;
-    }
-
-    .mobile-nav {
-        width: 82vw;
-    }
+@media (max-width: 480px) {
+    /* SMARTPHONES PEQUENOS (iPhone SE, etc) */
+    .texto { font-size: 32px; }
+    
+    /* Transforma os cards em 1 coluna para não espremer as imagens */
+    .cards-categorias, .cards-jogos { grid-template-columns: 1fr; }
+    
+    /* Melhora o layout das categorias transformando em barras horizontais */
+    .card { flex-direction: row; justify-content: flex-start; gap: 20px; text-align: left; }
+    .card i { font-size: 28px; }
+    .card i.seta { display: block; margin-left: auto; font-size: 16px !important; }
+    
+    /* Aumenta a altura das capas de jogos já que agora ocupam a tela toda */
+    .game-card img { height: 190px; }
 }
