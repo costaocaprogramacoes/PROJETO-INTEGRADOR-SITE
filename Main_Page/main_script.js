@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dados das Categorias
     const categorias = [
-        { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 29, valorFiltro: "PROCESSADOR" },
+        { icone: "fa-solid fa-microchip", titulo: "PROCESSADORES", itens: 26, valorFiltro: "PROCESSADOR" },
         { icone: "fa-solid fa-desktop", titulo: "MONITORES", itens: 15, valorFiltro: "MONITOR" },
         { icone: "fa-solid fa-headphones", titulo: "HEADSETS", itens: 10, valorFiltro: "HEADSET" },
         { icone: "fa-solid fa-computer-mouse", titulo: "MOUSES", itens: 16, valorFiltro: "MOUSE" }
