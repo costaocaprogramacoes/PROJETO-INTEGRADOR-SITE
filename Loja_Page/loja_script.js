@@ -12,6 +12,10 @@ let ordenacao = "relevancia";
 let precoMin = null;
 let precoMax = null;
 
+// Guarda o ID do produto vindo da busca global (?busca=&id=), usado apenas
+// uma vez para pular direto para a página/posição correta e destacar o item.
+let idAlvoBusca = null;
+
 const containerProdutos = document.getElementById("container-produtos");
 const containerPaginacao = document.getElementById("container-paginacao");
 const searchBox = document.getElementById("search-box");
@@ -60,6 +64,19 @@ function renderizarLoja() {
 
     produtosFiltrados = ordenarProdutos(produtosFiltrados);
 
+    // Se o usuário chegou aqui pela busca global, pula direto para a página
+    // onde o produto encontrado está e marca ele para ser destacado depois
+    // de renderizar. Isso só acontece uma vez (idAlvoBusca é zerado em seguida).
+    let idParaDestacar = null;
+    if (idAlvoBusca !== null) {
+        const indiceAlvo = produtosFiltrados.findIndex(p => p.id === idAlvoBusca);
+        if (indiceAlvo !== -1) {
+            paginaAtual = Math.floor(indiceAlvo / ITENS_POR_PAGINA) + 1;
+            idParaDestacar = idAlvoBusca;
+        }
+        idAlvoBusca = null;
+    }
+
     const totalItens = produtosFiltrados.length;
     const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
     
@@ -71,6 +88,19 @@ function renderizarLoja() {
 
     renderizarCards(produtosPagina);
     renderizarBotoesPaginacao(totalPaginas);
+
+    if (idParaDestacar !== null) {
+        destacarProdutoNaTela(idParaDestacar);
+    }
+}
+
+// Rola até o card do produto encontrado pela busca e aplica um destaque visual temporário
+function destacarProdutoNaTela(id) {
+    const card = containerProdutos.querySelector(`[data-id="${id}"]`);
+    if (!card) return;
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.add("destaque-busca");
+    setTimeout(() => card.classList.remove("destaque-busca"), 3600);
 }
 
 function ordenarProdutos(lista) {
@@ -102,7 +132,7 @@ function renderizarCards(listaProdutos) {
 
     listaProdutos.forEach(produto => {
         const cardHTML = `
-            <div class="card">
+            <div class="card" data-id="${produto.id}">
                 <div class="video-container" onclick="abrirModalProduto(${produto.id})">
                     <img class="card1-img" src="${produto.imagem}" alt="${produto.nome}">
                     ${produto.video ? `
@@ -530,10 +560,14 @@ function atualizarBadgeCarrinho() {
     }
 }
 
-// Função para checar se existe uma categoria na URL e marcar o checkbox
+// Função para checar se existe uma categoria/busca na URL (vindos de outra página
+// ou da caixa de pesquisa global) e já deixar a loja preparada: categoria marcada,
+// termo de busca aplicado e o produto certo pronto para ser destacado.
 function verificarFiltroURL() {
     const parametros = new URLSearchParams(window.location.search);
     const categoriaURL = parametros.get('categoria'); // Pega o valor ex: "PROCESSADOR"
+    const buscaURL = parametros.get('busca');          // Nome do produto vindo da busca global
+    const idURL = parametros.get('id');                // ID do produto vindo da busca global
 
     if (categoriaURL) {
         // Busca o checkbox que tem o mesmo value da URL
@@ -542,5 +576,15 @@ function verificarFiltroURL() {
         if (checkbox) {
             checkbox.checked = true; // Marca o checkbox
         }
+    }
+
+    if (buscaURL) {
+        termoPesquisa = buscaURL;
+        if (searchBox) searchBox.value = buscaURL;
+    }
+
+    if (idURL !== null) {
+        const idNumerico = parseInt(idURL, 10);
+        if (!isNaN(idNumerico)) idAlvoBusca = idNumerico;
     }
 }

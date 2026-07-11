@@ -491,6 +491,16 @@ function atualizarBadgeSimples() {
     }
 }
 
+// Lógica da Lupa: mostra/esconde a caixa de pesquisa (igual às outras páginas do site)
+const btnLupaSetup = document.querySelector('.btn-lupa');
+const searchBoxSetup = document.querySelector('.search-box');
+if (btnLupaSetup && searchBoxSetup) {
+    btnLupaSetup.addEventListener('click', () => {
+        searchBoxSetup.classList.toggle('ativo');
+        if (searchBoxSetup.classList.contains('ativo')) searchBoxSetup.focus();
+    });
+}
+
 // Iniciar a aplicação na primeira carga
 renderAllLists();
 atualizarBadgeSimples();

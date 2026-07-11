@@ -16,6 +16,11 @@ const ITENS_POR_PAGINA = 5;
 let paginaAtual = 1;
 let termoPesquisa = "";
 
+// Nome exato do jogo vindo da URL (?jogo=), usado uma única vez para pular
+// direto para a página correta e destacar o card certo, mesmo que a busca
+// bata com vários jogos.
+let jogoAlvoExato = null;
+
 // Mapeia o "peso" (usado no montador de PC) para cada jogo do catálogo pelo nome
 function obterPeso(nomeJogo) {
     const dados = catalogoJogos.find(j => j.nome === nomeJogo);
@@ -85,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Verifica se o usuário veio de um card de jogo (ex: Main Page) via ?jogo=Nome
     verificarJogoURL(searchBox);
 
+    // Verifica se o usuário veio do rodapé (Jogos Leves/Médios/Pesados) via ?peso=
+    verificarFiltroPesoURL();
+
     // Inicia a aplicação
     renderizarCatalogo();
     atualizarBadgeCarrinho();
@@ -99,6 +107,19 @@ function verificarJogoURL(searchBox) {
     if (jogoURL) {
         termoPesquisa = jogoURL.toLowerCase();
         if (searchBox) searchBox.value = jogoURL;
+        jogoAlvoExato = jogoURL.toLowerCase();
+    }
+}
+
+// Lê o parâmetro ?peso= da URL (usado pelos links do rodapé: Jogos Leves/Médios/Pesados)
+// e já marca o checkbox de desempenho correspondente, filtrando o catálogo.
+function verificarFiltroPesoURL() {
+    const parametros = new URLSearchParams(window.location.search);
+    const pesoURL = parametros.get('peso'); // "leve", "medio" ou "pesado"
+
+    if (pesoURL) {
+        const checkbox = document.querySelector(`.filtro-grupo input[name="peso"][value="${pesoURL}"]`);
+        if (checkbox) checkbox.checked = true;
     }
 }
 
@@ -119,6 +140,19 @@ function renderizarCatalogo() {
         return matchesPesquisa && matchesPeso && matchesCategoria;
     });
 
+    // Se veio um jogo exato pela URL (busca global ou card de outra página),
+    // acha a posição dele dentro da lista filtrada e pula pra página certa.
+    // Só roda uma vez: jogoAlvoExato é zerado logo em seguida.
+    let idParaDestacar = null;
+    if (jogoAlvoExato !== null) {
+        const indiceAlvo = filtrados.findIndex(j => j.nome.toLowerCase() === jogoAlvoExato);
+        if (indiceAlvo !== -1) {
+            paginaAtual = Math.floor(indiceAlvo / ITENS_POR_PAGINA) + 1;
+            idParaDestacar = filtrados[indiceAlvo].id;
+        }
+        jogoAlvoExato = null;
+    }
+
     const totalItens = filtrados.length;
     const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
     
@@ -132,6 +166,20 @@ function renderizarCatalogo() {
 
     renderizarCards(jogosPagina);
     renderizarBotoesPaginacao(totalPaginas);
+
+    if (idParaDestacar !== null) {
+        destacarJogoNaTela(idParaDestacar);
+    }
+}
+
+// Rola até o card do jogo encontrado e aplica um destaque visual temporário
+function destacarJogoNaTela(id) {
+    const container = document.getElementById('catalogo-container');
+    const card = container ? container.querySelector(`[data-id="${id}"]`) : null;
+    if (!card) return;
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.add("destaque-busca");
+    setTimeout(() => card.classList.remove("destaque-busca"), 3600);
 }
 
 // Renderiza apenas os itens da página atual
@@ -146,7 +194,7 @@ function renderizarCards(lista) {
 
     lista.forEach(jogo => {
         const cardHTML = `
-        <div class="cards">
+        <div class="cards" data-id="${jogo.id}">
             <div class="img_card">
                 <img src="${jogo.imagem}" alt="${jogo.nome}">
             </div>

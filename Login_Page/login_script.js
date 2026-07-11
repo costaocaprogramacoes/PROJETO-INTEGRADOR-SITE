@@ -33,6 +33,16 @@ function mostrarSenha(inputId) {
 ================================================== */
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Lógica da Lupa: mostra/esconde a caixa de pesquisa (igual às outras páginas do site)
+    const btnLupaLogin = document.querySelector('.btn-lupa');
+    const searchBoxLogin = document.querySelector('.search-box');
+    if (btnLupaLogin && searchBoxLogin) {
+        btnLupaLogin.addEventListener('click', () => {
+            searchBoxLogin.classList.toggle('ativo');
+            if (searchBoxLogin.classList.contains('ativo')) searchBoxLogin.focus();
+        });
+    }
+
     // Se a pessoa já está logada, não faz sentido ficar na tela de login
     if (typeof estaLogado === 'function' && estaLogado()) {
         window.location.href = '../Main_Page/main.html';
