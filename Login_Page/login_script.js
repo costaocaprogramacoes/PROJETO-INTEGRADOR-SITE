@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const erroLogin = document.getElementById("erroLogin");
 
         formLogin.addEventListener("submit", (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             erroLogin.textContent = "";
 
             const sessao = autenticarUsuario(emailLogin.value, senhaLogin.value);
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const statusCadastro = document.getElementById("statusCadastro");
 
         formCadastro.addEventListener("submit", (e) => {
-            e.preventDefault(); // Este formulário nunca recarrega a página; tudo é tratado por JS
+            // e.preventDefault(); // Este formulário nunca recarrega a página; tudo é tratado por JS
 
             let valido = true;
 
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const btnEnviar = document.getElementById("btnEnviar");
 
         formRecuperar.addEventListener("submit", (e) => {
-            e.preventDefault();
+            // e.preventDefault();
 
             erroEmailRecuperar.textContent = "";
             statusMsg.textContent = "";

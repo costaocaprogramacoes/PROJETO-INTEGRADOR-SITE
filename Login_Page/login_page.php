@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusGG - Acesso</title>
+    <link rel="stylesheet" href="login_style.css">
+    <link rel="stylesheet" href="busca-global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navg">
+            <div class="navg-inner">
+                <a href="../Main_Page/main.html"><span class="nexus">NEXUS<span class="gg">GG</span></span></a>
+                <ul>
+                    <li><a href="../Main_Page/main.html">Início</a></li>
+                    <li><a href="../Setup_Page/setup.html">Montar Setup</a></li>
+                    <li><a href="../Jogos_Page/jogos.html">Jogos</a></li>
+                    <li><a href="../Loja_Page/loja.html">Loja</a></li>
+                </ul>
+                <div class="icones-nav">
+                    <div class="search-container">
+                        <input type="text" class="search-box" placeholder="Pesquisar...">
+                        <svg class="icone btn-lupa" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <a href="../Carrinho_Page/carrinho.html" class="carrinho-link">
+                        <svg class="icone" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="badge-carrinho" id="badge-carrinho" style="display: none;">0</span>
+                    </a>
+                    <div id="area-conta" class="area-conta"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-login">
+        <section class="container">
+
+            <div id="view-login">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h1>NEXUS<span>GG</span></h1>
+                </div>
+                <h2>BEM-VINDO</h2>
+                <p class="sub">ACESSE SUA CONTA PARA CONTINUAR</p>
+
+                <form id="formLogin"action="../backend/auth/login.php"method="POST"novalidate>
+                    <label for="emailLogin">E-MAIL</label>
+                    <div class="input-box">
+                        <input id="emailLogin" name="email" type="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <label for="senha">SENHA</label>
+                    <div class="input-box">
+                        <input id="senha" name="senha" type="password" placeholder="••••••••" minlength="6" required>
+                        <i class="fa-regular fa-eye eye" onclick="mostrarSenha('senha')"></i>
+                    </div>
+                    <small id="erroLogin" style="color:#ff4d6d; display:block; margin-bottom:10px;"></small>
+
+                    <div class="options">
+                        <label class="remember">
+                            <input type="checkbox"> Lembrar-me
+                        </label>
+                        <a href="#" onclick="mudarTela('view-recuperar'); return false;">Esqueci a senha</a>
+                    </div>
+                    <button class="login-btn" type="submit">ENTRAR</button>
+                </form>
+
+                <div class="divider">OU</div>
+
+                <div class="social">
+                    <a class="social-btn google" href="https://accounts.google.com/" target="_blank">
+                        <i class="fa-brands fa-google"></i> Entrar com Google
+                    </a>
+                    <a class="social-btn discord" href="https://discord.com/login" target="_blank">
+                        <i class="fa-brands fa-discord"></i> Entrar com Discord
+                    </a>
+                </div>
+
+                <div class="bottom">
+                    Não possui conta?
+                    <a href="#" onclick="mudarTela('view-cadastro'); return false;">Criar conta grátis</a>
+                </div>
+                
+                <div class="login-footer">
+                    <span><i class="fa-solid fa-shield-halved"></i> SSL Seguro</span>
+                    <span><i class="fa-solid fa-check"></i> Dados protegidos</span>
+                </div>
+            </div>
+
+            <div id="view-cadastro" style="display: none;">
+                <div class="logo cadastro">
+                    <div class="logo-icon"><i class="fa-solid fa-user-plus"></i></div>
+                    <h1>NEXUS<span>GG</span></h1>
+                </div>
+                <h2>CRIAR CONTA</h2>
+                <p class="sub">JUNTE-SE À COMUNIDADE GAMER</p>
+
+                <form id="formCadastro" novalidate action="php/cadastro.php" method="POST">
+                    <label for="nome">NOME COMPLETO</label>
+                    <div class="input-box">
+                        <input id="nome" type="text" placeholder="Digite seu nome" minlength="3" required>
+                    </div>
+                    <small id="erroNome"></small>
+
+                    <label for="emailCadastro">E-MAIL</label>
+                    <div class="input-box">
+                        <input id="emailCadastro" type="email" placeholder="seu@email.com" required>
+                    </div>
+                    <small id="erroEmail"></small>
+
+                    <label for="senhaCadastro">SENHA</label>
+                    <div class="input-box">
+                        <input id="senhaCadastro" type="password" placeholder="••••••••" minlength="6" required>
+                        <i class="fa-regular fa-eye eye" onclick="mostrarSenha('senhaCadastro')"></i>
+                    </div>
+                    <small id="erroSenhaCadastro"></small>
+
+                    <label for="confirmarSenha">CONFIRMAR SENHA</label>
+                    <div class="input-box">
+                        <input id="confirmarSenha" type="password" nome="confirmar_senha" placeholder="••••••••" required>
+                        <i class="fa-regular fa-eye eye" onclick="mostrarSenha('confirmarSenha')"></i>
+                    </div>
+                    <small id="erroConfirmar"></small>
+
+                    <div class="options">
+                        <label class="remember">
+                            <input type="checkbox" required> Aceito os termos de uso
+                        </label>
+                    </div>
+                    <p id="statusCadastro" style="margin-bottom:10px; font-size:14px;"></p>
+                    <button class="cadastro-btn" type="submit">CRIAR CONTA</button>
+                </form>
+
+                <div class="divider">OU</div>
+
+                <div class="social">
+                    <a class="social-btn google" href="https://accounts.google.com/" target="_blank">
+                        <i class="fa-brands fa-google"></i> Cadastrar com Google
+                    </a>
+                    <a class="social-btn discord" href="https://discord.com/login" target="_blank">
+                        <i class="fa-brands fa-discord"></i> Cadastrar com Discord
+                    </a>
+                </div>
+
+                <div class="bottom">
+                    Já possui uma conta?
+                    <a href="#" onclick="mudarTela('view-login'); return false;">Fazer Login</a>
+                </div>
+                
+                <div class="login-footer">
+                    <span><i class="fa-solid fa-shield-halved"></i> SSL Seguro</span>
+                    <span><i class="fa-solid fa-check"></i> Dados protegidos</span>
+                </div>
+            </div>
+
+            <div id="view-recuperar" style="display: none;">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-lock"></i></div>
+                    <h1>NEXUS<span>GG</span></h1>
+                </div>
+                <h2>RECUPERAR SENHA</h2>
+                <p class="sub">Informe seu e-mail para receber as instruções.</p>
+
+                <form id="formRecuperar" novalidate>
+                    <label>E-MAIL</label>
+                    <div class="input-box">
+                        <input id="emailRecuperar" type="email" placeholder="Digite seu e-mail" required>
+                    </div>
+                    <small id="erroEmailRecuperar" style="color:red;"></small>
+                    <p id="statusMsg" style="margin-top:15px; font-size:14px;"></p>
+
+                    <button id="btnEnviar" class="login-btn" type="submit" style="margin-top:30px;">
+                        ENVIAR CÓDIGO
+                    </button>
+                </form>
+
+                <div class="admin">
+                    <h4><i class="fa-solid fa-circle-info"></i> INFORMAÇÃO</h4>
+                    <p>Um código de recuperação será enviado para o e-mail informado.</p>
+                    <p style="margin-top:10px;">Verifique também sua caixa de spam caso não encontre a mensagem.</p>
+                </div>
+
+                <div class="bottom">
+                    Lembrou sua senha?
+                    <a href="#" onclick="mudarTela('view-login'); return false;">Voltar ao Login</a>
+                </div>
+                
+                <div class="login-footer">
+                    <span><i class="fa-solid fa-shield-halved"></i> SSL Seguro</span>
+                    <span><i class="fa-solid fa-check"></i> Dados protegidos</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>NEXUS<span style="color: aqua;">GG</span></h2>
+                <p>A maior loja de hardware e periféricos gamer do <br>Brasil.</p>
+            </div>
+            <div class="footer-col">
+                <h3>LOJA</h3>
+                <ul>
+                    <li><a href="../Loja_Page/loja.html?categoria=PROCESSADOR">Processadores</a></li>
+                    <li><a href="../Loja_Page/loja.html?categoria=PLACA DE VÍDEO">Placas de Vídeo</a></li>
+                    <li><a href="../Loja_Page/loja.html?categoria=MONITOR">Monitores</a></li>
+                    <li><a href="../Loja_Page/loja.html?categoria=MOUSE">Mouses</a></li>
+                    <li><a href="../Loja_Page/loja.html?categoria=HEADSET">Headsets</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>JOGOS</h3>
+                <ul><li><a href="../Jogos_Page/jogos.html">Catálogo</a></li>
+                <li><a href="../Jogos_Page/jogos.html?peso=leve">Jogos Leves</a></li>
+                <li><a href="../Jogos_Page/jogos.html?peso=medio">Jogos Médios</a></li>
+                <li><a href="../Jogos_Page/jogos.html?peso=pesado">Jogos Pesados</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>SUPORTE</h3>
+                <ul><li><a href="#">FAQ</a></li><li><a href="#">Garantia</a></li><li><a href="#">Devoluções</a></li><li><a href="#">Rastrear Pedido</a></li></ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 NexusGG. Todos os direitos reservados.</p>
+            <div class="footer-info">
+                <span>✓ Compra segura</span>
+                <span>✓ Entrega garantida</span>
+                <span>✓ Suporte 24h</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="./Dados/dados-produtos.js"></script>
+    <script src="./Dados/dados-jogos.js"></script>
+    <script src="login_script.js"></script>
+    <script src="busca-global.js"></script>
+</body>
+</html>

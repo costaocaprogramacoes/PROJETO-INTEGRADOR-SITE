@@ -169,5 +169,5 @@ function renderizarAreaConta(containerId = 'area-conta') {
 // Caminho relativo até a página de login, seguindo o mesmo padrão de
 // pastas usado no resto do site (ex: ../Loja_Page/loja.html).
 function caminhoParaLogin() {
-    return '../Login_Page/_page.html';
+    return '../Login_Page/login_page.html';
 }
