@@ -59,6 +59,81 @@ function jogoTemCategoria(jogo, valor) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // --- Menu Hamburguer (mobile) ---
+    const btnHamburger = document.getElementById('btn-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+    function fecharMenuMobile() {
+        if (!btnHamburger || !mobileNav || !mobileNavOverlay) return;
+        btnHamburger.classList.remove('ativo');
+        mobileNav.classList.remove('ativo');
+        mobileNavOverlay.classList.remove('ativo');
+        btnHamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    function abrirMenuMobile() {
+        if (!btnHamburger || !mobileNav || !mobileNavOverlay) return;
+        btnHamburger.classList.add('ativo');
+        mobileNav.classList.add('ativo');
+        mobileNavOverlay.classList.add('ativo');
+        btnHamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
+    if (btnHamburger && mobileNav && mobileNavOverlay) {
+        btnHamburger.addEventListener('click', () => {
+            const jaAberto = mobileNav.classList.contains('ativo');
+            jaAberto ? fecharMenuMobile() : abrirMenuMobile();
+        });
+
+        mobileNavOverlay.addEventListener('click', fecharMenuMobile);
+
+        // Botão "Voltar" dentro do próprio menu
+        const btnVoltarMenu = document.getElementById('mobile-nav-back');
+        if (btnVoltarMenu) btnVoltarMenu.addEventListener('click', fecharMenuMobile);
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', fecharMenuMobile);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) fecharMenuMobile();
+        });
+    }
+
+    // Move busca, conta e carrinho para dentro do menu mobile (sem duplicar IDs)
+    const MOBILE_BREAKPOINT = 1024;
+    const iconesNav = document.querySelector('.icones-nav');
+    const searchContainer = document.querySelector('.search-container');
+    const carrinhoLink = document.querySelector('.carrinho-link');
+    const areaConta = document.getElementById('area-conta');
+    const mobileSearchSlot = document.getElementById('mobile-nav-search-slot');
+    const mobileRowSlot = document.getElementById('mobile-nav-row-slot');
+
+    function moverIconesParaMobile() {
+        if (!searchContainer || !carrinhoLink || !areaConta || !mobileSearchSlot || !mobileRowSlot) return;
+        if (searchContainer.parentElement !== mobileSearchSlot) mobileSearchSlot.appendChild(searchContainer);
+        if (areaConta.parentElement !== mobileRowSlot) mobileRowSlot.appendChild(areaConta);
+        if (carrinhoLink.parentElement !== mobileRowSlot) mobileRowSlot.appendChild(carrinhoLink);
+    }
+
+    function moverIconesParaDesktop() {
+        if (!searchContainer || !carrinhoLink || !areaConta || !iconesNav || !btnHamburger) return;
+        if (searchContainer.parentElement !== iconesNav) iconesNav.insertBefore(searchContainer, btnHamburger);
+        if (areaConta.parentElement !== iconesNav) iconesNav.insertBefore(areaConta, btnHamburger);
+        if (carrinhoLink.parentElement !== iconesNav) iconesNav.insertBefore(carrinhoLink, btnHamburger);
+    }
+
+    function ajustarLayoutIcones() {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) moverIconesParaMobile();
+        else moverIconesParaDesktop();
+    }
+
+    ajustarLayoutIcones();
+    window.addEventListener('resize', ajustarLayoutIcones);
+
     const searchBox = document.getElementById('search-jogos');
     const btnLupa = document.querySelector('.btn-lupa');
 
@@ -84,8 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
         checkbox.addEventListener('change', () => {
             paginaAtual = 1;
             renderizarCatalogo();
+            atualizarBadgeFiltros();
         });
     });
+
+    // --- Painel de filtros expansível (mobile) ---
+    const filtrosToggle = document.getElementById('filtros-toggle');
+    const filtrosConteudo = document.getElementById('filtros-conteudo');
+
+    if (filtrosToggle && filtrosConteudo) {
+        filtrosToggle.addEventListener('click', () => {
+            const aberto = filtrosConteudo.classList.toggle('aberto');
+            filtrosToggle.classList.toggle('aberto', aberto);
+            filtrosToggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        });
+    }
 
     // Verifica se o usuário veio de um card de jogo (ex: Main Page) via ?jogo=Nome
     verificarJogoURL(searchBox);
@@ -93,11 +181,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // Verifica se o usuário veio do rodapé (Jogos Leves/Médios/Pesados) via ?peso=
     verificarFiltroPesoURL();
 
+    // Se algum filtro já veio marcado pela URL, abre o painel automaticamente pra deixar visível
+    if (document.querySelector('.filtro-grupo input[type="checkbox"]:checked') && filtrosToggle && filtrosConteudo) {
+        filtrosConteudo.classList.add('aberto');
+        filtrosToggle.classList.add('aberto');
+        filtrosToggle.setAttribute('aria-expanded', 'true');
+    }
+    atualizarBadgeFiltros();
+
     // Inicia a aplicação
     renderizarCatalogo();
     atualizarBadgeCarrinho();
     if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
 });
+
+// Atualiza o contador de filtros ativos no botão "FILTROS"
+function atualizarBadgeFiltros() {
+    const badge = document.getElementById('filtros-badge');
+    if (!badge) return;
+    const marcados = document.querySelectorAll('.filtro-grupo input[type="checkbox"]:checked').length;
+    if (marcados > 0) {
+        badge.textContent = marcados;
+        badge.style.display = 'inline-flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
 
 // Lê o parâmetro ?jogo= da URL e já filtra o catálogo para aquele jogo específico
 function verificarJogoURL(searchBox) {

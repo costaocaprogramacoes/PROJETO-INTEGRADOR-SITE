@@ -247,6 +247,90 @@ a{
 
 }
 
+/* --- HEADER: HAMBURGUER E MENU MOBILE --- */
+.icones-nav svg { display: block; }
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1200;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #7070A0;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+.hamburger:hover span { background: var(--azul); }
+.hamburger.ativo span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--azul); }
+.hamburger.ativo span:nth-child(2) { opacity: 0; }
+.hamburger.ativo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--azul); }
+
+.mobile-nav-overlay {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6);
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1090;
+}
+.mobile-nav-overlay.ativo { opacity: 1; visibility: visible; }
+
+.mobile-nav {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(78vw, 320px);
+    background: rgb(2, 1, 14); border-left: 1px solid #0d203f; z-index: 1100;
+    transform: translateX(100%); transition: transform 0.35s ease;
+    display: flex; flex-direction: column; padding: 100px 30px 30px 30px; overflow-y: auto;
+}
+.mobile-nav.ativo { transform: translateX(0); }
+.mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.mobile-nav li a {
+    display: block; color: #7070A0; text-decoration: none; font-size: 16px;
+    padding: 16px 8px; border-bottom: 1px solid #10162c; transition: color 0.3s ease;
+}
+.mobile-nav li a:hover { color: aqua; }
+
+/* Botão Voltar dentro do menu (essencial em telas muito estreitas) */
+.mobile-nav-back {
+    display: flex; align-items: center; gap: 8px; position: absolute; top: 24px; left: 20px;
+    background: none; border: none; color: #7070A0; font-size: 15px; font-weight: bold;
+    cursor: pointer; padding: 8px 10px 8px 6px; border-radius: 6px; transition: color 0.3s ease, background 0.3s ease;
+}
+.mobile-nav-back:hover, .mobile-nav-back:focus-visible { color: var(--azul); background: rgba(0, 217, 255, 0.08); }
+.mobile-nav-back svg { flex-shrink: 0; }
+
+/* Busca, login e carrinho dentro do menu mobile */
+.mobile-nav-actions {
+    display: flex; flex-direction: column; gap: 18px; margin-bottom: 24px; padding-bottom: 22px;
+    border-bottom: 1px solid #10162c;
+}
+.mobile-nav-search .search-container { position: relative; width: 100%; }
+.mobile-nav-search .search-box {
+    position: static !important; width: 100% !important; opacity: 1 !important; visibility: visible !important;
+    display: block !important; height: 46px; padding: 0 42px 0 16px !important; border: 1px solid #1c2340 !important;
+    border-radius: 8px; font-size: 15px; background: #090f22; color: white;
+}
+.mobile-nav-search .btn-lupa { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #7070A0; pointer-events: none; }
+.mobile-nav-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.mobile-nav-row #area-conta { flex: 1; min-width: 0; color: #d8daea; font-size: 15px; }
+.mobile-nav-row .carrinho-link { color: #d8daea; flex-shrink: 0; }
+.mobile-nav-row .badge-carrinho { top: -6px; right: -12px; }
+
+@media (max-width: 1024px) {
+    .icones-nav > .search-container,
+    .icones-nav > .carrinho-link,
+    .icones-nav > .area-conta {
+        display: none;
+    }
+}
+
 /* BADGE DO CARRINHO */
 .carrinho-link { position: relative; display: flex; align-items: center; }
 .badge-carrinho {
@@ -1162,17 +1246,11 @@ button,
             RESPONSIVO
 ==================================================*/
 
-@media(max-width:1100px) {
+@media(max-width:1024px) {
 
     .navg-inner {
 
         padding: 0 30px;
-
-    }
-
-    .navg-inner ul {
-
-        gap: 18px;
 
     }
 
@@ -1182,15 +1260,50 @@ button,
 
     }
 
-}
-
-@media(max-width:850px) {
-
+    /* Header e menu hamburguer (troca cedo: fica apertado demais em tablet) */
     .navg-inner ul {
 
         display: none;
 
     }
+
+    .hamburger {
+
+        display: flex;
+
+    }
+
+    .nexus {
+
+        margin-left: 0;
+
+        font-size: 22px;
+
+    }
+
+    .icones-nav {
+
+        margin-right: 0;
+
+        gap: 15px;
+
+    }
+
+    .navg-inner {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding: 0 20px;
+
+    }
+
+}
+
+@media(max-width:850px) {
 
     .main-login {
 
@@ -1260,6 +1373,16 @@ button,
 
     }
 
+}
+
+@media (max-width: 360px) {
+    /* TELAS MUITO ESTREITAS (Galaxy Fold fechado, telas compactas) */
+    .nexus { font-size: 18px; }
+    .icones-nav { gap: 10px; }
+    .container { padding: 22px; }
+    .logo h1 { font-size: 17px; }
+    .container h2 { font-size: 18px; }
+    .mobile-nav { width: 100vw; padding: 90px 20px 20px 20px; }
 }
 
 /* ===============================

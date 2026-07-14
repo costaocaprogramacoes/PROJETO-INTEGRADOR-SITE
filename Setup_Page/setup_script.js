@@ -7,6 +7,86 @@
 ========================================================================= */
 
 /* =========================================================================
+   MENU HAMBURGUER (MOBILE) - busca, login e carrinho passam a ficar
+   dentro do menu deslizante, com botão "Voltar" para fechar
+========================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const btnHamburger = document.getElementById('btn-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+    function fecharMenuMobile() {
+        if (!btnHamburger || !mobileNav || !mobileNavOverlay) return;
+        btnHamburger.classList.remove('ativo');
+        mobileNav.classList.remove('ativo');
+        mobileNavOverlay.classList.remove('ativo');
+        btnHamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    function abrirMenuMobile() {
+        if (!btnHamburger || !mobileNav || !mobileNavOverlay) return;
+        btnHamburger.classList.add('ativo');
+        mobileNav.classList.add('ativo');
+        mobileNavOverlay.classList.add('ativo');
+        btnHamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
+    if (btnHamburger && mobileNav && mobileNavOverlay) {
+        btnHamburger.addEventListener('click', () => {
+            const jaAberto = mobileNav.classList.contains('ativo');
+            jaAberto ? fecharMenuMobile() : abrirMenuMobile();
+        });
+
+        mobileNavOverlay.addEventListener('click', fecharMenuMobile);
+
+        // Botão "Voltar" dentro do próprio menu
+        const btnVoltarMenu = document.getElementById('mobile-nav-back');
+        if (btnVoltarMenu) btnVoltarMenu.addEventListener('click', fecharMenuMobile);
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', fecharMenuMobile);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) fecharMenuMobile();
+        });
+    }
+
+    // Move busca, conta e carrinho para dentro do menu mobile (sem duplicar IDs)
+    const MOBILE_BREAKPOINT = 1024;
+    const iconesNav = document.querySelector('.icones-nav');
+    const searchContainer = document.querySelector('.search-container');
+    const carrinhoLink = document.querySelector('.carrinho-link');
+    const areaConta = document.getElementById('area-conta');
+    const mobileSearchSlot = document.getElementById('mobile-nav-search-slot');
+    const mobileRowSlot = document.getElementById('mobile-nav-row-slot');
+
+    function moverIconesParaMobile() {
+        if (!searchContainer || !carrinhoLink || !areaConta || !mobileSearchSlot || !mobileRowSlot) return;
+        if (searchContainer.parentElement !== mobileSearchSlot) mobileSearchSlot.appendChild(searchContainer);
+        if (areaConta.parentElement !== mobileRowSlot) mobileRowSlot.appendChild(areaConta);
+        if (carrinhoLink.parentElement !== mobileRowSlot) mobileRowSlot.appendChild(carrinhoLink);
+    }
+
+    function moverIconesParaDesktop() {
+        if (!searchContainer || !carrinhoLink || !areaConta || !iconesNav || !btnHamburger) return;
+        if (searchContainer.parentElement !== iconesNav) iconesNav.insertBefore(searchContainer, btnHamburger);
+        if (areaConta.parentElement !== iconesNav) iconesNav.insertBefore(areaConta, btnHamburger);
+        if (carrinhoLink.parentElement !== iconesNav) iconesNav.insertBefore(carrinhoLink, btnHamburger);
+    }
+
+    function ajustarLayoutIcones() {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) moverIconesParaMobile();
+        else moverIconesParaDesktop();
+    }
+
+    ajustarLayoutIcones();
+    window.addEventListener('resize', ajustarLayoutIcones);
+});
+
+/* =========================================================================
    2. CONFIGURAÇÃO E ORGANIZAÇÃO DOS DADOS
 ========================================================================= */
 

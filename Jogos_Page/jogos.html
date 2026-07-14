@@ -37,10 +37,34 @@
                         <span class="badge-carrinho" id="badge-carrinho" style="display: none;">0</span>
                     </a>
                     <div id="area-conta" class="area-conta"></div>
+                    <button class="hamburger" id="btn-hamburger" aria-label="Abrir menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
+
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-back" id="mobile-nav-back" aria-label="Voltar / fechar menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Voltar</span>
+        </button>
+        <div class="mobile-nav-actions" id="mobile-nav-actions">
+            <div class="mobile-nav-search" id="mobile-nav-search-slot"></div>
+            <div class="mobile-nav-row" id="mobile-nav-row-slot"></div>
+        </div>
+        <ul>
+            <li><a href="../Main_Page/main.html">Início</a></li>
+            <li><a href="../Setup_Page/setup.html">Montar Setup</a></li>
+            <li class="ativo-nav"><a href="#">Jogos</a></li>
+            <li><a href="../Loja_Page/loja.html">Loja</a></li>
+        </ul>
+    </nav>
 
     <main>
         <div class="desc_pag">
@@ -53,29 +77,46 @@
 
         <div class="layout-jogos">
             <aside class="sidebar-filtros">
-                <h3>FILTROS</h3>
+                <button class="filtros-toggle" id="filtros-toggle" type="button" aria-expanded="false" aria-controls="filtros-conteudo">
+                    <span class="filtros-toggle-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="21" y1="4" x2="14" y2="4"></line><line x1="10" y1="4" x2="3" y2="4"></line>
+                            <line x1="21" y1="12" x2="12" y2="12"></line><line x1="8" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="20" x2="16" y2="20"></line><line x1="12" y1="20" x2="3" y2="20"></line>
+                            <line x1="14" y1="2" x2="14" y2="6"></line><line x1="8" y1="10" x2="8" y2="14"></line>
+                            <line x1="16" y1="18" x2="16" y2="22"></line>
+                        </svg>
+                        FILTROS
+                        <span class="filtros-badge" id="filtros-badge" style="display: none;">0</span>
+                    </span>
+                    <svg class="filtros-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
 
-                <div class="filtro-grupo">
-                    <h4>Desempenho Necessário</h4>
-                    <label><input type="checkbox" name="peso" value="leve"> Leve (PCs fracos)</label>
-                    <label><input type="checkbox" name="peso" value="medio"> Médio (PCs medianos)</label>
-                    <label><input type="checkbox" name="peso" value="pesado"> Pesado (PCs potentes)</label>
-                </div>
+                <div class="filtros-conteudo" id="filtros-conteudo">
+                    <div class="filtro-grupo">
+                        <h4>Desempenho Necessário</h4>
+                        <label><input type="checkbox" name="peso" value="leve"> Leve (PCs fracos)</label>
+                        <label><input type="checkbox" name="peso" value="medio"> Médio (PCs medianos)</label>
+                        <label><input type="checkbox" name="peso" value="pesado"> Pesado (PCs potentes)</label>
+                    </div>
 
-                <div class="filtro-grupo">
-                    <h4>Categoria</h4>
-                    <label><input type="checkbox" name="categoria" value="FPS"> FPS / Tiro</label>
-                    <label><input type="checkbox" name="categoria" value="BATTLE_ROYALE"> Battle Royale</label>
-                    <label><input type="checkbox" name="categoria" value="RPG"> RPG</label>
-                    <label><input type="checkbox" name="categoria" value="MUNDO_ABERTO"> Mundo Aberto</label>
-                    <label><input type="checkbox" name="categoria" value="TERROR"> Terror / Survival Horror</label>
-                    <label><input type="checkbox" name="categoria" value="SOULSLIKE"> Souls-like</label>
-                    <label><input type="checkbox" name="categoria" value="ACAO"> Ação / Aventura</label>
-                    <label><input type="checkbox" name="categoria" value="MULTIPLAYER"> Multiplayer / Co-op</label>
-                    <label><input type="checkbox" name="categoria" value="ESTRATEGIA"> Estratégia / Turn-Based</label>
-                    <label><input type="checkbox" name="categoria" value="SIMULACAO"> Simulação</label>
-                    <label><input type="checkbox" name="categoria" value="LUTA"> Luta</label>
-                    <label><input type="checkbox" name="categoria" value="INDIE"> Indie / Plataforma</label>
+                    <div class="filtro-grupo">
+                        <h4>Categoria</h4>
+                        <label><input type="checkbox" name="categoria" value="FPS"> FPS / Tiro</label>
+                        <label><input type="checkbox" name="categoria" value="BATTLE_ROYALE"> Battle Royale</label>
+                        <label><input type="checkbox" name="categoria" value="RPG"> RPG</label>
+                        <label><input type="checkbox" name="categoria" value="MUNDO_ABERTO"> Mundo Aberto</label>
+                        <label><input type="checkbox" name="categoria" value="TERROR"> Terror / Survival Horror</label>
+                        <label><input type="checkbox" name="categoria" value="SOULSLIKE"> Souls-like</label>
+                        <label><input type="checkbox" name="categoria" value="ACAO"> Ação / Aventura</label>
+                        <label><input type="checkbox" name="categoria" value="MULTIPLAYER"> Multiplayer / Co-op</label>
+                        <label><input type="checkbox" name="categoria" value="ESTRATEGIA"> Estratégia / Turn-Based</label>
+                        <label><input type="checkbox" name="categoria" value="SIMULACAO"> Simulação</label>
+                        <label><input type="checkbox" name="categoria" value="LUTA"> Luta</label>
+                        <label><input type="checkbox" name="categoria" value="INDIE"> Indie / Plataforma</label>
+                    </div>
                 </div>
             </aside>
 
@@ -109,10 +150,6 @@
                 <li><a href="../Jogos_Page/jogos.html?peso=medio">Jogos Médios</a></li>
                 <li><a href="../Jogos_Page/jogos.html?peso=pesado">Jogos Pesados</a></li>
                 </ul>
-            </div>
-            <div class="footer-col">
-                <h3>SUPORTE</h3>
-                <ul><li><a href="#">FAQ</a></li><li><a href="#">Garantia</a></li><li><a href="#">Devoluções</a></li><li><a href="#">Rastrear Pedido</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom">

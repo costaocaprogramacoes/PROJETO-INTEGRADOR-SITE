@@ -35,6 +35,91 @@ a { text-decoration: none; color: inherit; }
 .icones-nav .icone { cursor: pointer; transition: color 0.3s ease; display: block;}
 .icones-nav .icone:hover { color: #00d9ff; }
 
+/* --- HEADER: HAMBURGUER E MENU MOBILE --- */
+.icones-nav svg { display: block; }
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1200;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #7070A0;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+.hamburger:hover span { background: aqua; }
+.hamburger.ativo span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: aqua; }
+.hamburger.ativo span:nth-child(2) { opacity: 0; }
+.hamburger.ativo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: aqua; }
+
+.mobile-nav-overlay {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6);
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1090;
+}
+.mobile-nav-overlay.ativo { opacity: 1; visibility: visible; }
+
+.mobile-nav {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(78vw, 320px);
+    background: rgb(2, 1, 14); border-left: 1px solid #0d203f; z-index: 1100;
+    transform: translateX(100%); transition: transform 0.35s ease;
+    display: flex; flex-direction: column; padding: 100px 30px 30px 30px; overflow-y: auto;
+}
+.mobile-nav.ativo { transform: translateX(0); }
+.mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.mobile-nav li a {
+    display: block; color: #7070A0; text-decoration: none; font-size: 16px;
+    padding: 16px 8px; border-bottom: 1px solid #10162c; transition: color 0.3s ease;
+}
+.mobile-nav li.ativo-nav a { color: #00d9ff; }
+.mobile-nav li a:hover { color: aqua; }
+
+/* Botão Voltar dentro do menu (essencial em telas muito estreitas) */
+.mobile-nav-back {
+    display: flex; align-items: center; gap: 8px; position: absolute; top: 24px; left: 20px;
+    background: none; border: none; color: #7070A0; font-size: 15px; font-weight: bold;
+    cursor: pointer; padding: 8px 10px 8px 6px; border-radius: 6px; transition: color 0.3s ease, background 0.3s ease;
+}
+.mobile-nav-back:hover, .mobile-nav-back:focus-visible { color: aqua; background: rgba(0, 217, 255, 0.08); }
+.mobile-nav-back svg { flex-shrink: 0; }
+
+/* Busca, login e carrinho dentro do menu mobile */
+.mobile-nav-actions {
+    display: flex; flex-direction: column; gap: 18px; margin-bottom: 24px; padding-bottom: 22px;
+    border-bottom: 1px solid #10162c;
+}
+.mobile-nav-search .search-container { position: relative; width: 100%; }
+.mobile-nav-search .search-box {
+    position: static !important; width: 100% !important; opacity: 1 !important; visibility: visible !important;
+    display: block !important; height: 46px; padding: 0 42px 0 16px !important; border: 1px solid #1c2340 !important;
+    border-radius: 8px; font-size: 15px; background: #0b1023; color: white;
+}
+.mobile-nav-search .btn-lupa { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #7070A0; pointer-events: none; }
+.mobile-nav-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.mobile-nav-row #area-conta { flex: 1; min-width: 0; color: #d8daea; font-size: 15px; }
+.mobile-nav-row .carrinho-link { color: #d8daea; flex-shrink: 0; }
+.mobile-nav-row .badge-carrinho { top: -6px; right: -12px; }
+
+@media (max-width: 1024px) {
+    .icones-nav > .search-container,
+    .icones-nav > .carrinho-link,
+    .icones-nav > .area-conta {
+        display: none;
+    }
+}
+
 /* Barra de Pesquisa */
 .search-container { display: flex; align-items: center; position: relative; }
 .search-box {
@@ -72,6 +157,35 @@ a { text-decoration: none; color: inherit; }
 .filtro-grupo label { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; color: #a0aabf; cursor: pointer; }
 .filtro-grupo input[type="checkbox"],
 .filtro-grupo input[type="radio"] { cursor: pointer; accent-color: #00d9ff; }
+
+/* --- BOTÃO "FILTROS" (colapsável, só aparece em telas menores) --- */
+.filtros-toggle {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background: #101833;
+    border: 1px solid #1c2340;
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+.filtros-toggle:hover { border-color: #00d9ff; }
+.filtros-toggle.aberto { border-color: #00d9ff; }
+.filtros-toggle-label { display: flex; align-items: center; gap: 10px; color: #00d9ff; }
+.filtros-toggle-label svg { flex-shrink: 0; }
+.filtros-badge {
+    display: none; align-items: center; justify-content: center;
+    background: #00d9ff; color: #000; font-size: 11px; font-weight: bold;
+    min-width: 18px; height: 18px; border-radius: 9px; padding: 0 5px;
+}
+.filtros-chevron { color: #7070A0; transition: transform 0.3s ease; flex-shrink: 0; }
+.filtros-toggle.aberto .filtros-chevron { transform: rotate(180deg); color: #00d9ff; }
 
 .preco-inputs { display: flex; gap: 10px; }
 .preco-campo { display: flex; flex-direction: column; gap: 6px; flex: 1; }
@@ -393,3 +507,113 @@ a { text-decoration: none; color: inherit; }
 }
 .toast.mostrar { transform: translateX(0); /* Desliza pra dentro */ }
 .toast i { color: #00d9ff; font-size: 20px; }
+
+/* =========================================================================
+   RESPONSIVIDADE - PÁGINA DA LOJA
+========================================================================= */
+
+@media (max-width: 1024px) {
+    /* Tablets e telas médias */
+    .loja-page-content { padding: 100px 4vw 40px 4vw; }
+    .titulo-area h1 { font-size: 26px; }
+    .grid-produtos { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+
+    /* Header e menu hamburguer (troca cedo: fica apertado demais em tablet) */
+    .navg { display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+    .navg ul { display: none; }
+    .hamburger { display: flex; }
+    .nexus { margin-left: 0; font-size: 22px; }
+    .icones-nav { margin-right: 0; gap: 15px; }
+
+    /* Barra de pesquisa no header (fallback) */
+    .search-container { position: static; }
+    .search-box.ativo {
+        width: calc(100% - 40px); position: absolute; top: 80px; right: 20px; left: 20px;
+        height: 45px; border-radius: 8px; font-size: 16px; padding: 0 15px;
+        background: #0b1023; z-index: 999; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (max-width: 900px) {
+    /* Empilha os filtros acima do grid de produtos */
+    .layout-loja { flex-direction: column; align-items: stretch; }
+    .sidebar-filtros { width: 100%; }
+
+    /* Painel de filtros vira um botão expansível */
+    .filtros-toggle { display: flex; }
+    .filtros-conteudo {
+        max-height: 0; opacity: 0; overflow: hidden;
+        transition: max-height 0.35s ease, opacity 0.3s ease;
+    }
+    .filtros-conteudo.aberto { max-height: 2000px; opacity: 1; margin-top: 16px; }
+}
+
+@media (max-width: 768px) {
+    /* SMARTPHONES E MOBILE */
+
+    /* 3. Título da página */
+    .loja-page-content { padding: 90px 20px 30px 20px; }
+    .titulo-area h1 { font-size: 22px; }
+    .titulo-area .desc { font-size: 13px; }
+    .titulo-area .subtitulo { font-size: 11px; }
+
+    /* 4. Filtros */
+    .layout-loja { gap: 20px; }
+    .sidebar-filtros { padding: 16px; }
+    .filtros-toggle { padding: 12px 14px; font-size: 12px; }
+    .filtro-grupo h4 { font-size: 13px; }
+    .filtro-grupo label { font-size: 12.5px; }
+
+    /* 5. Grid de produtos */
+    .grid-produtos { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .card { height: auto; min-height: 300px; }
+    .video-container, .card1-img, .video-hover { height: 130px; }
+    .cardp { font-size: 9px; margin: 12px 14px 4px 14px; }
+    .h1 { font-size: 13px; margin: 0 14px; }
+    .score { font-size: 11px; margin: 0 14px 4px 14px; }
+    .precos { font-size: 11px; margin: 0 14px; }
+    .promos { font-size: 16px; margin: 0 14px 12px 14px; }
+    .botao { padding-right: 14px; }
+    .botao button { padding: 5px 12px; font-size: 12px; }
+
+    /* 6. Modal de produto */
+    .modal-produto { padding: 20px; max-height: 92vh; }
+    .modal-produto-imagem { width: 100%; height: 200px; }
+    .modal-produto-info h2 { font-size: 18px; }
+    .modal-preco-final { font-size: 22px; }
+    .modal-add-spec { flex-direction: column; }
+    .modal-add-spec input, .modal-add-spec button { width: 100%; }
+
+    /* 7. Paginação */
+    .paginacao { gap: 6px; flex-wrap: wrap; margin-top: 25px; }
+    .paginacao button { width: 36px; height: 36px; font-size: 13px; }
+
+    /* 8. Toast de notificação */
+    .toast { left: 15px; right: 15px; bottom: 15px; padding: 12px 18px; font-size: 13px; }
+    .toast.mostrar { transform: translateX(0); }
+
+    /* 9. Footer */
+    .footer { padding: 40px 20px 20px 20px; }
+    .footer-container { flex-direction: column; gap: 30px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer-info { justify-content: flex-start; flex-wrap: wrap; gap: 15px; }
+}
+
+@media (max-width: 480px) {
+    /* SMARTPHONES PEQUENOS (iPhone SE, etc) */
+    .titulo-area h1 { font-size: 19px; }
+    .grid-produtos { grid-template-columns: repeat(2, 1fr); }
+    .preco-inputs { flex-direction: column; }
+    .paginacao button { width: 32px; height: 32px; font-size: 12px; }
+}
+
+@media (max-width: 360px) {
+    /* TELAS MUITO ESTREITAS (Galaxy Fold fechado, telas compactas) */
+    .nexus { font-size: 18px; }
+    .icones-nav { gap: 10px; }
+    .loja-page-content { padding: 85px 15px 25px 15px; }
+    .titulo-area h1 { font-size: 17px; }
+    .grid-produtos { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .video-container, .card1-img, .video-hover { height: 110px; }
+    .mobile-nav { width: 100vw; padding: 90px 20px 20px 20px; }
+}

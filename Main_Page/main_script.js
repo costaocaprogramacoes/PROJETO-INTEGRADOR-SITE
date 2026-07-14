@@ -17,6 +17,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileNav = document.getElementById('mobile-nav');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
 
+    // Move busca, conta e carrinho para dentro do menu mobile (sem duplicar IDs)
+    const MOBILE_BREAKPOINT = 1024;
+    const iconesNav = document.querySelector('.icones-nav');
+    const searchContainer = document.querySelector('.search-container');
+    const carrinhoLink = document.querySelector('.carrinho-link');
+    const areaConta = document.getElementById('area-conta');
+    const mobileSearchSlot = document.getElementById('mobile-nav-search-slot');
+    const mobileRowSlot = document.getElementById('mobile-nav-row-slot');
+
+    function moverIconesParaMobile() {
+        if (!searchContainer || !carrinhoLink || !areaConta || !mobileSearchSlot || !mobileRowSlot) return;
+        if (searchContainer.parentElement !== mobileSearchSlot) {
+            mobileSearchSlot.appendChild(searchContainer);
+        }
+        if (areaConta.parentElement !== mobileRowSlot) {
+            mobileRowSlot.appendChild(areaConta);
+        }
+        if (carrinhoLink.parentElement !== mobileRowSlot) {
+            mobileRowSlot.appendChild(carrinhoLink);
+        }
+    }
+
+    function moverIconesParaDesktop() {
+        if (!searchContainer || !carrinhoLink || !areaConta || !iconesNav || !btnHamburger) return;
+        if (searchContainer.parentElement !== iconesNav) {
+            iconesNav.insertBefore(searchContainer, btnHamburger);
+        }
+        if (areaConta.parentElement !== iconesNav) {
+            iconesNav.insertBefore(areaConta, btnHamburger);
+        }
+        if (carrinhoLink.parentElement !== iconesNav) {
+            iconesNav.insertBefore(carrinhoLink, btnHamburger);
+        }
+    }
+
+    function ajustarLayoutIcones() {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) {
+            moverIconesParaMobile();
+        } else {
+            moverIconesParaDesktop();
+        }
+    }
+
+    ajustarLayoutIcones();
+    window.addEventListener('resize', ajustarLayoutIcones);
+
     function fecharMenuMobile() {
         btnHamburger.classList.remove('ativo');
         mobileNav.classList.remove('ativo');
@@ -41,6 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mobileNavOverlay.addEventListener('click', fecharMenuMobile);
 
+        // Botão "Voltar" dentro do próprio menu (essencial em telas muito estreitas,
+        // onde o menu cobre a tela toda e o botão hamburguer some do header)
+        const btnVoltarMenu = document.getElementById('mobile-nav-back');
+        if (btnVoltarMenu) {
+            btnVoltarMenu.addEventListener('click', fecharMenuMobile);
+        }
+
         // Fecha o menu ao clicar em qualquer link dele
         mobileNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', fecharMenuMobile);
@@ -48,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Fecha o menu automaticamente se a tela for redimensionada para desktop
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) fecharMenuMobile();
+            if (window.innerWidth > 1024) fecharMenuMobile();
         });
     }
 

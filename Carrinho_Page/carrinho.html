@@ -29,9 +29,33 @@
                     <span class="badge-carrinho" id="badge-carrinho" style="display: none;">0</span>
                 </a>
                 <div id="area-conta" class="area-conta"></div>
+                <button class="hamburger" id="btn-hamburger" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-back" id="mobile-nav-back" aria-label="Voltar / fechar menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Voltar</span>
+        </button>
+        <div class="mobile-nav-actions" id="mobile-nav-actions">
+            <div class="mobile-nav-search" id="mobile-nav-search-slot"></div>
+            <div class="mobile-nav-row" id="mobile-nav-row-slot"></div>
+        </div>
+        <ul>
+            <li><a href="../Main_Page/main.html">Início</a></li>
+            <li><a href="../Setup_Page/setup.html">Montar Setup</a></li>
+            <li><a href="../Jogos_Page/jogos.html">Jogos</a></li>
+            <li><a href="../Loja_Page/loja.html">Loja</a></li>
+        </ul>
+    </nav>
 
     <main class="carrinho-page-content">
         <div class="carrinho-header">
@@ -73,10 +97,6 @@
                 <li><a href="../Jogos_Page/jogos.html?peso=medio">Jogos Médios</a></li>
                 <li><a href="../Jogos_Page/jogos.html?peso=pesado">Jogos Pesados</a></li>
                 </ul>
-            </div>
-            <div class="footer-col">
-                <h3>SUPORTE</h3>
-                <ul><li><a href="#">FAQ</a></li><li><a href="#">Garantia</a></li><li><a href="#">Devoluções</a></li><li><a href="#">Rastrear Pedido</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom">

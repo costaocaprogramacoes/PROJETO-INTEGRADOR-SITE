@@ -16,6 +16,90 @@ a { text-decoration: none; color: inherit; }
 .icones-nav a { display: flex; align-items: center; position: relative; }
 .icones-nav .icone { cursor: pointer; transition: 0.3s; }
 .icone-ativo { color: #00d9ff; }
+
+/* --- HEADER: HAMBURGUER E MENU MOBILE --- */
+.icones-nav svg { display: block; }
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1200;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #7070A0;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+.hamburger:hover span { background: aqua; }
+.hamburger.ativo span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: aqua; }
+.hamburger.ativo span:nth-child(2) { opacity: 0; }
+.hamburger.ativo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: aqua; }
+
+.mobile-nav-overlay {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6);
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1090;
+}
+.mobile-nav-overlay.ativo { opacity: 1; visibility: visible; }
+
+.mobile-nav {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(78vw, 320px);
+    background: rgb(2, 1, 14); border-left: 1px solid #0d203f; z-index: 1100;
+    transform: translateX(100%); transition: transform 0.35s ease;
+    display: flex; flex-direction: column; padding: 100px 30px 30px 30px; overflow-y: auto;
+}
+.mobile-nav.ativo { transform: translateX(0); }
+.mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.mobile-nav li a {
+    display: block; color: #7070A0; text-decoration: none; font-size: 16px;
+    padding: 16px 8px; border-bottom: 1px solid #10162c; transition: color 0.3s ease;
+}
+.mobile-nav li a:hover { color: aqua; }
+
+/* Botão Voltar dentro do menu (essencial em telas muito estreitas) */
+.mobile-nav-back {
+    display: flex; align-items: center; gap: 8px; position: absolute; top: 24px; left: 20px;
+    background: none; border: none; color: #7070A0; font-size: 15px; font-weight: bold;
+    cursor: pointer; padding: 8px 10px 8px 6px; border-radius: 6px; transition: color 0.3s ease, background 0.3s ease;
+}
+.mobile-nav-back:hover, .mobile-nav-back:focus-visible { color: aqua; background: rgba(0, 217, 255, 0.08); }
+.mobile-nav-back svg { flex-shrink: 0; }
+
+/* Busca, login e carrinho dentro do menu mobile */
+.mobile-nav-actions {
+    display: flex; flex-direction: column; gap: 18px; margin-bottom: 24px; padding-bottom: 22px;
+    border-bottom: 1px solid #10162c;
+}
+.mobile-nav-search .search-container { position: relative; width: 100%; }
+.mobile-nav-search .search-box {
+    position: static !important; width: 100% !important; opacity: 1 !important; visibility: visible !important;
+    display: block !important; height: 46px; padding: 0 42px 0 16px !important; border: 1px solid #1c2340 !important;
+    border-radius: 8px; font-size: 15px; background: #090f22; color: white;
+}
+.mobile-nav-search .btn-lupa { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #7070A0; pointer-events: none; }
+.mobile-nav-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.mobile-nav-row #area-conta { flex: 1; min-width: 0; color: #d8daea; font-size: 15px; }
+.mobile-nav-row .carrinho-link { color: #d8daea; flex-shrink: 0; }
+.mobile-nav-row .badge-carrinho { top: -6px; right: -12px; }
+
+@media (max-width: 1024px) {
+    .icones-nav > .search-container,
+    .icones-nav > .carrinho-link,
+    .icones-nav > .area-conta {
+        display: none;
+    }
+}
 .badge-carrinho { position: absolute; top: -8px; right: -10px; background: #00d9ff; color: black; font-size: 11px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
 
 /* BARRA DE PESQUISA */
@@ -120,3 +204,81 @@ a { text-decoration: none; color: inherit; }
 .footer-col ul li a:hover { color: #00e5ff; }
 .footer-bottom { border-top: 1px solid #16204a; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; font-size: 11px; gap: 15px; }
 .footer-info { display: flex; gap: 20px; color: #8a8fb8; list-style: none; }
+
+/* =========================================================================
+   RESPONSIVIDADE - PÁGINA DO CARRINHO
+========================================================================= */
+
+@media (max-width: 1024px) {
+    .carrinho-page-content { padding: 100px 4vw 40px 4vw; }
+    .carrinho-header h1 { font-size: 26px; }
+
+    /* Header e menu hamburguer (troca cedo: fica apertado demais em tablet) */
+    .navg { display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+    .navg ul { display: none; }
+    .hamburger { display: flex; }
+    .nexus { margin-left: 0; font-size: 22px; }
+    .icones-nav { margin-right: 0; gap: 15px; }
+
+    /* Barra de pesquisa no header (fallback) */
+    .search-container { position: static; }
+    .search-box.ativo {
+        width: calc(100% - 40px); position: absolute; top: 80px; right: 20px; left: 20px;
+        height: 45px; border-radius: 8px; font-size: 16px; padding: 0 15px;
+        background: #090f22; z-index: 999; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (max-width: 900px) {
+    /* Empilha o resumo do pedido abaixo da lista de itens */
+    .carrinho-layout { flex-direction: column; align-items: stretch; }
+    .resumo-pedido { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    /* SMARTPHONES E MOBILE */
+
+    /* 3. Cabeçalho da página e stepper */
+    .carrinho-page-content { padding: 90px 20px 30px 20px; }
+    .carrinho-header h1 { font-size: 22px; }
+    .stepper { gap: 8px; font-size: 11px; flex-wrap: wrap; }
+    .linha-step { width: 20px; }
+
+    /* 4. Item do carrinho */
+    .item-card { padding: 14px; gap: 14px; flex-wrap: wrap; }
+    .item-img-container { width: 64px; height: 64px; }
+    .item-nome { font-size: 13.5px; }
+    .item-acoes { gap: 15px; }
+    .item-preco { font-size: 16px; }
+
+    /* 5. Resumo do pedido */
+    .resumo-pedido { padding: 18px; }
+    .resumo-total span:last-child { font-size: 20px; }
+
+    /* 6. Carrinho vazio */
+    .carrinho-vazio-texto { font-size: 26px; }
+    .cont-icone-carrinho { width: 64px; height: 64px; }
+
+    /* 7. Footer */
+    .footer { padding: 40px 20px 20px 20px; }
+    .footer-container { flex-direction: column; gap: 30px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer-info { justify-content: flex-start; flex-wrap: wrap; gap: 15px; }
+}
+
+@media (max-width: 480px) {
+    /* SMARTPHONES PEQUENOS (iPhone SE, etc) */
+    .carrinho-header h1 { font-size: 19px; }
+    .item-card { flex-direction: column; align-items: flex-start; }
+    .item-acoes { flex-direction: row; align-items: center; justify-content: space-between; width: 100%; gap: 10px; }
+    .carrinho-vazio-texto { font-size: 20px; }
+}
+
+@media (max-width: 360px) {
+    /* TELAS MUITO ESTREITAS (Galaxy Fold fechado, telas compactas) */
+    .nexus { font-size: 18px; }
+    .icones-nav { gap: 10px; }
+    .carrinho-page-content { padding: 85px 15px 25px 15px; }
+    .carrinho-header h1 { font-size: 17px; }
+    .mobile-nav { width: 100vw; padding: 90px 20px 20px 20px; }
+}
