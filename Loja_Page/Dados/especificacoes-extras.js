@@ -2,10 +2,12 @@
    ESPECIFICACOES-EXTRAS.JS
    Gerado automaticamente pelo botão "Exportar para o Git" na Loja.
    Substitua o arquivo antigo por este no repositório e faça commit + push.
-   [CORRIGIDO] Reorganizado: a chave "2" estava vazia e deslocava todas as
-   specs seguintes em 1 posição. Produto id 172 (Kingston Fury Renegade 2TB)
-   ficou sem especificações (nunca existiram no arquivo original) — precisa
-   ser preenchido manualmente ou reexportado da loja.
+   [CORRIGIDO] 1) Reorganizado: a chave "2" estava vazia e deslocava todas as
+   specs seguintes em 1 posição — cada spec agora está na chave = id do produto.
+   2) ID 8 (RTX 5090) estava com specs de uma RTX 4080 — substituído pelos dados
+   reais da RTX 5090 (fonte: NVIDIA + fichas técnicas, jul/2026).
+   3) ID 172 (Kingston Fury Renegade 2TB) não tinha specs — preenchido com dados
+   reais do fabricante/lojas (SFYRD/2000G, jul/2026).
 ========================================================================= */
 
 const especificacoesExtras = {
@@ -112,17 +114,21 @@ const especificacoesExtras = {
     },
     "8": {
         "Fabricante": "NVIDIA",
-        "Modelo": "GeForce RTX 4080",
-        "Memória": "16 GB",
-        "Tipo de memória": "GDDR6X",
-        "Barramento de memória": "256-bit",
-        "Núcleos CUDA": "9728",
-        "Clock base": "2205 MHz",
-        "Clock boost": "2505 MHz",
-        "TDP": "350W",
-        "Conector de energia": "1x 16-pin (12VHPWR)",
-        "Interface": "PCIe 4.0 x16",
-        "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
+        "Modelo": "GeForce RTX 5090",
+        "Arquitetura": "Blackwell (GB202)",
+        "Núcleos CUDA": "21760",
+        "Memória": "32 GB GDDR7",
+        "Interface de memória": "512-bit",
+        "Clock base": "2017 MHz",
+        "Clock boost": "2407 MHz",
+        "Largura de banda": "1.792 GB/s",
+        "TDP": "575 W",
+        "Conector de energia": "1x 16-pin (PCIe 5.0)",
+        "Saídas de vídeo": "3x DisplayPort 2.1b, 1x HDMI 2.1b",
+        "Suporte a Ray Tracing": "Sim (4ª geração)",
+        "Suporte DLSS": "DLSS 4 (Multi Frame Generation)",
+        "Dimensões": "304 x 137 x 40 mm (2 slots, Founders Edition)",
+        "Garantia": "3 anos"
     },
     "9": {
         "Fabricante": "AMD",
@@ -2406,5 +2412,20 @@ const especificacoesExtras = {
         "Compatibilidade": "PS5, Windows",
         "Software": "XPG SSD Toolbox"
     },
-    "172": {}
+    "172": {
+        "Fabricante": "Kingston",
+        "Modelo": "FURY Renegade (SFYRD/2000G)",
+        "Capacidade": "2TB",
+        "Interface": "PCIe 4.0 x4 NVMe",
+        "Fator de forma": "M.2 2280",
+        "Controlador": "Phison E18",
+        "NAND": "3D TLC",
+        "Leitura sequencial": "Até 7.300 MB/s",
+        "Escrita sequencial": "Até 7.000 MB/s",
+        "IOPS (aleatório 4K)": "Até 1.000.000 / 1.000.000",
+        "Durabilidade (TBW)": "2.000 TB (2 PBW)",
+        "MTBF": "1.800.000 horas",
+        "Compatibilidade": "PS5, Windows",
+        "Garantia": "5 anos"
+    }
 };
