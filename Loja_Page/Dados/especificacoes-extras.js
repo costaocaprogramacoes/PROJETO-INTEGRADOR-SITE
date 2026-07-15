@@ -2,6 +2,10 @@
    ESPECIFICACOES-EXTRAS.JS
    Gerado automaticamente pelo botão "Exportar para o Git" na Loja.
    Substitua o arquivo antigo por este no repositório e faça commit + push.
+   [CORRIGIDO] Reorganizado: a chave "2" estava vazia e deslocava todas as
+   specs seguintes em 1 posição. Produto id 172 (Kingston Fury Renegade 2TB)
+   ficou sem especificações (nunca existiram no arquivo original) — precisa
+   ser preenchido manualmente ou reexportado da loja.
 ========================================================================= */
 
 const especificacoesExtras = {
@@ -23,8 +27,7 @@ const especificacoesExtras = {
         "Dimensões": "336 x 137 x 61 mm (3 slots)",
         "Garantia": "3 anos"
     },
-    "2": {},
-    "3": {
+    "2": {
         "Fabricante": "Logitech",
         "Modelo": "G Pro X Superlight 2",
         "Cor": "Branco",
@@ -38,7 +41,7 @@ const especificacoesExtras = {
         "Switches": "LIGHTFORCE híbrido ótico-mecânico",
         "Software": "Logitech G HUB"
     },
-    "4": {
+    "3": {
         "Fabricante": "Logitech ASTRO",
         "Modelo": "A10",
         "Cor": "Preto",
@@ -52,7 +55,7 @@ const especificacoesExtras = {
         "Estrutura": "Alumínio anodizado + policarbonato",
         "Peso (sem cabo)": "Over-ear (sobre a orelha)"
     },
-    "5": {
+    "4": {
         "Fabricante": "Corsair",
         "Modelo": "HS65 Surround",
         "Cor": "Preto",
@@ -66,7 +69,7 @@ const especificacoesExtras = {
         "Peso": "282 g",
         "Software": "Corsair iCUE + SonarWorks SoundID"
     },
-    "6": {
+    "5": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 9 7950X",
         "Núcleos": "16",
@@ -80,7 +83,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "7": {
+    "6": {
         "Fabricante": "SuperFrame",
         "Modelo": "SuperFrame Odin",
         "Cor": "Preto",
@@ -93,7 +96,7 @@ const especificacoesExtras = {
         "Sensibilidade do microfone": "42 dB ± 3dB",
         "Garantia": "1 Ano"
     },
-    "8": {
+    "7": {
         "Fabricante": "ASUS",
         "Modelo": "ROG Swift PG259QNR",
         "Tamanho da tela": "(25\" nominal)",
@@ -107,7 +110,7 @@ const especificacoesExtras = {
         "Conexões": "1x DisplayPort 1.4, 1x HDMI 2.0",
         "Ajustes": "Inclinação, giro, pivô, altura"
     },
-    "9": {
+    "8": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4080",
         "Memória": "16 GB",
@@ -121,7 +124,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "10": {
+    "9": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 9 9950X",
         "Núcleos": "16",
@@ -135,7 +138,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5600MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "11": {
+    "10": {
         "Fabricante": "Corsair",
         "Modelo": "Vengeance RGB",
         "Capacidade": "32GB (2x16GB)",
@@ -149,7 +152,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio",
         "Software": "Corsair iCUE"
     },
-    "12": {
+    "11": {
         "Fabricante": "HyperX",
         "Modelo": "Cloud III",
         "Cor": "Preto / Preto-Vermelho",
@@ -163,7 +166,7 @@ const especificacoesExtras = {
         "Faixa de frequência do microfone": "50 Hz – 17 kHz",
         "Som espacial": "DTS Headphone:X (ativação vitalícia)"
     },
-    "13": {
+    "12": {
         "Fabricante": "AOC",
         "Modelo": "C27G4ZXE",
         "Tamanho da tela": "27",
@@ -177,7 +180,7 @@ const especificacoesExtras = {
         "Conexões": "HDMI, DisplayPort",
         "Ajustes": "Altura, inclinação, pivô"
     },
-    "14": {
+    "13": {
         "Fabricante": "SteelSeries",
         "Modelo": "Apex Pro",
         "Formato": "Full-size",
@@ -191,7 +194,7 @@ const especificacoesExtras = {
         "Conexão": "USB com fio",
         "Software": "SteelSeries Engine"
     },
-    "15": {
+    "14": {
         "Fabricante": "ASUS",
         "Modelo": "ROG Strix X870-E Gaming WiFi",
         "Chipset": "AMD X870E",
@@ -205,7 +208,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 7 + Bluetooth + LAN 5Gb",
         "USB": "2x USB4, múltiplas USB 3.2 Gen2/Gen1"
     },
-    "16": {
+    "15": {
         "Fabricante": "Corsair",
         "Modelo": "RM1000x",
         "Potência": "1000W",
@@ -219,7 +222,7 @@ const especificacoesExtras = {
         "Proteções": "OVP, UVP, SCP, OTP, OPP",
         "Conector SATA": "14x"
     },
-    "17": {
+    "16": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 5 5600",
         "Núcleos": "6",
@@ -233,7 +236,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "18": {
+    "17": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 5 5600X",
         "Núcleos": "6",
@@ -247,7 +250,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "19": {
+    "18": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 5700X",
         "Núcleos": "8",
@@ -261,7 +264,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "20": {
+    "19": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 5800X",
         "Núcleos": "8",
@@ -275,7 +278,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "21": {
+    "20": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 5800X3D",
         "Núcleos": "8",
@@ -289,7 +292,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "22": {
+    "21": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 5 7600",
         "Núcleos": "6",
@@ -303,7 +306,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "23": {
+    "22": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 5 7600X",
         "Núcleos": "6",
@@ -317,7 +320,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "24": {
+    "23": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 7700",
         "Núcleos": "8",
@@ -331,7 +334,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "25": {
+    "24": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 7700X",
         "Núcleos": "8",
@@ -345,7 +348,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "26": {
+    "25": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 7800X3D",
         "Núcleos": "8",
@@ -359,7 +362,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "27": {
+    "26": {
         "Fabricante": "Intel",
         "Modelo": "i3-12100F",
         "Núcleos": "4",
@@ -373,7 +376,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-4800",
         "Gráficos integrados": "Não possui"
     },
-    "28": {
+    "27": {
         "Fabricante": "Intel",
         "Modelo": "Core i5-12400F",
         "Núcleos": "6",
@@ -387,7 +390,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-4800",
         "Gráficos integrados": "Não possui"
     },
-    "29": {
+    "28": {
         "Fabricante": "Intel",
         "Modelo": "i5-13400F",
         "Núcleos": "10 (6P+4E)",
@@ -401,7 +404,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-5200",
         "Gráficos integrados": "Não possui"
     },
-    "30": {
+    "29": {
         "Fabricante": "Intel",
         "Modelo": "i5-13600KF",
         "Núcleos": "14 (6P+8E)",
@@ -415,7 +418,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-5600",
         "Gráficos integrados": "Não possui"
     },
-    "31": {
+    "30": {
         "Fabricante": "Intel",
         "Modelo": "i5-14600KF",
         "Núcleos": "14 (6P+8E)",
@@ -429,7 +432,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-5600",
         "Gráficos integrados": "Não possui"
     },
-    "32": {
+    "31": {
         "Fabricante": "Intel",
         "Modelo": "Core i7-13700K",
         "Núcleos": "16 (8P+8E)",
@@ -443,7 +446,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-5600",
         "Gráficos integrados": "Intel UHD 770"
     },
-    "33": {
+    "32": {
         "Fabricante": "Intel",
         "Modelo": "i9-13900K",
         "Núcleos": "24 (8P+16E)",
@@ -457,7 +460,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4-3200 / DDR5-5600",
         "Gráficos integrados": "Intel UHD 770"
     },
-    "34": {
+    "33": {
         "Fabricante": "HyperX",
         "Modelo": "Cloud Stinger 2",
         "Cor": "Preto",
@@ -471,7 +474,7 @@ const especificacoesExtras = {
         "Comprimento do cabo": "2 m",
         "Conexão": "3,5mm"
     },
-    "35": {
+    "34": {
         "Fabricante": "Logitech",
         "Modelo": "G335",
         "Cor": "Preto / Roxo",
@@ -485,7 +488,7 @@ const especificacoesExtras = {
         "Controles": "Flip-to-mute + roda de volume",
         "Almofadas": "Espuma viscoelástica com tecido esportivo"
     },
-    "36": {
+    "35": {
         "Fabricante": "Logitech",
         "Modelo": "G Pro X 2 Lightspeed",
         "Cor": "Preto",
@@ -499,7 +502,7 @@ const especificacoesExtras = {
         "Alcance sem fio": "Até 30 Metros",
         "Som surround": "DTS Headphone:X 2.0 (7.1)"
     },
-    "37": {
+    "36": {
         "Fabricante": "Redragon",
         "Modelo": "Zeus Pro H510 Pro",
         "Cor": "Preto",
@@ -513,7 +516,7 @@ const especificacoesExtras = {
         "Conexão": "2.4GHz / Bluetooth / USB-C",
         "Material das earpads": "Tecido"
     },
-    "38": {
+    "37": {
         "Fabricante": "Redragon",
         "Modelo": "Lamia 2 H320RGB",
         "Cor": "Preto",
@@ -527,7 +530,7 @@ const especificacoesExtras = {
         "Comprimento do cabo": "2 m",
         "Som surround": "7.1 Virtual"
     },
-    "39": {
+    "38": {
         "Fabricante": "Razer",
         "Modelo": "BlackShark V2 X",
         "Cor": "Preto (também disponível em Verde, Branco, Quartzo)",
@@ -541,7 +544,7 @@ const especificacoesExtras = {
         "Som surround": "7.1 Virtual (via software, só Windows 10 64-bit)",
         "Cancelamento de ruído": "Passivo avançado"
     },
-    "40": {
+    "39": {
         "Fabricante": "Logitech",
         "Modelo": "G203 Lightsync",
         "Cor": "Preto",
@@ -555,7 +558,7 @@ const especificacoesExtras = {
         "Switches": "Mecânicos com mola metálica",
         "Software": "Logitech G HUB"
     },
-    "41": {
+    "40": {
         "Fabricante": "Logitech",
         "Modelo": "G502 X",
         "Sensor": "HERO 25K",
@@ -569,7 +572,7 @@ const especificacoesExtras = {
         "Cor": "Preto",
         "Bateria": "140 horas"
     },
-    "42": {
+    "41": {
         "Fabricante": "Razer",
         "Modelo": "DeathAdder V3",
         "Cor": "Preto",
@@ -583,7 +586,7 @@ const especificacoesExtras = {
         "Switches": "Ópticos Gen-3",
         "Software": "Razer Synapse"
     },
-    "43": {
+    "42": {
         "Fabricante": "Razer",
         "Modelo": "Cobra",
         "Cor": "Preto",
@@ -597,7 +600,7 @@ const especificacoesExtras = {
         "Switches": "Ópticos Gen-3 (90M cliques)",
         "Software": "Razer Synapse"
     },
-    "44": {
+    "43": {
         "Fabricante": "HyperX",
         "Modelo": "Pulsefire Haste 2",
         "Cor": "Preto",
@@ -611,7 +614,7 @@ const especificacoesExtras = {
         "Switches": "HyperX (100M cliques)",
         "Software": "HyperX NGENUITY"
     },
-    "45": {
+    "44": {
         "Fabricante": "Redragon",
         "Modelo": "Cobra M711 V2",
         "Cor": "Preto",
@@ -625,7 +628,7 @@ const especificacoesExtras = {
         "Switches": "Ópticos LK (50M cliques)",
         "Software": "Redragon (proprietário)"
     },
-    "46": {
+    "45": {
         "Fabricante": "Redragon",
         "Modelo": "Storm Pro M808-KS",
         "Sensor": "PixArt PAW3335",
@@ -639,7 +642,7 @@ const especificacoesExtras = {
         "Switches": "Huano",
         "Software": "Redragon (proprietário)"
     },
-    "47": {
+    "46": {
         "Fabricante": "Razer",
         "Modelo": "Viper V3 Pro",
         "Sensor": "Focus Pro 35K Optical Gen-2",
@@ -653,7 +656,7 @@ const especificacoesExtras = {
         "Pés (Feet)": "PTFE 100%",
         "Software": "Razer Synapse"
     },
-    "48": {
+    "47": {
         "Fabricante": "SteelSeries",
         "Modelo": "Aerox 5 Wireless",
         "Cor": "Preto",
@@ -667,7 +670,7 @@ const especificacoesExtras = {
         "Switches": "Golden Micro IP54 (80M cliques)",
         "Software": "SteelSeries GG"
     },
-    "49": {
+    "48": {
         "Fabricante": "Corsair",
         "Modelo": "M75 Wireless",
         "Cor": "Preto",
@@ -681,7 +684,7 @@ const especificacoesExtras = {
         "Switches": "Quickstrike ópticos (100M cliques)",
         "Software": "Corsair iCUE"
     },
-    "50": {
+    "49": {
         "Fabricante": "ASUS",
         "Modelo": "Keris II Ace",
         "Cor": "Preto",
@@ -695,7 +698,7 @@ const especificacoesExtras = {
         "Switches": "Ópticos ROG (100M cliques)",
         "Software": "Armoury Crate"
     },
-    "51": {
+    "50": {
         "Fabricante": "Glorious",
         "Modelo": "Model O 2 Wireless",
         "Cor": "Preto",
@@ -709,7 +712,7 @@ const especificacoesExtras = {
         "Switches": "Glorious (80M cliques)",
         "Software": "Glorious CORE"
     },
-    "52": {
+    "51": {
         "Fabricante": "Cooler Master",
         "Modelo": "MM712",
         "Cor": "Preto",
@@ -723,7 +726,7 @@ const especificacoesExtras = {
         "Switches": "LK 2.0 ópticos (70M cliques)",
         "Software": "Cooler Master MasterPlus+"
     },
-    "53": {
+    "52": {
         "Fabricante": "Alienware",
         "Modelo": "Pro Wireless Gaming",
         "Cor": "Branco",
@@ -737,7 +740,7 @@ const especificacoesExtras = {
         "Switches": "Ópticos com sistema magnético (70M cliques)",
         "Software": "Alienware Command Center"
     },
-    "54": {
+    "53": {
         "Fabricante": "MSI",
         "Modelo": "Versa 300 Wireless",
         "Cor": "Preto",
@@ -751,7 +754,7 @@ const especificacoesExtras = {
         "Switches": "OMRON (60M cliques)",
         "Software": "MSI Center"
     },
-    "55": {
+    "54": {
         "Fabricante": "Redragon",
         "Modelo": "Kumara K552 RGB",
         "Formato": "TKL (Tenkeyless)",
@@ -765,7 +768,7 @@ const especificacoesExtras = {
         "Conexão": "USB com fio (banhado a ouro)",
         "Software": "Redragon (RGB/macros)"
     },
-    "56": {
+    "55": {
         "Fabricante": "Redragon",
         "Modelo": "Fizz K617 RGB",
         "Formato": "60%",
@@ -779,7 +782,7 @@ const especificacoesExtras = {
         "Conexão": "USB-C removível",
         "Software": "Redragon (RGB/macros)"
     },
-    "57": {
+    "56": {
         "Fabricante": "HyperX",
         "Modelo": "Alloy Origins Core",
         "Formato": "TKL (Tenkeyless)",
@@ -793,7 +796,7 @@ const especificacoesExtras = {
         "Conexão": "USB-C removível",
         "Software": "HyperX NGENUITY"
     },
-    "58": {
+    "57": {
         "Fabricante": "Logitech",
         "Modelo": "G413 SE",
         "Formato": "Full Size",
@@ -807,7 +810,7 @@ const especificacoesExtras = {
         "Conexão": "USB com fio",
         "Software": "Não requer (plug-and-play)"
     },
-    "59": {
+    "58": {
         "Fabricante": "Logitech",
         "Modelo": "G Pro X TKL Lightspeed",
         "Formato": "TKL (Tenkeyless)",
@@ -821,7 +824,7 @@ const especificacoesExtras = {
         "Conexão": "LIGHTSPEED Wireless, Bluetooth, USB-C",
         "Software": "Logitech G HUB"
     },
-    "60": {
+    "59": {
         "Fabricante": "Corsair",
         "Modelo": "K70 Core RGB",
         "Formato": "Full-size",
@@ -835,7 +838,7 @@ const especificacoesExtras = {
         "Conexão": "USB com fio",
         "Software": "Corsair iCUE"
     },
-    "61": {
+    "60": {
         "Fabricante": "Corsair",
         "Modelo": "K70 RGB PRO",
         "Formato": "Full Size",
@@ -849,7 +852,7 @@ const especificacoesExtras = {
         "Conexão": "USB com fio",
         "Software": "Corsair iCUE"
     },
-    "62": {
+    "61": {
         "Fabricante": "Razer",
         "Modelo": "BlackWidow V4",
         "Formato": "Full-size",
@@ -863,7 +866,7 @@ const especificacoesExtras = {
         "Conexão": "USB-C removível",
         "Extras": "Apoio de pulso magnético incluso · roda multimídia com 4 botões · 5 teclas macro dedicadas · polling rate até 8.000Hz"
     },
-    "63": {
+    "62": {
         "Fabricante": "SteelSeries",
         "Modelo": "Apex Pro TKL Wireless",
         "Formato": "TKL (87 teclas)",
@@ -877,7 +880,7 @@ const especificacoesExtras = {
         "Conexão": "USB-C, 2,4GHz Wireless, Bluetooth",
         "Software": "SteelSeries GG"
     },
-    "64": {
+    "63": {
         "Fabricante": "HyperX",
         "Modelo": "Alloy Origins 65",
         "Formato": "65%",
@@ -891,7 +894,7 @@ const especificacoesExtras = {
         "Conexão": "USB-C removível",
         "Software": "HyperX NGENUITY"
     },
-    "65": {
+    "64": {
         "Fabricante": "ASUS",
         "Modelo": "Strix Scope II 96 Wireless",
         "Formato": "96%",
@@ -905,7 +908,7 @@ const especificacoesExtras = {
         "Conexão": "Bluetooth, 2.4GHz SpeedNova, USB-C",
         "Software": "ASUS Armoury Crate"
     },
-    "66": {
+    "65": {
         "Fabricante": "Keychron",
         "Modelo": "K2 Pro",
         "Formato": "75% (84 teclas)",
@@ -919,7 +922,7 @@ const especificacoesExtras = {
         "Conexão": "Bluetooth 5.1 + USB-C",
         "Software": "QMK/VIA (Keychron Launcher)"
     },
-    "67": {
+    "66": {
         "Fabricante": "Redragon",
         "Modelo": "Fizz Pro K616",
         "Formato": "60%",
@@ -933,7 +936,7 @@ const especificacoesExtras = {
         "Conexão": "2,4GHz Wireless, Bluetooth 5.0, USB-C",
         "Software": "Redragon Pro"
     },
-    "68": {
+    "67": {
         "Fabricante": "Corsair",
         "Modelo": "K65 Plus Wireless",
         "Formato": "75%",
@@ -947,7 +950,7 @@ const especificacoesExtras = {
         "Conexão": "2.4GHz wireless, Bluetooth, USB-C",
         "Software": "Corsair iCUE"
     },
-    "69": {
+    "68": {
         "Fabricante": "Razer",
         "Modelo": "Huntsman V3 Pro TKL",
         "Formato": "TKL (Tenkeyless)",
@@ -961,7 +964,7 @@ const especificacoesExtras = {
         "Conexão": "USB-C",
         "Software": "Razer Synapse"
     },
-    "70": {
+    "69": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 3050",
         "Memória": "8 GB",
@@ -975,7 +978,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "71": {
+    "70": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 3060 Ventus 2X",
         "Memoria": "12 GB",
@@ -989,7 +992,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "72": {
+    "71": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 3060 Ti Eagle",
         "Memoria": "8 GB",
@@ -1003,7 +1006,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "73": {
+    "72": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4060 Dual OC",
         "Memória": "8GB",
@@ -1017,7 +1020,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "74": {
+    "73": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4060 Ti Gaming X",
         "Memória": "8 GB",
@@ -1031,7 +1034,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "75": {
+    "74": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4070 WindForce OC",
         "Memória": "12 GB",
@@ -1045,7 +1048,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "76": {
+    "75": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4070 SUPER",
         "Memória": "12 GB",
@@ -1059,7 +1062,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "77": {
+    "76": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4070 Ti SUPER",
         "Memória": "16 GB",
@@ -1073,7 +1076,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "78": {
+    "77": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4080 SUPER Aero OC",
         "Memória": "16 GB",
@@ -1087,7 +1090,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "79": {
+    "78": {
         "Fabricante": "AMD",
         "Modelo": "RX 6600 Challenger D",
         "Memória": "8 GB",
@@ -1101,7 +1104,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.1"
     },
-    "80": {
+    "79": {
         "Fabricante": "AMD",
         "Modelo": "RX 6650 XT Pulse",
         "Memória": "8 GB",
@@ -1115,7 +1118,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.1"
     },
-    "81": {
+    "80": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 6700 XT",
         "Memória": "12 GB",
@@ -1129,7 +1132,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.1"
     },
-    "82": {
+    "81": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 6750 XT",
         "Memória": "12 GB",
@@ -1143,7 +1146,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.1"
     },
-    "83": {
+    "82": {
         "Fabricante": "AMD",
         "Modelo": "X 7600 Steel Legend",
         "Memória": "8 GB",
@@ -1157,7 +1160,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 2.1, 1x HDMI 2.1"
     },
-    "84": {
+    "83": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 7700 XT",
         "Memoria": "12GB",
@@ -1171,7 +1174,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 2.1, 1x HDMI 2.1"
     },
-    "85": {
+    "84": {
         "Fabricante": "ASUS",
         "Modelo": "Prime B550M-A",
         "Chipset": "AMD B550",
@@ -1185,7 +1188,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen2 Type-A"
     },
-    "86": {
+    "85": {
         "Fabricante": "Gigabyte",
         "Modelo": "B550M DS3H",
         "Chipset": "AMD B550",
@@ -1199,7 +1202,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen1"
     },
-    "87": {
+    "86": {
         "Fabricante": "MSI",
         "Modelo": "B550 Tomahawk",
         "Chipset": "AMD B550",
@@ -1213,7 +1216,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 2.5Gb + 1Gb",
         "USB": "USB 3.2 Gen2 Type-C"
     },
-    "88": {
+    "87": {
         "Fabricante": "ASUS",
         "Modelo": "TUF Gaming B650M-Plus WiFi",
         "Chipset": "AMD B650",
@@ -1227,7 +1230,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6 + Bluetooth + LAN 2.5Gb",
         "USB": "USB4 (header), USB 3.2 Gen2 Type-C"
     },
-    "89": {
+    "88": {
         "Fabricante": "Gigabyte",
         "Modelo": "B650 Aorus Elite AX",
         "Chipset": "AMD B650",
@@ -1241,7 +1244,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6E + Bluetooth 5.2 + LAN 2.5Gb",
         "USB": "USB 3.2 Gen2x2 Type-C"
     },
-    "90": {
+    "89": {
         "Fabricante": "MSI",
         "Modelo": "PRO B760M-A WiFi DDR5",
         "Chipset": "Intel B760",
@@ -1255,7 +1258,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6 + Bluetooth + LAN 1Gb",
         "USB": "USB 3.2 Gen2 Type-C"
     },
-    "91": {
+    "90": {
         "Fabricante": "ASUS",
         "Modelo": "Prime B760M-A D4",
         "Chipset": "Intel B760",
@@ -1269,7 +1272,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen2 Type-C"
     },
-    "92": {
+    "91": {
         "Fabricante": "Gigabyte",
         "Modelo": "Z790 Aorus Elite AX",
         "Chipset": "Intel Z790",
@@ -1283,7 +1286,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6E + Bluetooth 5 + LAN 2.5GB",
         "USB": "USB 3.2 Gen2x2 Type-C"
     },
-    "93": {
+    "92": {
         "Fabricante": "Kingston (FURY)",
         "Modelo": "Fury Beast",
         "Capacidade": "8GB (1x8GB)",
@@ -1297,7 +1300,7 @@ const especificacoesExtras = {
         "Dissipador": "Baixo Perfil",
         "Garantia": "Vitalícia (fabricante)"
     },
-    "94": {
+    "93": {
         "Fabricante": "Kingston (FURY)",
         "Modelo": "Fury Beast",
         "Capacidade": "16GB (2x8GB)",
@@ -1311,7 +1314,7 @@ const especificacoesExtras = {
         "Dissipador": "Baixo perfil",
         "Garantia": "Vitalícia (fabricante)"
     },
-    "95": {
+    "94": {
         "Fabricante": "Kingston",
         "Modelo": "Fury Beast",
         "Capacidade": "16GB (1x16GB)",
@@ -1325,7 +1328,7 @@ const especificacoesExtras = {
         "Dissipador": "Baixo perfil",
         "Software": "Não requer"
     },
-    "96": {
+    "95": {
         "Fabricante": "Corsair",
         "Modelo": "Vengeance LPX",
         "Capacidade": "16GB (2x8GB)",
@@ -1339,7 +1342,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio anodizado, baixo perfil",
         "Garantia": "Vitalícia (fabricante)"
     },
-    "97": {
+    "96": {
         "Fabricante": "Corsair",
         "Modelo": "Vengeance RGB",
         "Capacidade": "32GB (2x16GB)",
@@ -1353,7 +1356,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio anodizado preto",
         "Software": "Corsair iCUE"
     },
-    "98": {
+    "97": {
         "Fabricante": "XPG (ADATA)",
         "Modelo": "Gammix D35",
         "Capacidade": "16GB (1x16GB)",
@@ -1367,7 +1370,7 @@ const especificacoesExtras = {
         "Dissipador": "Baixo perfil, design triangular",
         "Garantia": "10 Anos"
     },
-    "99": {
+    "98": {
         "Fabricante": "XPG",
         "Modelo": "Lancer RGB",
         "Capacidade": "16GB (1x16GB)",
@@ -1381,7 +1384,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio",
         "Software": "XPG Prime"
     },
-    "100": {
+    "99": {
         "Fabricante": "Crucial",
         "Modelo": "Pro",
         "Capacidade": "16GB (1x16GB)",
@@ -1395,7 +1398,7 @@ const especificacoesExtras = {
         "Dissipador": "-",
         "Garantia": "Vitalícia (fabricante)"
     },
-    "101": {
+    "100": {
         "Fabricante": "TeamGroup",
         "Modelo": "T-Force Vulcan Z",
         "Capacidade": "16GB (2x8GB)",
@@ -1409,7 +1412,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio anodizado, 0,8mm",
         "Garantia": "Vitalícia (fabricante)"
     },
-    "102": {
+    "101": {
         "Fabricante": "TeamGroup",
         "Modelo": "T-Force Delta RGB",
         "Capacidade": "32GB (2x16GB)",
@@ -1423,7 +1426,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio com PMIC reforçado",
         "Garantia": "1 Ano"
     },
-    "103": {
+    "102": {
         "Fabricante": "G.Skill",
         "Modelo": "Ripjaws S5",
         "Capacidade": "32GB (2x16GB)",
@@ -1437,7 +1440,7 @@ const especificacoesExtras = {
         "Dissipador": "Alumínio, baixo perfil (33mm)",
         "Garantia": "Vitalícia (fabricante)"
     },
-    "104": {
+    "103": {
         "Fabricante": "Corsair",
         "Modelo": "CV650",
         "Potência": "650W",
@@ -1451,7 +1454,7 @@ const especificacoesExtras = {
         "Conector SATA": "7x",
         "MTBF": "100.000 horas"
     },
-    "105": {
+    "104": {
         "Fabricante": "MSI",
         "Modelo": "MAG A650BN 650W",
         "Potência": "650W",
@@ -1465,7 +1468,7 @@ const especificacoesExtras = {
         "Conector SATA": "5x",
         "Proteções": "OCP, OVP, OPP, OTP, SCP"
     },
-    "106": {
+    "105": {
         "Fabricante": "XPG",
         "Modelo": "Core Reactor II 850W Gold",
         "Potência": "850W",
@@ -1479,7 +1482,7 @@ const especificacoesExtras = {
         "Conector SATA": "8x",
         "Proteções": "OCP, OVP, OPP, OTP, UVP, SCP, NLO, SIP"
     },
-    "107": {
+    "106": {
         "Fabricante": "Cooler Master",
         "Modelo": "MWE 650 Bronze V2",
         "Potência": "650W",
@@ -1493,7 +1496,7 @@ const especificacoesExtras = {
         "Conector SATA": "6x",
         "Garantia": "5 Anos"
     },
-    "108": {
+    "107": {
         "Fabricante": "Corsair",
         "Modelo": "RM850e 850W Gold",
         "Potência": "850W",
@@ -1507,7 +1510,7 @@ const especificacoesExtras = {
         "Conector PCIe": "3x + 1x 12V-2x6 nativo (600W)",
         "MTBF": "100.000 horas"
     },
-    "109": {
+    "108": {
         "Fabricante": "MSI",
         "Modelo": "MAG A850GL PCIE5 850W Gold",
         "Potência": "850W",
@@ -1521,7 +1524,7 @@ const especificacoesExtras = {
         "Conector SATA": "8x",
         "Proteções": "OCP, OVP, OPP, OTP, SCP, UVP"
     },
-    "110": {
+    "109": {
         "Fabricante": "DeepCool",
         "Modelo": "PX850G",
         "Potência": "850W",
@@ -1535,7 +1538,7 @@ const especificacoesExtras = {
         "Conector SATA": "4x",
         "Proteções": "OPP, OVP, SCP, OTP, OCP, UVP"
     },
-    "111": {
+    "110": {
         "Fabricante": "Thermaltake",
         "Modelo": "oughpower GF A3 750W",
         "Potência": "750W",
@@ -1549,7 +1552,7 @@ const especificacoesExtras = {
         "Conector SATA": "2x",
         "Proteções": "Proteções"
     },
-    "112": {
+    "111": {
         "Fabricante": "LG",
         "Modelo": "UltraGear 24GN60R-B",
         "Tamanho da tela": "24\"",
@@ -1563,7 +1566,7 @@ const especificacoesExtras = {
         "Conexões": "1x HDMI, 1x DisplayPort",
         "Ajustes": "Inclinação"
     },
-    "113": {
+    "112": {
         "Fabricante": "LG",
         "Modelo": "27GN750-B",
         "Tamanho da tela": "27\"",
@@ -1577,7 +1580,7 @@ const especificacoesExtras = {
         "Conexões": "2x HDMI, 1x DisplayPort",
         "Ajustes": "Inclinação"
     },
-    "114": {
+    "113": {
         "Fabricante": "Samsung",
         "Modelo": "Odyssey G3",
         "Tamanho da tela": "24\"",
@@ -1591,7 +1594,7 @@ const especificacoesExtras = {
         "Conexões": "1x VGA, 1x DisplayPort 1.2, 1x HDMI 2.0",
         "Ajustes": "Altura, inclinação, rotação, pivô"
     },
-    "115": {
+    "114": {
         "Fabricante": "Samsung",
         "Modelo": "Odyssey G5 (G55C)",
         "Tamanho da tela": "27\"",
@@ -1605,7 +1608,7 @@ const especificacoesExtras = {
         "Conexões": "1x DisplayPort 1.2, 1x HDMI 2.0",
         "Ajustes": "Inclinação"
     },
-    "116": {
+    "115": {
         "Fabricante": "Samsung",
         "Modelo": "Odyssey G4 (G40B / LS25BG402)",
         "Tamanho da tela": "25\"",
@@ -1619,7 +1622,7 @@ const especificacoesExtras = {
         "Conexões": "1x DisplayPort 1.2, 2x HDMI 2.0",
         "Ajustes": "Giro, inclinação, altura (Ultrawide Game View 21:9)"
     },
-    "117": {
+    "116": {
         "Fabricante": "AOC",
         "Modelo": "24G2S/BK",
         "Tamanho da tela": "24\"",
@@ -1633,7 +1636,7 @@ const especificacoesExtras = {
         "Conexões": "1x VGA, 2x HDMI 1.4, 1x DisplayPort 1.2",
         "Ajustes": "Altura, giro, inclinação, pivô"
     },
-    "118": {
+    "117": {
         "Fabricante": "AOC",
         "Modelo": "27G2S/BK",
         "Tamanho da tela": "27\"",
@@ -1647,7 +1650,7 @@ const especificacoesExtras = {
         "Conexões": "1x VGA, 2x HDMI 1.4, 1x DisplayPort 1.2",
         "Ajustes": "Altura, inclinação, rotação"
     },
-    "119": {
+    "118": {
         "Fabricante": "ASUS",
         "Modelo": "TUF Gaming VG249Q1A",
         "Tamanho da tela": "24\"",
@@ -1661,7 +1664,7 @@ const especificacoesExtras = {
         "Conexões": "1x DisplayPort 1.2, 2x HDMI 1.4",
         "Ajustes": "Inclinação"
     },
-    "120": {
+    "119": {
         "Fabricante": "ASUS",
         "Modelo": "TUF Gaming VG27AQ3A",
         "Tamanho da tela": "27\"",
@@ -1675,7 +1678,7 @@ const especificacoesExtras = {
         "Conexões": "HDMI, DisplayPort",
         "Ajustes": "ELMB Sync, Variable Overdrive"
     },
-    "121": {
+    "120": {
         "Fabricante": "Gigabyte",
         "Modelo": "G24F 2",
         "Tamanho da tela": "24\"",
@@ -1689,7 +1692,7 @@ const especificacoesExtras = {
         "Conexões": "2x HDMI 2.0, 1x DisplayPort 1.2",
         "Ajustes": "Altura, inclinação"
     },
-    "122": {
+    "121": {
         "Fabricante": "Gigabyte",
         "Modelo": "M27Q",
         "Tamanho da tela": "27\"",
@@ -1703,7 +1706,7 @@ const especificacoesExtras = {
         "Conexões": "2x HDMI 2.0, 1x DisplayPort 1.2, USB-C",
         "Ajustes": "Altura, inclinação"
     },
-    "123": {
+    "122": {
         "Fabricante": "MSI",
         "Modelo": "G244F",
         "Tamanho da tela": "24\"",
@@ -1717,7 +1720,7 @@ const especificacoesExtras = {
         "Conexões": "2x HDMI 2.0b, 1x DisplayPort 1.2a",
         "Ajustes": "Inclinação"
     },
-    "124": {
+    "123": {
         "Fabricante": "MSI",
         "Modelo": "MAG 274QRFW",
         "Tamanho da tela": "27\"",
@@ -1731,7 +1734,7 @@ const especificacoesExtras = {
         "Conexões": "HDMI, DisplayPort",
         "Ajustes": "inclinação, altura, giro, pivô"
     },
-    "125": {
+    "124": {
         "Fabricante": "NVIDIA",
         "Modelo": "GTX 1060",
         "Memória": "6 GB",
@@ -1745,7 +1748,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "126": {
+    "125": {
         "Fabricante": "NVIDIA",
         "Modelo": "GTX 1070",
         "Memória": "8 GB",
@@ -1759,7 +1762,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "127": {
+    "126": {
         "Fabricante": "NVIDIA",
         "Modelo": "RTX 2060",
         "Memória": "6 GB",
@@ -1773,7 +1776,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "128": {
+    "127": {
         "Fabricante": "NVIDIA",
         "Modelo": "RTX 2070",
         "Memória": "8GB",
@@ -1787,7 +1790,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "129": {
+    "128": {
         "Fabricante": "NVIDIA",
         "Modelo": "RTX 3070",
         "Memória": "8 GB",
@@ -1801,7 +1804,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "130": {
+    "129": {
         "Fabricante": "NVIDIA",
         "Modelo": "RTX 3080",
         "Memória": "10 GB",
@@ -1815,7 +1818,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "131": {
+    "130": {
         "Fabricante": "Intel",
         "Modelo": "i7-8700K",
         "Núcleos": "6",
@@ -1829,7 +1832,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 2666MHz",
         "Gráficos integrados": "Intel UHD 630"
     },
-    "132": {
+    "131": {
         "Fabricante": "Intel",
         "Modelo": "i7-10700K",
         "Núcleos": "8",
@@ -1843,7 +1846,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 2933MHz",
         "Gráficos integrados": "Intel UHD 630"
     },
-    "133": {
+    "132": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 5 3600",
         "Núcleos": "6",
@@ -1857,7 +1860,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "134": {
+    "133": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 5800X",
         "Núcleos": "8",
@@ -1871,7 +1874,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "135": {
+    "134": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 580",
         "Memória": "8 GB",
@@ -1885,7 +1888,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "136": {
+    "135": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 6600 XT",
         "Memória": "8 GB",
@@ -1899,7 +1902,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x8",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.1"
     },
-    "137": {
+    "136": {
         "Fabricante": "NVIDIA",
         "Modelo": "GeForce RTX 4070 Ti",
         "Memória": "12 GB",
@@ -1913,7 +1916,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4a, 1x HDMI 2.1"
     },
-    "138": {
+    "137": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 7900 XTX",
         "Memória": "24 GB",
@@ -1927,7 +1930,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "2x DisplayPort 2.1, 2x HDMI 2.1"
     },
-    "139": {
+    "138": {
         "Fabricante": "NVIDIA",
         "Modelo": "GTX 1660 SUPER",
         "Memória": "6 GB",
@@ -1941,7 +1944,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "140": {
+    "139": {
         "Fabricante": "NVIDIA",
         "Modelo": "RTX 2060 SUPER",
         "Memória": "8 GB",
@@ -1955,7 +1958,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 3.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.0b"
     },
-    "141": {
+    "140": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 6700",
         "Memória": "10 GB",
@@ -1969,7 +1972,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "3x DisplayPort 1.4, 1x HDMI 2.1"
     },
-    "142": {
+    "141": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 6800 XT",
         "Memória": "16 GB",
@@ -1983,7 +1986,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "2x DisplayPort 1.4, 2x HDMI 2.1"
     },
-    "143": {
+    "142": {
         "Fabricante": "AMD",
         "Modelo": "Radeon RX 7900 XT",
         "Memória": "20 GB",
@@ -1997,7 +2000,7 @@ const especificacoesExtras = {
         "Interface": "PCIe 4.0 x16",
         "Saídas de vídeo": "2x DisplayPort 2.1, 2x HDMI 2.1"
     },
-    "144": {
+    "143": {
         "Fabricante": "Intel",
         "Modelo": "i5-8600K",
         "Núcleos": "6",
@@ -2011,7 +2014,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 2666MHz",
         "Gráficos integrados": "Intel UHD 630"
     },
-    "145": {
+    "144": {
         "Fabricante": "Intel",
         "Modelo": "i7-11700K",
         "Núcleos": "8",
@@ -2025,7 +2028,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Intel UHD 750"
     },
-    "146": {
+    "145": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 5 5600X",
         "Núcleos": "6",
@@ -2039,7 +2042,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "147": {
+    "146": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 7 3700X",
         "Núcleos": "8",
@@ -2053,7 +2056,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR4 até 3200MHz",
         "Gráficos integrados": "Não possui"
     },
-    "148": {
+    "147": {
         "Fabricante": "AMD",
         "Modelo": "Ryzen 9 7900X",
         "Núcleos": "12",
@@ -2067,7 +2070,7 @@ const especificacoesExtras = {
         "Memória suportada": "DDR5 até 5200MHz",
         "Gráficos integrados": "Radeon Graphics (RDNA2, 2 CUs)"
     },
-    "149": {
+    "148": {
         "Fabricante": "Gigabyte",
         "Modelo": "B450M DS3H V2",
         "Chipset": "AMD B450",
@@ -2081,7 +2084,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.1 Gen1"
     },
-    "150": {
+    "149": {
         "Fabricante": "ASUS",
         "Modelo": "TUF Gaming B450M-PLUS",
         "Chipset": "AMD B450",
@@ -2095,7 +2098,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.1 Gen2 Type-A"
     },
-    "151": {
+    "150": {
         "Fabricante": "MSI",
         "Modelo": "B450 Tomahawk MAX II",
         "Chipset": "AMD B450",
@@ -2109,7 +2112,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen2 Type-A"
     },
-    "152": {
+    "151": {
         "Fabricante": "ASUS",
         "Modelo": "Prime H610M-K D4",
         "Chipset": "Intel H610",
@@ -2123,7 +2126,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen1"
     },
-    "153": {
+    "152": {
         "Fabricante": "Gigabyte",
         "Modelo": "H610M H",
         "Chipset": "Intel H610",
@@ -2137,7 +2140,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen1"
     },
-    "154": {
+    "153": {
         "Fabricante": "MSI",
         "Modelo": "PRO B660M-A",
         "Chipset": "Intel B660",
@@ -2151,7 +2154,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen2 Type-C"
     },
-    "155": {
+    "154": {
         "Fabricante": "ASUS",
         "Modelo": "TUF Gaming B760M PLUS D4",
         "Chipset": "Intel B760",
@@ -2165,7 +2168,7 @@ const especificacoesExtras = {
         "Rede": "Sem WiFi nativo, LAN 1Gb",
         "USB": "USB 3.2 Gen2 Type-C"
     },
-    "156": {
+    "155": {
         "Fabricante": "Gigabyt",
         "Modelo": "X670 AORUS ELITE AX",
         "Chipset": "AMD X670",
@@ -2179,7 +2182,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6E + Bluetooth 5.2 + LAN 2.5Gb",
         "USB": "USB 3.2 Gen2x2 Type-C"
     },
-    "157": {
+    "156": {
         "Fabricante": "ASUS",
         "Modelo": "ROG Strix B650-A Gaming WiFi",
         "Chipset": "AMD B650",
@@ -2193,7 +2196,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6E + Bluetooth + LAN 2.5Gb",
         "USB": "USB 3.2 Gen2x2 Type-C"
     },
-    "158": {
+    "157": {
         "Fabricante": "MSI",
         "Modelo": "X670E Tomahawk WiFi",
         "Chipset": "AMD X670E",
@@ -2207,7 +2210,7 @@ const especificacoesExtras = {
         "Rede": "WiFi 6E + Bluetooth 5.3 + LAN 2.5Gb",
         "USB": "USB4 / USB 3.2 Gen2x2 Type-C"
     },
-    "159": {
+    "158": {
         "Fabricante": "Kingston",
         "Modelo": "NV2",
         "Capacidade": "1TB",
@@ -2221,7 +2224,7 @@ const especificacoesExtras = {
         "Compatibilidade": "PS5, Windows",
         "Software": "Kingston SSD Manager"
     },
-    "160": {
+    "159": {
         "Fabricante": "Kingston",
         "Modelo": "A400 (SA400S37/480G)",
         "Capacidade": "480GB",
@@ -2235,7 +2238,7 @@ const especificacoesExtras = {
         "Vida útil (MTTF)": "1 milhão de horas",
         "Garantia": "3 Anos"
     },
-    "161": {
+    "160": {
         "Fabricante": "Samsung",
         "Modelo": "NVMe M.2 Samsung 990 PRO 2TB",
         "Capacidade": "2TB",
@@ -2249,7 +2252,7 @@ const especificacoesExtras = {
         "Compatibilidade": "PS5, Windows, macOS",
         "Software": "Samsung Magician"
     },
-    "162": {
+    "161": {
         "Fabricante": "Samsung",
         "Modelo": "980 PRO",
         "Capacidade": "1TB",
@@ -2263,7 +2266,7 @@ const especificacoesExtras = {
         "Compatibilidade": "Windows, macOS",
         "Software": "Samsung Magician"
     },
-    "163": {
+    "162": {
         "Fabricante": "Western Digital (WD Blue)",
         "Modelo": "SN580",
         "Capacidade": "1TB",
@@ -2277,7 +2280,7 @@ const especificacoesExtras = {
         "Compatibilidade": "Windows, notebooks",
         "Software": "WD SSD Dashboard"
     },
-    "164": {
+    "163": {
         "Fabricante": "Western Digital (WD_Black)",
         "Modelo": "SN850X",
         "Capacidade": "2TB",
@@ -2291,7 +2294,7 @@ const especificacoesExtras = {
         "CompatibilidadE": "PS5, Windows 11/10/8.1",
         "Software": "WD_Black Dashboard (Game Mode 2.0)"
     },
-    "165": {
+    "164": {
         "Fabricante": "Crucial (Micron)",
         "Modelo": "P3 Plus",
         "Capacidade": "1TB",
@@ -2305,7 +2308,7 @@ const especificacoesExtras = {
         "Compatibilidade": "Windows, PS5 (compatível, abaixo do recomendado)",
         "Software": "Crucial Storage Executive"
     },
-    "166": {
+    "165": {
         "Fabricante": "Crucial (Micron)",
         "Modelo": "BX500 (CT500BX500SSD1)",
         "Capacidade": "500GB",
@@ -2319,7 +2322,7 @@ const especificacoesExtras = {
         "Software": "Acronis True Image (clonagem)",
         "Vida útil (MTTF)": "1,5 milhão de horas"
     },
-    "167": {
+    "166": {
         "Fabricante": "Corsair",
         "Modelo": "MP600 PRO XT",
         "Capacidade": "2TB",
@@ -2333,7 +2336,7 @@ const especificacoesExtras = {
         "Compatibilidade": "PS5, Windows",
         "Software": "Corsair SSD Toolbox"
     },
-    "168": {
+    "167": {
         "Fabricante": "Seagate",
         "Modelo": "BarraCuda 2TB 7200RPM",
         "Capacidade": "2TB",
@@ -2347,7 +2350,7 @@ const especificacoesExtras = {
         "Nível de ruído": "Baixo (modo silencioso padrão)",
         "Compatibilidade": "Windows, Linux, Mac"
     },
-    "169": {
+    "168": {
         "Fabricante": "Seagate",
         "Modelo": "BarraCuda ST1000DM010",
         "Capacidade": "1TB",
@@ -2361,7 +2364,7 @@ const especificacoesExtras = {
         "Nível de ruído": "24 dBA (ocioso)",
         "Compatibilidade": "Windows, Linux, Mac"
     },
-    "170": {
+    "169": {
         "Fabricante": "Western Digital (WD Blue)",
         "Modelo": "WD20EZBX",
         "Capacidade": "2TB",
@@ -2375,7 +2378,7 @@ const especificacoesExtras = {
         "Compatibilidade": "Desktops, all-in-one",
         "Garantia": "2 Anos"
     },
-    "171": {
+    "170": {
         "Fabricante": "Toshiba",
         "Modelo": "P300 (HDWD110UZSVA)",
         "Capacidade": "1TB",
@@ -2389,7 +2392,7 @@ const especificacoesExtras = {
         "Nível de ruído": "-",
         "Garantia": "1 Ano"
     },
-    "172": {
+    "171": {
         "Fabricante": "XPG (ADATA)",
         "Modelo": "Gammix S70 Blade",
         "Capacidade": "1TB",
@@ -2402,5 +2405,6 @@ const especificacoesExtras = {
         "Durabilidade (TBW)": "740 TB",
         "Compatibilidade": "PS5, Windows",
         "Software": "XPG SSD Toolbox"
-    }
+    },
+    "172": {}
 };
