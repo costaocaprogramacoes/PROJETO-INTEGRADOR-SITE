@@ -409,7 +409,11 @@ window.atualizarResultadoFPS = function() {
     const pcPower = calcularPoderDoPC();
 
     // Estimativa de FPS contínua (não apenas faixas fixas), variando de acordo com peso do jogo e poder do PC
-    let fpsCalculado = Math.round((pcPower * pcPower) / (jogo.peso * 55));
+    // Divisor calibrado para que um setup topo de linha (GPU e CPU nota 100, 32GB RAM, SSD NVMe)
+    // consiga alcançar ULTRA/EXTREMO mesmo nos jogos mais pesados do catálogo (peso 1.6–1.7).
+    // Antes, com divisor 55, o "poder" máximo (~105) ficava travado na faixa ALTO/ULTRA nesses jogos,
+    // fazendo o FPS parecer baixo mesmo em uma config alta.
+    let fpsCalculado = Math.round((pcPower * pcPower) / (jogo.peso * 34));
 
     // Ruído leve determinístico (baseado no nome do jogo + peças) pra simular variações reais entre motores gráficos
     const seed = (jogo.nome.length * 7 + setupSelecionado.cpu.id.length + setupSelecionado.gpu.id.length) % 9;
