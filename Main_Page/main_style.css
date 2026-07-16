@@ -55,10 +55,23 @@ nav {
     z-index: 1000;
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 6vw;
+    text-decoration: none;
+}
+
+.logo-icone {
+    height: 32px;
+    width: auto;
+}
+
 .nexus {
     font-family: "Nasalization";
     font-size: 1.2vw;
-    margin-left: 6vw;
+    margin-left: 0;
     color: white;
     cursor: pointer;
 }
@@ -785,7 +798,8 @@ nav {
     }
     .navg ul { display: none; } /* Esconde o menu de texto */
     .hamburger { display: flex; } /* Mostra o botão hambúrguer */
-    .nexus { margin-left: 0; font-size: 22px; }
+    .logo-link { margin-left: 0; }
+    .nexus { font-size: 22px; }
     .icones-nav { margin-right: 0; gap: 15px; }
 
     /* Barra de Pesquisa (Desce para não quebrar o layout do Header) */
