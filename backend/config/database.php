@@ -1,14 +1,18 @@
 <?php
 /**
- * database.php
+ * backend/config/database.php
  * -----------------------------------------------------------------------
- * Conexão central com o banco de dados usado pelo backend do NexusGG.
+ * Conexão central com o banco de dados relacional do NexusGG.
  *
- * Usa SQLite (arquivo local, sem precisar de servidor MySQL configurado)
- * para manter o setup simples. Se o site já tiver um banco MySQL/MariaDB
- * próprio, basta trocar o DSN abaixo por algo como:
- *   "mysql:host=localhost;dbname=nexusgg;charset=utf8mb4"
- * e ajustar usuário/senha na chamada do PDO.
+ * *** ATUALIZAÇÃO ***
+ * Esta versão substitui o SQLite usado na fase de protótipo por uma
+ * conexão real com MySQL/MariaDB, atendendo ao RF07 do Projeto Integrador
+ * (persistência em banco relacional MySQL, gerenciável via phpMyAdmin).
+ *
+ * As credenciais podem ser sobrescritas por variáveis de ambiente
+ * (NEXUS_DB_HOST, NEXUS_DB_NAME, NEXUS_DB_USER, NEXUS_DB_PASS), o que
+ * facilita usar valores diferentes em desenvolvimento/produção sem
+ * alterar este arquivo.
  *
  * Este arquivo é incluído por todos os scripts em backend/*.
  * -----------------------------------------------------------------------
@@ -24,27 +28,23 @@ function nexus_db(): PDO
         return $pdo;
     }
 
-    $dbPath = __DIR__ . '/../data/nexusgg.sqlite';
+    $host = getenv('NEXUS_DB_HOST') ?: '127.0.0.1';
+    $port = getenv('NEXUS_DB_PORT') ?: '3306';
+    $nome = getenv('NEXUS_DB_NAME') ?: 'nexusgg';
+    $user = getenv('NEXUS_DB_USER') ?: 'root';
+    $pass = getenv('NEXUS_DB_PASS') ?: '';
 
-    $pdo = new PDO('sqlite:' . $dbPath);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $dsn = "mysql:host={$host};port={$port};dbname={$nome};charset=utf8mb4";
 
-    // Garante que a tabela de usuários existe (idempotente).
-    $pdo->exec(
-        "CREATE TABLE IF NOT EXISTS usuarios (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            email TEXT NOT NULL UNIQUE,
-            senha_hash TEXT NOT NULL,
-            role TEXT NOT NULL DEFAULT 'user',
-            criado_em TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-        )"
-    );
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ]);
 
-    // Semeia a conta de administrador fixa que já existia na demo em
-    // localStorage (auth.js), para manter o mesmo login funcionando
-    // agora que existe um backend de verdade.
+    // Garante que a conta de administrador fixa exista, com o hash
+    // gerado de verdade (mantém compatibilidade com o login histórico
+    // admin@nexusgg.com / nexusgg@admin já usado em auth.js e login.php).
     $stmt = $pdo->prepare('SELECT id FROM usuarios WHERE email = :email');
     $stmt->execute(['email' => 'admin@nexusgg.com']);
     if (!$stmt->fetch()) {
@@ -52,10 +52,10 @@ function nexus_db(): PDO
             'INSERT INTO usuarios (nome, email, senha_hash, role) VALUES (:nome, :email, :senha_hash, :role)'
         );
         $insert->execute([
-            'nome' => 'Administrador',
-            'email' => 'admin@nexusgg.com',
+            'nome'       => 'Administrador',
+            'email'      => 'admin@nexusgg.com',
             'senha_hash' => password_hash('nexusgg@admin', PASSWORD_DEFAULT),
-            'role' => 'admin',
+            'role'       => 'admin',
         ]);
     }
 
