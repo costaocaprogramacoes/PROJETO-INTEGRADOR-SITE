@@ -107,6 +107,20 @@ function mostrarSenha(inputId) {
 }
 
 /* ==================================================
+        PARA ONDE IR DEPOIS DE LOGAR
+        Se o usuário foi mandado pro login por causa de uma ação
+        bloqueada (comprarItem, setup, checkout), volta pra URL daquela
+        ação em vez de sempre cair na página inicial.
+================================================== */
+function destinoAposLogin() {
+    if (typeof obterAcaoPendente === 'function') {
+        const acao = obterAcaoPendente();
+        if (acao && acao.retornoUrl) return acao.retornoUrl;
+    }
+    return '../Main_Page/main.html';
+}
+
+/* ==================================================
         VALIDAÇÕES DOS FORMULÁRIOS
 ================================================== */
 document.addEventListener("DOMContentLoaded", function () {
@@ -125,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Se a pessoa já está logada, não faz sentido ficar na tela de login
     if (typeof estaLogado === 'function' && estaLogado()) {
-        window.location.href = '../Main_Page/main.html';
+        window.location.href = destinoAposLogin();
         return;
     }
 
@@ -147,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            window.location.href = '../Main_Page/main.html';
+            window.location.href = destinoAposLogin();
         });
     }
 
@@ -210,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Loga automaticamente com a conta recém-criada e vai para o início
             autenticarUsuario(emailCadastro.value, senhaCadastro.value);
-            window.location.href = '../Main_Page/main.html';
+            window.location.href = destinoAposLogin();
         });
     }
 

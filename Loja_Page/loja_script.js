@@ -138,7 +138,24 @@ document.addEventListener("DOMContentLoaded", () => {
     configurarEventos();
     atualizarBadgeCarrinho();
     if (typeof renderizarAreaConta === 'function') renderizarAreaConta();
+    retomarAcaoPendente();
 });
+
+// Se o usuário tinha clicado em "Comprar" sem estar logado, foi mandado
+// pro login e voltou pra cá logado, este é o gancho que termina o que
+// ele estava fazendo: adiciona o produto ao carrinho automaticamente.
+function retomarAcaoPendente() {
+    if (typeof obterAcaoPendente !== 'function' || typeof estaLogado !== 'function') return;
+    if (!estaLogado()) return;
+
+    const acao = obterAcaoPendente();
+    if (!acao || acao.tipo !== 'comprarItem') return;
+
+    limparAcaoPendente();
+    if (acao.dados && acao.dados.id !== undefined) {
+        comprarItem(acao.dados.id);
+    }
+}
 
 function renderizarLoja() {
     const checkboxesMarcados = Array.from(document.querySelectorAll('.filtro-grupo input[type="checkbox"]:checked')).map(cb => cb.value);
@@ -381,6 +398,8 @@ function configurarEventos() {
 }
 
 function comprarItem(id) {
+    if (!exigirLogin('Você precisa entrar para adicionar produtos ao carrinho.', { tipo: 'comprarItem', dados: { id } })) return;
+
     const produto = produtos.find(p => p.id === id);
     if (!produto) return;
 

@@ -841,7 +841,7 @@ nav {
         border-radius: 20px;
     }
     .intro {
-        padding: 0 20px 20px 20px;
+        padding: 100px 20px 20px 20px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -922,7 +922,7 @@ nav {
     .nexus { font-size: 18px; }
     .icones-nav { gap: 10px; }
     .texto { font-size: 26px; }
-    .intro { padding: 0 15px 15px 15px; }
+    .intro { padding: 100px 15px 15px 15px; }
     .novidade { margin: 90px 15px 12px 15px; font-size: 10px; padding: 5px 12px; }
 
     .dados { margin: 15px; padding: 20px 12px; }

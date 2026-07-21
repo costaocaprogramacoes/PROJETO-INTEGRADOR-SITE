@@ -123,6 +123,14 @@ function injetarEstilosAuth() {
             font-size: 10px; font-weight: bold; letter-spacing: 0.5px;
             padding: 2px 8px; border-radius: 10px; text-transform: uppercase;
         }
+        .area-conta .btn-painel-admin {
+            display: flex; align-items: center; gap: 6px;
+            color: #00d9ff; font-size: 12px; font-weight: bold;
+            border: 1px solid #00d9ff; border-radius: 20px;
+            padding: 5px 12px; text-decoration: none; transition: 0.3s;
+        }
+        .area-conta .btn-painel-admin:hover { background: rgba(0, 217, 255, 0.1); }
+
         .area-conta .btn-sair-nav {
             background: transparent; border: 1px solid #3a3f5c; color: #7070A0;
             border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: bold;
@@ -154,6 +162,7 @@ function renderizarAreaConta(containerId = 'area-conta') {
 
     container.innerHTML = `
         <div class="usuario-chip">
+            ${sessao.role === 'admin' ? '<a href="/adm/login.php" class="btn-painel-admin">Painel Admin</a>' : ''}
             <span class="usuario-nome">${sessao.nome}</span>
             ${sessao.role === 'admin' ? '<span class="badge-admin-nav">ADMIN</span>' : ''}
             <button type="button" class="btn-sair-nav" id="btn-sair-nav">Sair</button>
@@ -170,4 +179,55 @@ function renderizarAreaConta(containerId = 'area-conta') {
 // pastas usado no resto do site (ex: ../Loja_Page/loja.html).
 function caminhoParaLogin() {
     return '../Login_Page/login_page.html';
+}
+
+/* =========================================================================
+   BLOQUEIO DE AÇÕES QUE EXIGEM LOGIN
+   Chame exigirLogin() logo no início de qualquer ação que só deva
+   funcionar para quem está logado (adicionar ao carrinho, finalizar
+   compra, etc). Se o usuário não estiver logado, mostra um aviso, GUARDA
+   o que ele estava tentando fazer e manda ele para a tela de login.
+   Depois que ele logar, login_script.js lê essa "ação pendente" pra
+   saber pra onde mandar o usuário de volta (e a própria página de
+   destino pode retomar a ação automaticamente — veja loja_script.js,
+   setup_script.js e checkout_script.js).
+
+   Uso:
+       function comprarItem(id) {
+           if (!exigirLogin('Entre para adicionar produtos ao carrinho.',
+                             { tipo: 'comprarItem', dados: { id } })) return;
+           ... resto da função ...
+       }
+========================================================================= */
+const CHAVE_ACAO_PENDENTE = 'nexus_acao_pendente';
+
+// Salva o que o usuário estava tentando fazer antes de ser mandado pro login.
+// Se "acao.retornoUrl" não for informado, usa a URL atual da página.
+function salvarAcaoPendente(acao) {
+    const acaoCompleta = {
+        tipo: acao.tipo,
+        dados: acao.dados || {},
+        retornoUrl: acao.retornoUrl || window.location.href,
+    };
+    localStorage.setItem(CHAVE_ACAO_PENDENTE, JSON.stringify(acaoCompleta));
+}
+
+function obterAcaoPendente() {
+    return JSON.parse(localStorage.getItem(CHAVE_ACAO_PENDENTE)) || null;
+}
+
+function limparAcaoPendente() {
+    localStorage.removeItem(CHAVE_ACAO_PENDENTE);
+}
+
+function exigirLogin(mensagem = 'Você precisa entrar para continuar.', acaoPendente = null) {
+    if (estaLogado()) {
+        return true;
+    }
+    if (acaoPendente) {
+        salvarAcaoPendente(acaoPendente);
+    }
+    alert(mensagem);
+    window.location.href = caminhoParaLogin();
+    return false;
 }

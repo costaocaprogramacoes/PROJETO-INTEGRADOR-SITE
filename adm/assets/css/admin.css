@@ -1,0 +1,114 @@
+/* NexusGG Admin - Layout Ajustado e Alinhado */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0B1120;
+    --surface: #111827;
+    --card: #1E293B;
+    --primary: #00C8FF;
+    --secondary: #8B5CF6;
+    --text: #F8FAFC;
+    --border: #334155;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* FIX: impede o menu/topo de "escorregar" pro lado quando algo (ex: tabela larga) transborda */
+    max-width: 100%;
+}
+
+/* Ajuste de Alinhamento na Tabela */
+.table {
+    color: var(--text);
+    vertical-align: middle; /* Centraliza verticalmente o conteúdo das linhas */
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+/* Botões - Ajustes para alinhamento */
+.btn {
+    border-radius: 4px;
+    font-weight: 600;
+    padding: 6px 12px; /* Reduzi o padding para botões menores e mais alinhados */
+    border: none !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 0.85rem; /* Fonte um pouco menor para caber melhor na linha */
+    display: inline-block;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    filter: none !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Cores forçadas */
+.btn-success, .btn-primary {
+    background-color: var(--primary) !important;
+    color: #081018 !important;
+}
+
+.btn-warning, .btn-danger, .btn-secondary {
+    background-color: var(--secondary) !important;
+    color: #ffffff !important;
+}
+/* Correção das Badges (Ativo/Bloqueado) */
+.badge {
+    border-radius: 4px !important; /* Mantém o padrão quadrado */
+    font-weight: 500 !important;
+    padding: 5px 10px !important;
+}
+
+/* Força a cor das badges para combinar com o tema */
+.bg-success {
+    background-color: var(--primary) !important; /* Azul para Ativo */
+    color: #081018 !important;
+}
+
+.bg-danger {
+    background-color: var(--secondary) !important; /* Roxo para Bloqueado */
+    color: #ffffff !important;
+}
+
+/* Contêiner de Ações - Organiza os botões lado a lado e não deixa a linha da tabela quebrar */
+.action-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    align-items: center;
+}
+
+/* Ajuste fino nos botões da tabela para não ficarem grandes demais */
+.btn-sm {
+    padding: 4px 8px !important;
+    font-size: 0.75rem !important;
+}
+/* Container que mantém tudo alinhado */
+.page-content-wrapper {
+    max-width: 100%;
+    padding: 0 15px; /* Margem lateral fixa */
+    margin: 0 auto;
+}
+
+/* Garante que o cabeçalho (Usuários + Botão) siga a mesma largura da tabela */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Opcional: Se quiser que o botão de "Novo Usuário" 
+   seja rolável junto com a tabela, coloque-o dentro da mesma div */

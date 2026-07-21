@@ -28,11 +28,11 @@ function nexus_db(): PDO
         return $pdo;
     }
 
-    $host = getenv('NEXUS_DB_HOST') ?: '127.0.0.1';
+    $host = getenv('NEXUS_DB_HOST') ?: 'sql111.infinityfree.com';
     $port = getenv('NEXUS_DB_PORT') ?: '3306';
-    $nome = getenv('NEXUS_DB_NAME') ?: 'nexusgg';
-    $user = getenv('NEXUS_DB_USER') ?: 'root';
-    $pass = getenv('NEXUS_DB_PASS') ?: '';
+    $nome = getenv('NEXUS_DB_NAME') ?: 'if0_42357786_nexusgg';
+    $user = getenv('NEXUS_DB_USER') ?: 'if0_42357786';
+    $pass = getenv('NEXUS_DB_PASS') ?: 'M7cVTJnXz4Kecm9';
 
     $dsn = "mysql:host={$host};port={$port};dbname={$nome};charset=utf8mb4";
 

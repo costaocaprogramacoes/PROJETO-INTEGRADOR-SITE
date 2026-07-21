@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+    if (!exigirLogin('Você precisa entrar para finalizar a compra.', { tipo: 'checkout' })) return;
+
+    // Se chegou até aqui é porque está logado — se havia uma ação
+    // pendente (ex: veio direto do "Finalizar Compra"), ela já cumpriu
+    // seu papel (trazer o usuário pra cá) e pode ser descartada.
+    if (typeof obterAcaoPendente === 'function') {
+        const acao = obterAcaoPendente();
+        if (acao && acao.tipo === 'checkout') limparAcaoPendente();
+    }
+
     configurarMenuMobile();
     inicializarAbasPagamento();
     renderizarResumoCheckout();

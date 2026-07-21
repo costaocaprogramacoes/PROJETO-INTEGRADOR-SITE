@@ -84,7 +84,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ajustarLayoutIcones();
     window.addEventListener('resize', ajustarLayoutIcones);
+
+    avisarSeVoltouDeLogin();
 });
+
+// A seleção de peças em andamento não é salva entre páginas, então não dá
+// pra readicionar o setup sozinho depois do login — mas avisamos o
+// usuário que ele já pode concluir, só clicando de novo no botão.
+function avisarSeVoltouDeLogin() {
+    if (typeof obterAcaoPendente !== 'function' || typeof estaLogado !== 'function') return;
+    if (!estaLogado()) return;
+
+    const acao = obterAcaoPendente();
+    if (!acao || acao.tipo !== 'setup') return;
+
+    limparAcaoPendente();
+    if (typeof mostrarToastSucesso === 'function') {
+        // Garante que o toast já existe, depois troca o texto padrão
+        // ("Setup Adicionado!") por um aviso de retomada de login.
+        mostrarToastSucesso();
+        const toast = document.getElementById('toast-setup-success');
+        if (toast) {
+            const titulo = toast.querySelector('strong');
+            const subtitulo = toast.querySelector('span');
+            if (titulo) titulo.textContent = 'Você já está logado!';
+            if (subtitulo) subtitulo.textContent = 'Clique novamente em "Adicionar ao Carrinho" para concluir.';
+        }
+    } else {
+        alert('Você já está logado! Clique novamente em "Adicionar ao Carrinho" para concluir.');
+    }
+}
 
 /* =========================================================================
    2. CONFIGURAÇÃO E ORGANIZAÇÃO DOS DADOS
@@ -469,6 +498,8 @@ window.atualizarResultadoFPS = function() {
 ========================================================================= */
 
 window.adicionarSetupAoCarrinho = function() {
+    if (!exigirLogin('Você precisa entrar para adicionar seu setup ao carrinho.', { tipo: 'setup' })) return;
+
     let carrinho = JSON.parse(localStorage.getItem('nexus_cart')) || [];
     let itensAdicionados = 0;
 

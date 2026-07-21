@@ -200,7 +200,7 @@ function renderizarCarrinho() {
             </div>
             <div class="parcelamento">ou 12x de R$ ${formatarMoeda(totalFinal / 12)} sem juros</div>
             
-            <button class="btn-finalizar" onclick="window.location.href='../Checkout_Page/checkout.html'">FINALIZAR COMPRA</button>
+            <button class="btn-finalizar" onclick="irParaCheckout()">FINALIZAR COMPRA</button>
 
             <ul class="trust-badges">
                 <li><i class="fa-solid fa-shield-halved"></i> Compra 100% segura</li>
@@ -245,4 +245,10 @@ function atualizarBadgeCarrinho() {
     } else {
         badge.style.display = 'none';
     }
+}
+
+// Só deixa seguir para o checkout quem estiver logado.
+window.irParaCheckout = function() {
+    if (!exigirLogin('Você precisa entrar para finalizar a compra.', { tipo: 'checkout', retornoUrl: '../Checkout_Page/checkout.html' })) return;
+    window.location.href = '../Checkout_Page/checkout.html';
 }
